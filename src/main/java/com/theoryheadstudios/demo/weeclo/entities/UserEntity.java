@@ -65,7 +65,7 @@ public class UserEntity {
     }
 
     @Basic
-    @Column(name = "email_address", nullable = false, length = 30)
+    @Column(name = "email_address", nullable = true, length = 30)
     public String getEmailAddress() {
         return emailAddress;
     }

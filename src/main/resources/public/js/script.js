@@ -6,6 +6,23 @@ var navbar = document.getElementById("gifSearch");
 // Get the offset position of the navbar
 var sticky = navbar.offsetTop;
 
+//User form information:
+
+var User={"firstname":null,
+    "lastname":null,
+    "email_address":null,
+    "address1":null,
+    "address2":null,
+    "zip":null,
+    "systemName":null,
+    "password":null,
+    "neighborhood":null,
+    "phone":null,
+    "dateJoined":null,
+    "dateOfBirth":null,
+    "status":null,
+    "city":null
+};
 
 // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
 
@@ -305,15 +322,121 @@ function isRenter(){
     document.getElementById('renterCardID').style.backgroundColor = "#90EE90";
     document.getElementById('ownerCardID').style.backgroundColor = "white";
     console.log("User-type selection: Renter");
+    serializeUserType("renter");
 
 }
 function isOwner(){
     document.getElementById('ownerCardID').style.backgroundColor = "#90EE90";
     document.getElementById('renterCardID').style.backgroundColor = "white";
     console.log("User-type selection: Owner");
+    serializeUserType("owner");
+}
+
+
+function serializeForm(){
+    console.log("****************************");
+    var firstnameValue = document.getElementById('firstname').value;
+    console.log("first name: "+firstnameValue);
+    var lastnameValue = document.getElementById('lastname').value;
+    console.log("last name: "+lastnameValue);
+    var emailValue = document.getElementById('lastname').value;
+    console.log("email: "+emailValue);
+    var addressLine1Value = document.getElementById('addressLine1').value;
+    console.log("Address (line 1): "+addressLine1Value);
+    var addressLine2Value = document.getElementById('addressLine2').value;
+    console.log("Address (line 2): "+addressLine2Value);
+    var zipcodeValue = document.getElementById('zipcode').value;
+    console.log("Zip: "+zipcodeValue);
+    var desiredUsernameValue = document.getElementById('desiredUsername').value;
+    console.log("Desired Username: "+desiredUsernameValue);
+    var intendedPasswordValue = document.getElementById('password').value;
+    console.log("Password Entered: "+intendedPasswordValue);
+    var intendedPasswordConfirmationValue = document.getElementById('passwordConfirmation').value;
+    console.log("Password Confirmation: "+intendedPasswordConfirmationValue);
+
+    User.firstname=firstnameValue;
+    User.lastname=lastnameValue;
+    User.email=emailValue;
+    User.address1=addressLine1Value;
+    User.address2=addressLine2Value;
+    User.zip=zipcodeValue;
+    User.systemName=desiredUsernameValue;
+    User.password=intendedPasswordValue;
+    User.city="random";
+    User.dateJoined = Date.now();
+    User.dateOfBirth=Date.now();
+    User.status = "active";
+    validateModalForm(firstnameValue,lastnameValue,emailValue,addressLine1Value,zipcodeValue,desiredUsernameValue, intendedPasswordValue,intendedPasswordConfirmationValue);
+
+}
+
+function serializeUserType(userType){
+    console.log("****************************");
+    console.log("Saving user type....");
+    //User.type=userType;
+}
+function validateUserTypeSelection(){
+
+}
+function validateModalForm(firstnameValue,lastnameValue,emailValue,addressLine1Value,zipcodeValue,desiredUsernameValue, intendedPasswordValue,intendedPasswordConfirmationValue){
+    var missedFieldsArray = [];
+    if(firstnameValue.length==0||lastnameValue.length==0||
+        emailValue.length==0||addressLine1Value.length==0||
+        zipcodeValue.length==0||desiredUsernameValue.length==0||
+        intendedPasswordValue.length==0||intendedPasswordConfirmationValue.length==0 ){
+        //redo form by re-routing user back to step 2
+        if(firstnameValue.length==0){
+            missedFieldsArray.push(" First Name");
+        }
+        if(lastnameValue.length==0){
+            missedFieldsArray.push(" Last Name");
+        }
+        if(emailValue.length==0){
+            missedFieldsArray.push(" Email");
+        }
+        if(addressLine1Value.length==0){
+            missedFieldsArray.push(" Address");
+        }
+        if(zipcodeValue.length==0){
+            missedFieldsArray.push(" Zip");
+        }
+        if(desiredUsernameValue.length==0){
+            missedFieldsArray.push(" Desired Username");
+        }
+        if(intendedPasswordValue.length==0){
+            missedFieldsArray.push(" Password");
+        }
+        if(intendedPasswordConfirmationValue.length==null){
+            missedFieldsArray.push(" Password Confirmation");
+        }
+        console.error("Must enter necessary fields...");
+        document.getElementById('ErrorMessage').innerHTML="Oops, looks like you forgot these things: "+"<p id='errorContent'>"+missedFieldsArray.toString()+"</p>";
+    }
+    else if(intendedPasswordValue.valueOf()!=intendedPasswordConfirmationValue.valueOf()){
+        console.error("Passwords entered do not match...");
+        document.getElementById('ErrorMessage').innerHTML="<p id='errorContent'> Passwords entered do not match...</p>";
+    }
+    else{
+        console.log("Necessary fields entered successfully...");
+        onClickNext();
+
+    }
 }
 
 function completeSignUp() {
+    var radios = document.getElementsByName('radio');
+
+    for (var i = 0, length = radios.length; i < length; i++)
+    {
+        if (radios[i].checked)
+        {
+            User.neighborhood=radios[i].value;
+
+            break;
+        }
+    }
+    console.log("Neighborhood Selected: "+User.neighborhood);
+
     var xhr= new XMLHttpRequest();
     xhr.open('GET', 'loadingPage.html', true);
     xhr.onreadystatechange= function() {
@@ -324,7 +447,11 @@ function completeSignUp() {
     xhr.send();
     stepState++;
     innerButtonClickCount++;
-    console.log("Click Count is now: "+innerButtonClickCount)
+    console.log("Click Count is now: "+innerButtonClickCount);
+
+    console.log("Final User JS object: "+JSON.stringify(User));
+
+    persist(User);
 
     setTimeout(function(){
 
@@ -344,13 +471,19 @@ function completeSignUp() {
 
     }, 3000);
 }
+function persist(user){
 
-function serialize(){
-    console.log("****************************")
-    // $('form').serialize()
-    // console.log(JSON.stringify($('form').serializeArray()));
-    var value = document.getElementById('firstname').value
-    console.log("first name: "+value);
+    var httpRequest = new XMLHttpRequest();
+    httpRequest.open('POST', 'http://localhost:3001/createWeeCloUser',true);
+    httpRequest.setRequestHeader('Content-Type', 'application/json');
+    httpRequest.onreadystatechange = function(){
+        if(this.readyState!==4) return;
+        if(this.status!=200)return;
+        //error logging
+        document.getElementById('modalContent').innerHTML = this.responseText;
+    };
+    httpRequest.send(user);
+
 }
 
 //END OF MODAL

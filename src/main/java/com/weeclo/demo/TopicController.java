@@ -4,6 +4,8 @@ import com.weeclo.demo.weeclo.entities.UserEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,31 +42,40 @@ public class TopicController {
 
     @Transactional
     @RequestMapping(value = "/createWeeCloUser", method = RequestMethod.POST)
-    public String createWeeCloUser(@RequestBody UserEntity weeCloUser){
+    public ResponseEntity createWeeCloUser(@RequestBody UserEntity weeCloUser){
         try{
-            weeCloUser.setPassword(passwordEncoder.encode(weeCloUser.getPassword()));
-            em.persist(weeCloUser);
-            em.flush();
-            System.out.println("Input user password after encryption: "+ weeCloUser.getPassword());
+            List<?> results = em.createQuery("select id from UserEntity where emailAddress = ?")
+                    .setParameter(1, weeCloUser.getEmailAddress())
+                    .getResultList();
+            if(results.size()==0) {
+                weeCloUser.setPassword(passwordEncoder.encode(weeCloUser.getPassword()));
+                em.persist(weeCloUser);
+                em.flush();
 
-            //Compare User input with encrypted
-            if(passwordEncoder.matches("password", weeCloUser.getPassword())){
-                System.out.println("True");
+                System.out.println("Input user password after encryption: "+ weeCloUser.getPassword());
+                //Compare User input with encrypted
+                if(passwordEncoder.matches("password", weeCloUser.getPassword())){
+                    System.out.println("True");
+                }
+                else{
+                    System.out.println("False");
+                }
+                return new ResponseEntity("Success", HttpStatus.OK);
             }
             else{
-                System.out.println("False");
+                return new ResponseEntity("An account with this email already exists.", HttpStatus.NOT_ACCEPTABLE);
             }
-            return "Success";
         }
         catch(PersistenceException p){
             p.printStackTrace();
+            return new ResponseEntity("An issue with the database occured. Try again later.", HttpStatus.INTERNAL_SERVER_ERROR);
         }catch (Exception e){
             e.printStackTrace();
+            return new ResponseEntity("An issue has occured. We'll get to the bottom of it.", HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return "Failure to create account";
-
 
     }
+
 
 
 

@@ -1,4 +1,4 @@
-package com.weeclo.demo.weeclo.entities;
+package com.weeclo.demo.entities;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -6,21 +6,10 @@ import java.util.Objects;
 @Entity
 @Table(name = "us_states", schema = "weeclodb", catalog = "")
 public class UsStatesEntity {
-    private int id;
     private String abbrev;
     private String name;
 
     @Id
-    @Column(name = "ID", nullable = false)
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    @Basic
     @Column(name = "abbrev", nullable = false, length = 2)
     public String getAbbrev() {
         return abbrev;
@@ -45,14 +34,13 @@ public class UsStatesEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UsStatesEntity that = (UsStatesEntity) o;
-        return id == that.id &&
-                Objects.equals(abbrev, that.abbrev) &&
+        return Objects.equals(abbrev, that.abbrev) &&
                 Objects.equals(name, that.name);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, abbrev, name);
+        return Objects.hash(abbrev, name);
     }
 }

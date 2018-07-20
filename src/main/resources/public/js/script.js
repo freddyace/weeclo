@@ -486,4 +486,39 @@ function persist(user){
 
 }
 
+function validateUserLogin(){
+    var userEmail = document.getElementById();
+    var password = document.getElementById();
+    if(userEmail(userEmail)){
+
+    }
+
+}
+function login(){
+
+}
+function userExists(userEmail){
+    var exists = false;
+    var httpRequest = new XMLHttpRequest();
+    httpRequest.open('POST', 'http://localhost:3001/userEmailExists', true);
+    httpRequest.setRequestHeader('Content-Type', 'application/json');
+    httpRequest.onreadystatechange = function () {
+        if(this.readyState!=4)return;
+        if(this.status!=200){
+            //error logging
+            return "Exception occured"
+        }
+        else{
+            httpRequest.send(userEmail)
+            if(httpRequest.status!='200'){
+                //handle this
+                return false;
+            }else{
+                return true;
+            }
+        }
+    }
+}
+
+
 //END OF MODAL

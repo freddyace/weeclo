@@ -1,18 +1,20 @@
 Sample user (Json)
 
-         {
-             "user_email": "freddyace@ayhoo.com",
-             "account_number": 302040,
-             "first_name": "ShitHead",
-             "last_name": "Bozo",
-             "password": "$2a$10$iVe4tpAro68BPwqqmc9l5ujJscXNuQY0BpmubHyBC4cSV1677C4Im",
-             "date_of_birth": "05/17/1993",
-             "country": "Mexico",
-             "zip": "30237",
-             "time_zone": "Western",
-             "user_name": "Goyito",
-             "social_link_1": "http://myspace.com/bump",
-             "social_link_2": "http://facebook.com/bump2",
-             "social_link_3": "http://soundcloud.com/bump3",
-             "points_balance": 5
-         }
+{
+   "zip":10101,
+   "lastName":"Johnson",
+   "address2":"Null",
+   "city":"Atlanta",
+   "address1":"20 Lettuce Ave",
+   "stateId":"GA",
+   "dateJoined":"2018-07-15",
+   "dateOfBirth":"1974-02-12",
+   "firstName":"Jerry",
+   "password":"booty",
+   "emailAddress":"test@gmail.com",
+   "systemName":"testerguy144",
+   "phone":"4704448989",
+   "id":0,
+   "neighborhood":"Cabbage Town",
+   "status":"active"
+}

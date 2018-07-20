@@ -1,4 +1,4 @@
-package com.weeclo.demo.weeclo.entities;
+package com.weeclo.demo.entities;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -13,7 +13,8 @@ public class UserEntity {
     private String firstName;
     private String lastName;
     private String emailAddress;
-    private int phone;
+    private String password;
+    private String phone;
     private String address1;
     private String address2;
     private String city;
@@ -22,7 +23,6 @@ public class UserEntity {
     private Timestamp dateJoined;
     private Date dateOfBirth;
     private String status;
-    private String password;
 
     @Id
     @Column(name = "ID", nullable = false)
@@ -75,12 +75,22 @@ public class UserEntity {
     }
 
     @Basic
-    @Column(name = "phone", nullable = false)
-    public int getPhone() {
+    @Column(name = "password", nullable = true, length = 60)
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    @Basic
+    @Column(name = "phone", nullable = false, length = 15)
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
@@ -164,25 +174,19 @@ public class UserEntity {
         this.status = status;
     }
 
-    @Basic
-    @Column(name = "password", nullable = false, length = 60)
-    public String getPassword(){return password; }
-
-    public void setPassword(String password){ this.password = password; }
-
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserEntity that = (UserEntity) o;
         return id == that.id &&
-                phone == that.phone &&
                 zip == that.zip &&
                 Objects.equals(systemName, that.systemName) &&
                 Objects.equals(firstName, that.firstName) &&
                 Objects.equals(lastName, that.lastName) &&
                 Objects.equals(emailAddress, that.emailAddress) &&
+                Objects.equals(password, that.password) &&
+                Objects.equals(phone, that.phone) &&
                 Objects.equals(address1, that.address1) &&
                 Objects.equals(address2, that.address2) &&
                 Objects.equals(city, that.city) &&
@@ -195,6 +199,6 @@ public class UserEntity {
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, systemName, firstName, lastName, emailAddress, phone, address1, address2, city, zip, neighborhood, dateJoined, dateOfBirth, status);
+        return Objects.hash(id, systemName, firstName, lastName, emailAddress, password, phone, address1, address2, city, zip, neighborhood, dateJoined, dateOfBirth, status);
     }
 }

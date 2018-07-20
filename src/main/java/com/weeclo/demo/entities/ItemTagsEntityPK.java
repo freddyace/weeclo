@@ -1,4 +1,4 @@
-package com.weeclo.demo.weeclo.entities;
+package com.weeclo.demo.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Id;

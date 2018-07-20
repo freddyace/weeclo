@@ -1,14 +1,14 @@
-package com.weeclo.demo.weeclo.entities;
+package com.weeclo.demo.entities;
 
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "items_owned", schema = "weeclodb", catalog = "")
-public class ItemsOwnedEntity {
+@Table(name = "items_rented", schema = "weeclodb", catalog = "")
+public class ItemsRentedEntity {
     private int id;
     private String duration;
-    private double revenue;
+    private double cost;
 
     @Id
     @Column(name = "ID", nullable = false)
@@ -31,28 +31,28 @@ public class ItemsOwnedEntity {
     }
 
     @Basic
-    @Column(name = "revenue", nullable = false, precision = 2)
-    public double getRevenue() {
-        return revenue;
+    @Column(name = "cost", nullable = false, precision = 2)
+    public double getCost() {
+        return cost;
     }
 
-    public void setRevenue(double revenue) {
-        this.revenue = revenue;
+    public void setCost(double cost) {
+        this.cost = cost;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ItemsOwnedEntity that = (ItemsOwnedEntity) o;
+        ItemsRentedEntity that = (ItemsRentedEntity) o;
         return id == that.id &&
-                Double.compare(that.revenue, revenue) == 0 &&
+                Double.compare(that.cost, cost) == 0 &&
                 Objects.equals(duration, that.duration);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, duration, revenue);
+        return Objects.hash(id, duration, cost);
     }
 }

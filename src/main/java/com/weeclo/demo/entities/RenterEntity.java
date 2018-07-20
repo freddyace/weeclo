@@ -1,16 +1,15 @@
-package com.weeclo.demo.weeclo.entities;
+package com.weeclo.demo.entities;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
-@Table(name = "owner", schema = "weeclodb", catalog = "")
-public class OwnerEntity {
+@Table(name = "renter", schema = "weeclodb", catalog = "")
+public class RenterEntity {
     private int id;
-    private Double totalRevenue;
+    private Double totalSpent;
     private int totalRentals;
-    private int totalItemsOwned;
     private Timestamp dateCreated;
     private String status;
 
@@ -25,13 +24,13 @@ public class OwnerEntity {
     }
 
     @Basic
-    @Column(name = "total_revenue", nullable = true, precision = 2)
-    public Double getTotalRevenue() {
-        return totalRevenue;
+    @Column(name = "total_spent", nullable = true, precision = 2)
+    public Double getTotalSpent() {
+        return totalSpent;
     }
 
-    public void setTotalRevenue(Double totalRevenue) {
-        this.totalRevenue = totalRevenue;
+    public void setTotalSpent(Double totalSpent) {
+        this.totalSpent = totalSpent;
     }
 
     @Basic
@@ -42,16 +41,6 @@ public class OwnerEntity {
 
     public void setTotalRentals(int totalRentals) {
         this.totalRentals = totalRentals;
-    }
-
-    @Basic
-    @Column(name = "total_items_owned", nullable = false)
-    public int getTotalItemsOwned() {
-        return totalItemsOwned;
-    }
-
-    public void setTotalItemsOwned(int totalItemsOwned) {
-        this.totalItemsOwned = totalItemsOwned;
     }
 
     @Basic
@@ -78,11 +67,10 @@ public class OwnerEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        OwnerEntity that = (OwnerEntity) o;
+        RenterEntity that = (RenterEntity) o;
         return id == that.id &&
                 totalRentals == that.totalRentals &&
-                totalItemsOwned == that.totalItemsOwned &&
-                Objects.equals(totalRevenue, that.totalRevenue) &&
+                Objects.equals(totalSpent, that.totalSpent) &&
                 Objects.equals(dateCreated, that.dateCreated) &&
                 Objects.equals(status, that.status);
     }
@@ -90,6 +78,6 @@ public class OwnerEntity {
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, totalRevenue, totalRentals, totalItemsOwned, dateCreated, status);
+        return Objects.hash(id, totalSpent, totalRentals, dateCreated, status);
     }
 }

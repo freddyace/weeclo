@@ -2,18 +2,13 @@ package com.weeclo.demo;
 
 
 import com.weeclo.demo.entities.UserEntity;
-import org.hibernate.validator.constraints.Email;
-import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
-
-import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceException;
@@ -21,6 +16,11 @@ import javax.transaction.Transactional;
 import java.util.Arrays;
 import java.util.List;
 
+
+/**
+ * Author: Freddy Acevedo @ WeeClo
+ * last commit: 07/20/18
+ */
 @RestController
 public class Controller {
     private final Logger log = LoggerFactory.getLogger(this.getClass());
@@ -31,15 +31,6 @@ public class Controller {
         private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         @PersistenceContext
         EntityManager em;
-
-        @RequestMapping("/topics")
-        public List<Topic> getAllTopics(){
-            return Arrays.asList(
-                    new Topic("spring", "Spring Framework", "Spring Framework Description"),
-                    new Topic("java", "Core Java", "Core Java Description"),
-                    new Topic("javascript", "JavaScript", "JavaScript Description")
-            );
-        }
 
 
     /**

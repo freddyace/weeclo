@@ -26,7 +26,7 @@ public class DemoApplication {
 
 		Email from = new Email("TeamWeeClo@weeclo.com");
 		String subject = "Welcome to WeeClo!";
-		Email to = new Email("zsines@gmail.com");
+		Email to = new Email("freddyace1993@gmail.com");
 		Content content = new Content("text/plain", "and easy to do anywhere, even with Java");
 		Mail mail = new Mail(from, subject, to, content);
 

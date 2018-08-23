@@ -339,7 +339,7 @@ function populateForm(){
     console.log("first name: "+firstnameValue);
     var lastnameValue = document.getElementById('lastname').value;
     console.log("last name: "+lastnameValue);
-    var emailValue = document.getElementById('lastname').value;
+    var emailValue = document.getElementById('email').value;
     console.log("email: "+emailValue);
     var addressLine1Value = document.getElementById('addressLine1').value;
     console.log("Address (line 1): "+addressLine1Value);
@@ -409,6 +409,7 @@ function validateModalForm(firstnameValue,lastnameValue,emailValue,addressLine1V
         if(intendedPasswordConfirmationValue.length==null){
             missedFieldsArray.push(" Password Confirmation");
         }
+        console.log(emailValue.value)
         console.error("Must enter necessary fields...");
         document.getElementById('ErrorMessage').innerHTML="Oops, looks like you forgot these things: "+"<p id='errorContent'>"+missedFieldsArray.toString()+"</p>";
     }

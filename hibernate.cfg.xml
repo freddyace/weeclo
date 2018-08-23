@@ -4,26 +4,35 @@
     "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
   <session-factory>
-    <property name="connection.url">jdbc:mysql://104.196.142.176:3306/weeclodb</property>
+    <property name="connection.url">jdbc:mysql://35.231.171.155:3306/weeclodb</property>
     <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
      <property name="freddy"/>
      <property name="password"/>
-      <mapping class="com.theoryheadstudios.demo.weeclo.entities.ItemEntity"/>
-      <mapping class="com.theoryheadstudios.demo.weeclo.entities.ItemStarsEntity"/>
-      <mapping class="com.theoryheadstudios.demo.weeclo.entities.ItemStarsTotalEntity"/>
-      <mapping class="com.theoryheadstudios.demo.weeclo.entities.ItemTagsEntity"/>
-      <mapping class="com.theoryheadstudios.demo.weeclo.entities.ItemsOwnedEntity"/>
-      <mapping class="com.theoryheadstudios.demo.weeclo.entities.ItemsRentedEntity"/>
-      <mapping class="com.theoryheadstudios.demo.weeclo.entities.OwnerEntity"/>
-      <mapping class="com.theoryheadstudios.demo.weeclo.entities.RenterEntity"/>
-      <mapping class="com.theoryheadstudios.demo.weeclo.entities.TagsEntity"/>
-      <mapping class="com.theoryheadstudios.demo.weeclo.entities.UsStatesEntity"/>
-      <mapping class="com.theoryheadstudios.demo.weeclo.entities.UserEntity"/>
-      <mapping class="com.theoryheadstudios.demo.weeclo.entities.UserRatingEntity"/>
-      <mapping class="com.theoryheadstudios.demo.weeclo.entities.UserRatingTotalEntity"/>
-      <mapping class="com.theoryheadstudios.demo.weeclo.entities.WcAdminEntity"/>
+   <mapping class="com.weeclo.demo.entities.UserEntity"/>
+   <mapping class="com.weeclo.demo.entities.CategoriesEntity"/>
+   <mapping class="com.weeclo.demo.entities.ImagesEntity"/>
+   <mapping class="com.weeclo.demo.entities.InterestsEntity"/>
+   <mapping class="com.weeclo.demo.entities.ItemEntity"/>
+   <mapping class="com.weeclo.demo.entities.ItemCategoryEntity"/>
+   <mapping class="com.weeclo.demo.entities.ItemStarsEntity"/>
+   <mapping class="com.weeclo.demo.entities.ItemStarsTotalEntity"/>
+   <mapping class="com.weeclo.demo.entities.ItemTagsEntity"/>
+   <mapping class="com.weeclo.demo.entities.ItemsOwnedEntity"/>
+   <mapping class="com.weeclo.demo.entities.ItemsRentedEntity"/>
+   <mapping class="com.weeclo.demo.entities.NeighborhoodsEntity"/>
+   <mapping class="com.weeclo.demo.entities.OwnerEntity"/>
+   <mapping class="com.weeclo.demo.entities.RenterEntity"/>
+   <mapping class="com.weeclo.demo.entities.SafeHavensEntity"/>
+   <mapping class="com.weeclo.demo.entities.SubCategoriesEntity"/>
+   <mapping class="com.weeclo.demo.entities.TagsEntity"/>
+   <mapping class="com.weeclo.demo.entities.UsStatesEntity"/>
+   <mapping class="com.weeclo.demo.entities.UserEntity"/>
+   <mapping class="com.weeclo.demo.entities.UserRatingEntity"/>
+   <mapping class="com.weeclo.demo.entities.UserRatingTotalEntity"/>
+   <mapping class="com.weeclo.demo.entities.WcAdminEntity"/>
 
-      <!-- DB schema will be updated if needed -->
+
+   <!-- DB schema will be updated if needed -->
     <!-- <property name="hbm2ddl.auto">update</property> -->
   </session-factory>
 </hibernate-configuration>

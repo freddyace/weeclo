@@ -8,7 +8,9 @@ import java.util.Objects;
 @Table(name = "item_stars", schema = "weeclodb", catalog = "")
 public class ItemStarsEntity {
     private int id;
+    private int itemId;
     private int stars;
+    private int fromUserId;
     private Timestamp dateEntered;
     private String comment;
 
@@ -23,6 +25,16 @@ public class ItemStarsEntity {
     }
 
     @Basic
+    @Column(name = "item_ID", nullable = false)
+    public int getItemId() {
+        return itemId;
+    }
+
+    public void setItemId(int itemId) {
+        this.itemId = itemId;
+    }
+
+    @Basic
     @Column(name = "stars", nullable = false)
     public int getStars() {
         return stars;
@@ -30,6 +42,16 @@ public class ItemStarsEntity {
 
     public void setStars(int stars) {
         this.stars = stars;
+    }
+
+    @Basic
+    @Column(name = "from_user_ID", nullable = false)
+    public int getFromUserId() {
+        return fromUserId;
+    }
+
+    public void setFromUserId(int fromUserId) {
+        this.fromUserId = fromUserId;
     }
 
     @Basic
@@ -58,7 +80,9 @@ public class ItemStarsEntity {
         if (o == null || getClass() != o.getClass()) return false;
         ItemStarsEntity that = (ItemStarsEntity) o;
         return id == that.id &&
+                itemId == that.itemId &&
                 stars == that.stars &&
+                fromUserId == that.fromUserId &&
                 Objects.equals(dateEntered, that.dateEntered) &&
                 Objects.equals(comment, that.comment);
     }
@@ -66,6 +90,6 @@ public class ItemStarsEntity {
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, stars, dateEntered, comment);
+        return Objects.hash(id, itemId, stars, fromUserId, dateEntered, comment);
     }
 }

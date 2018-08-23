@@ -1,4 +1,4 @@
-Sample user (Json)
+Sample user (Json) (OLD DO NOT USE)
 
 {
    "zip":10101,
@@ -17,4 +17,29 @@ Sample user (Json)
    "id":0,
    "neighborhood":"Cabbage Town",
    "status":"active"
+}
+
+
+====================================================
+08/23/2018
+
+{
+   "zip":30303,
+   "lastName":"Sinatra",
+   "profilePictureName":"picture1",
+   "address2":"NULL",
+   "city":"Buckhead",
+   "address1":"1 Elm Street",
+   "stateId":"GA",
+   "dateJoined":"2018-08-23",
+   "dateOfBirth":"2018-08-23",
+   "firstName":"Frank",
+   "password":"asdf",
+   "emailAddress":"franksinatra@gmail.com",
+   "systemName":"franksinatra",
+   "phone":"2302565676",
+   "id":1234,
+   "neighborhood":1,
+   "status":"Active",
+   "profilePicturePath":"undefined"
 }

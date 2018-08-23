@@ -18,11 +18,14 @@ public class UserEntity {
     private String address1;
     private String address2;
     private String city;
+    private String stateId;
     private int zip;
-    private String neighborhood;
+    private int neighborhood;
     private Timestamp dateJoined;
     private Date dateOfBirth;
     private String status;
+    private String profilePicturePath;
+    private String profilePictureName;
 
     @Id
     @Column(name = "ID", nullable = false)
@@ -35,7 +38,7 @@ public class UserEntity {
     }
 
     @Basic
-    @Column(name = "system_name", nullable = false, length = 12)
+    @Column(name = "system_name", nullable = false, length = 20)
     public String getSystemName() {
         return systemName;
     }
@@ -55,7 +58,7 @@ public class UserEntity {
     }
 
     @Basic
-    @Column(name = "last_name", nullable = false, length = 20)
+    @Column(name = "last_name", nullable = false, length = 25)
     public String getLastName() {
         return lastName;
     }
@@ -65,7 +68,7 @@ public class UserEntity {
     }
 
     @Basic
-    @Column(name = "email_address", nullable = true, length = 30)
+    @Column(name = "email_address", nullable = false, length = 45)
     public String getEmailAddress() {
         return emailAddress;
     }
@@ -75,7 +78,7 @@ public class UserEntity {
     }
 
     @Basic
-    @Column(name = "password", nullable = true, length = 60)
+    @Column(name = "password", nullable = false, length = 60)
     public String getPassword() {
         return password;
     }
@@ -95,7 +98,7 @@ public class UserEntity {
     }
 
     @Basic
-    @Column(name = "address1", nullable = false, length = 40)
+    @Column(name = "address1", nullable = false, length = 60)
     public String getAddress1() {
         return address1;
     }
@@ -105,7 +108,7 @@ public class UserEntity {
     }
 
     @Basic
-    @Column(name = "address2", nullable = true, length = 40)
+    @Column(name = "address2", nullable = true, length = 60)
     public String getAddress2() {
         return address2;
     }
@@ -125,6 +128,16 @@ public class UserEntity {
     }
 
     @Basic
+    @Column(name = "state_ID", nullable = false, length = 2)
+    public String getStateId() {
+        return stateId;
+    }
+
+    public void setStateId(String stateId) {
+        this.stateId = stateId;
+    }
+
+    @Basic
     @Column(name = "zip", nullable = false)
     public int getZip() {
         return zip;
@@ -135,12 +148,12 @@ public class UserEntity {
     }
 
     @Basic
-    @Column(name = "neighborhood", nullable = false, length = 30)
-    public String getNeighborhood() {
+    @Column(name = "neighborhood", nullable = false)
+    public int getNeighborhood() {
         return neighborhood;
     }
 
-    public void setNeighborhood(String neighborhood) {
+    public void setNeighborhood(int neighborhood) {
         this.neighborhood = neighborhood;
     }
 
@@ -174,6 +187,26 @@ public class UserEntity {
         this.status = status;
     }
 
+    @Basic
+    @Column(name = "profile_picture_path", nullable = true, length = 100)
+    public String getProfilePicturePath() {
+        return profilePicturePath;
+    }
+
+    public void setProfilePicturePath(String profilePicturePath) {
+        this.profilePicturePath = profilePicturePath;
+    }
+
+    @Basic
+    @Column(name = "profile_picture_name", nullable = true, length = 45)
+    public String getProfilePictureName() {
+        return profilePictureName;
+    }
+
+    public void setProfilePictureName(String profilePictureName) {
+        this.profilePictureName = profilePictureName;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -181,6 +214,7 @@ public class UserEntity {
         UserEntity that = (UserEntity) o;
         return id == that.id &&
                 zip == that.zip &&
+                neighborhood == that.neighborhood &&
                 Objects.equals(systemName, that.systemName) &&
                 Objects.equals(firstName, that.firstName) &&
                 Objects.equals(lastName, that.lastName) &&
@@ -190,15 +224,17 @@ public class UserEntity {
                 Objects.equals(address1, that.address1) &&
                 Objects.equals(address2, that.address2) &&
                 Objects.equals(city, that.city) &&
-                Objects.equals(neighborhood, that.neighborhood) &&
+                Objects.equals(stateId, that.stateId) &&
                 Objects.equals(dateJoined, that.dateJoined) &&
                 Objects.equals(dateOfBirth, that.dateOfBirth) &&
-                Objects.equals(status, that.status);
+                Objects.equals(status, that.status) &&
+                Objects.equals(profilePicturePath, that.profilePicturePath) &&
+                Objects.equals(profilePictureName, that.profilePictureName);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, systemName, firstName, lastName, emailAddress, password, phone, address1, address2, city, zip, neighborhood, dateJoined, dateOfBirth, status);
+        return Objects.hash(id, systemName, firstName, lastName, emailAddress, password, phone, address1, address2, city, stateId, zip, neighborhood, dateJoined, dateOfBirth, status, profilePicturePath, profilePictureName);
     }
 }

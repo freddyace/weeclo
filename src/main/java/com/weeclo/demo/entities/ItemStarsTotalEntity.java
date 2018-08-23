@@ -10,6 +10,7 @@ public class ItemStarsTotalEntity {
     private int totalStars;
     private int totalReviews;
     private double avgStars;
+    private int itemStarsId;
 
     @Id
     @Column(name = "ID", nullable = false)
@@ -51,6 +52,16 @@ public class ItemStarsTotalEntity {
         this.avgStars = avgStars;
     }
 
+    @Basic
+    @Column(name = "item_stars_ID", nullable = false)
+    public int getItemStarsId() {
+        return itemStarsId;
+    }
+
+    public void setItemStarsId(int itemStarsId) {
+        this.itemStarsId = itemStarsId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -59,12 +70,13 @@ public class ItemStarsTotalEntity {
         return id == that.id &&
                 totalStars == that.totalStars &&
                 totalReviews == that.totalReviews &&
-                Double.compare(that.avgStars, avgStars) == 0;
+                Double.compare(that.avgStars, avgStars) == 0 &&
+                itemStarsId == that.itemStarsId;
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, totalStars, totalReviews, avgStars);
+        return Objects.hash(id, totalStars, totalReviews, avgStars, itemStarsId);
     }
 }

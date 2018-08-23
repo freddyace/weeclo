@@ -10,6 +10,7 @@ public class UserRatingTotalEntity {
     private int totalUps;
     private int totalDowns;
     private double avgRating;
+    private int userId;
 
     @Id
     @Column(name = "ID", nullable = false)
@@ -51,6 +52,16 @@ public class UserRatingTotalEntity {
         this.avgRating = avgRating;
     }
 
+    @Basic
+    @Column(name = "user_ID", nullable = false)
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -59,12 +70,13 @@ public class UserRatingTotalEntity {
         return id == that.id &&
                 totalUps == that.totalUps &&
                 totalDowns == that.totalDowns &&
-                Double.compare(that.avgRating, avgRating) == 0;
+                Double.compare(that.avgRating, avgRating) == 0 &&
+                userId == that.userId;
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, totalUps, totalDowns, avgRating);
+        return Objects.hash(id, totalUps, totalDowns, avgRating, userId);
     }
 }

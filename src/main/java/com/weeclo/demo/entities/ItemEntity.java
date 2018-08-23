@@ -16,9 +16,13 @@ public class ItemEntity {
     private Timestamp dateAdded;
     private String itemStatus;
     private String deliveryMode;
-    private double price;
+    private double costDay;
+    private double costHour;
     private String availability;
     private Date nextAvail;
+    private byte buyNow;
+    private Double buyNowPrice;
+    private double totalRevenue;
 
     @Id
     @Column(name = "ID", nullable = false)
@@ -101,13 +105,23 @@ public class ItemEntity {
     }
 
     @Basic
-    @Column(name = "price", nullable = false, precision = 2)
-    public double getPrice() {
-        return price;
+    @Column(name = "cost_day", nullable = false, precision = 2)
+    public double getCostDay() {
+        return costDay;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setCostDay(double costDay) {
+        this.costDay = costDay;
+    }
+
+    @Basic
+    @Column(name = "cost_hour", nullable = false, precision = 2)
+    public double getCostHour() {
+        return costHour;
+    }
+
+    public void setCostHour(double costHour) {
+        this.costHour = costHour;
     }
 
     @Basic
@@ -130,6 +144,36 @@ public class ItemEntity {
         this.nextAvail = nextAvail;
     }
 
+    @Basic
+    @Column(name = "buy_now", nullable = false)
+    public byte getBuyNow() {
+        return buyNow;
+    }
+
+    public void setBuyNow(byte buyNow) {
+        this.buyNow = buyNow;
+    }
+
+    @Basic
+    @Column(name = "buy_now_price", nullable = true, precision = 2)
+    public Double getBuyNowPrice() {
+        return buyNowPrice;
+    }
+
+    public void setBuyNowPrice(Double buyNowPrice) {
+        this.buyNowPrice = buyNowPrice;
+    }
+
+    @Basic
+    @Column(name = "total_revenue", nullable = false, precision = 2)
+    public double getTotalRevenue() {
+        return totalRevenue;
+    }
+
+    public void setTotalRevenue(double totalRevenue) {
+        this.totalRevenue = totalRevenue;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -137,7 +181,10 @@ public class ItemEntity {
         ItemEntity that = (ItemEntity) o;
         return id == that.id &&
                 timesRented == that.timesRented &&
-                Double.compare(that.price, price) == 0 &&
+                Double.compare(that.costDay, costDay) == 0 &&
+                Double.compare(that.costHour, costHour) == 0 &&
+                buyNow == that.buyNow &&
+                Double.compare(that.totalRevenue, totalRevenue) == 0 &&
                 Objects.equals(itemName, that.itemName) &&
                 Objects.equals(itemDescription, that.itemDescription) &&
                 Objects.equals(itemCondition, that.itemCondition) &&
@@ -145,12 +192,13 @@ public class ItemEntity {
                 Objects.equals(itemStatus, that.itemStatus) &&
                 Objects.equals(deliveryMode, that.deliveryMode) &&
                 Objects.equals(availability, that.availability) &&
-                Objects.equals(nextAvail, that.nextAvail);
+                Objects.equals(nextAvail, that.nextAvail) &&
+                Objects.equals(buyNowPrice, that.buyNowPrice);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, itemName, itemDescription, timesRented, itemCondition, dateAdded, itemStatus, deliveryMode, price, availability, nextAvail);
+        return Objects.hash(id, itemName, itemDescription, timesRented, itemCondition, dateAdded, itemStatus, deliveryMode, costDay, costHour, availability, nextAvail, buyNow, buyNowPrice, totalRevenue);
     }
 }

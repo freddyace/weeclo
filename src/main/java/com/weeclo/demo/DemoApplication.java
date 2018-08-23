@@ -1,7 +1,7 @@
 package com.weeclo.demo;
 
-import com.sendgrid.*;
 import com.weeclo.demo.entities.UserEntity;
+import org.json.JSONObject;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -15,14 +15,27 @@ public class DemoApplication {
 
 	public static void main(String[] args) throws IOException{
 		SpringApplication.run(DemoApplication.class, args);
-//		UserEntity userEntity = new UserEntity();
-//		userEntity.setAddress1("1 Elm Street");
-//		userEntity.setAddress2("NULL");
-//		userEntity.setCity("Jonesboro");
-//		userEntity.setDateJoined(new Timestamp(System.currentTimeMillis()));
-//		userEntity.setDateOfBirth(new Date(System.currentTimeMillis()));
-//		userEntity.setEmailAddress("freddyace1993@gmail.com");
-//		//userEntity.setSt
+		UserEntity userEntity = new UserEntity();
+		userEntity.setId(1234);
+		userEntity.setSystemName("franksinatra");
+		userEntity.setFirstName("Frank");
+		userEntity.setLastName("Sinatra");
+		userEntity.setPassword("asdf");
+		userEntity.setPhone("2302565676");
+		userEntity.setAddress1("1 Elm Street");
+		userEntity.setAddress2("NULL");
+		userEntity.setCity("Buckhead");
+		userEntity.setStateId("GA");
+		userEntity.setZip(30303);
+		userEntity.setNeighborhood(1);
+		userEntity.setDateJoined(new Timestamp(System.currentTimeMillis()));
+		userEntity.setDateOfBirth(new Date(System.currentTimeMillis()));
+		userEntity.setEmailAddress("franksinatra@gmail.com");
+		userEntity.setStatus("Active");
+		userEntity.setProfilePictureName("Bootyhole");
+		userEntity.setProfilePicturePath("undefined");
+		JSONObject jsonObject = new JSONObject(userEntity);
+		System.out.println(jsonObject);
 //
 //		Email from = new Email("TeamWeeClo@weeclo.com");
 //		String subject = "Welcome to WeeClo!";

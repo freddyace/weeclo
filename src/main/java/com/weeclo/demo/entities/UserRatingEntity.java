@@ -8,6 +8,8 @@ import java.util.Objects;
 @Table(name = "user_rating", schema = "weeclodb", catalog = "")
 public class UserRatingEntity {
     private int id;
+    private int toUserId;
+    private int fromUserId;
     private int rateUp;
     private int rateDown;
     private Timestamp dateEntered;
@@ -21,6 +23,26 @@ public class UserRatingEntity {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    @Basic
+    @Column(name = "to_user_ID", nullable = false)
+    public int getToUserId() {
+        return toUserId;
+    }
+
+    public void setToUserId(int toUserId) {
+        this.toUserId = toUserId;
+    }
+
+    @Basic
+    @Column(name = "from_user_ID", nullable = false)
+    public int getFromUserId() {
+        return fromUserId;
+    }
+
+    public void setFromUserId(int fromUserId) {
+        this.fromUserId = fromUserId;
     }
 
     @Basic
@@ -69,6 +91,8 @@ public class UserRatingEntity {
         if (o == null || getClass() != o.getClass()) return false;
         UserRatingEntity that = (UserRatingEntity) o;
         return id == that.id &&
+                toUserId == that.toUserId &&
+                fromUserId == that.fromUserId &&
                 rateUp == that.rateUp &&
                 rateDown == that.rateDown &&
                 Objects.equals(dateEntered, that.dateEntered) &&
@@ -78,6 +102,6 @@ public class UserRatingEntity {
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, rateUp, rateDown, dateEntered, testimonial);
+        return Objects.hash(id, toUserId, fromUserId, rateUp, rateDown, dateEntered, testimonial);
     }
 }

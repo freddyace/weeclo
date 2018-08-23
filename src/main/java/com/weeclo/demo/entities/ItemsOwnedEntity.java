@@ -7,6 +7,8 @@ import java.util.Objects;
 @Table(name = "items_owned", schema = "weeclodb", catalog = "")
 public class ItemsOwnedEntity {
     private int id;
+    private int ownerId;
+    private int itemId;
     private String duration;
     private double revenue;
 
@@ -18,6 +20,26 @@ public class ItemsOwnedEntity {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    @Basic
+    @Column(name = "owner_ID", nullable = false)
+    public int getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(int ownerId) {
+        this.ownerId = ownerId;
+    }
+
+    @Basic
+    @Column(name = "item_ID", nullable = false)
+    public int getItemId() {
+        return itemId;
+    }
+
+    public void setItemId(int itemId) {
+        this.itemId = itemId;
     }
 
     @Basic
@@ -46,6 +68,8 @@ public class ItemsOwnedEntity {
         if (o == null || getClass() != o.getClass()) return false;
         ItemsOwnedEntity that = (ItemsOwnedEntity) o;
         return id == that.id &&
+                ownerId == that.ownerId &&
+                itemId == that.itemId &&
                 Double.compare(that.revenue, revenue) == 0 &&
                 Objects.equals(duration, that.duration);
     }
@@ -53,6 +77,6 @@ public class ItemsOwnedEntity {
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, duration, revenue);
+        return Objects.hash(id, ownerId, itemId, duration, revenue);
     }
 }

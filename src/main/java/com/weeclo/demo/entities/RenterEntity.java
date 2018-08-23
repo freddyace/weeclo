@@ -8,10 +8,11 @@ import java.util.Objects;
 @Table(name = "renter", schema = "weeclodb", catalog = "")
 public class RenterEntity {
     private int id;
-    private Double totalSpent;
+    private double totalSpent;
     private int totalRentals;
     private Timestamp dateCreated;
     private String status;
+    private int userId;
 
     @Id
     @Column(name = "ID", nullable = false)
@@ -24,12 +25,12 @@ public class RenterEntity {
     }
 
     @Basic
-    @Column(name = "total_spent", nullable = true, precision = 2)
-    public Double getTotalSpent() {
+    @Column(name = "total_spent", nullable = false, precision = 2)
+    public double getTotalSpent() {
         return totalSpent;
     }
 
-    public void setTotalSpent(Double totalSpent) {
+    public void setTotalSpent(double totalSpent) {
         this.totalSpent = totalSpent;
     }
 
@@ -63,14 +64,25 @@ public class RenterEntity {
         this.status = status;
     }
 
+    @Basic
+    @Column(name = "user_ID", nullable = false)
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         RenterEntity that = (RenterEntity) o;
         return id == that.id &&
+                Double.compare(that.totalSpent, totalSpent) == 0 &&
                 totalRentals == that.totalRentals &&
-                Objects.equals(totalSpent, that.totalSpent) &&
+                userId == that.userId &&
                 Objects.equals(dateCreated, that.dateCreated) &&
                 Objects.equals(status, that.status);
     }
@@ -78,6 +90,6 @@ public class RenterEntity {
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, totalSpent, totalRentals, dateCreated, status);
+        return Objects.hash(id, totalSpent, totalRentals, dateCreated, status, userId);
     }
 }

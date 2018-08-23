@@ -333,7 +333,7 @@ function isOwner(){
 }
 
 
-function serializeForm(){
+function populateForm(){
     console.log("****************************");
     var firstnameValue = document.getElementById('firstname').value;
     console.log("first name: "+firstnameValue);

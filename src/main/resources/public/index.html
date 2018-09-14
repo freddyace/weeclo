@@ -1,307 +1,754 @@
+<!--This is the main index.html page that will have the user login or signup.
+It will contain general information about the application and will have ways for the users to connect
+on social media and link to different pages
+-->
 <!DOCTYPE html>
-<html ng-app="weeClo">
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel = "stylesheet" href="css/styles.css">
-</head>
-<body ng-controller="MainController">
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Home - WeeClo</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/new-style.css">
 
+  </head>
+  <body id='index-page'>
+    <!--Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-light border-bottom fixed-top bg-white" id='index-navbar'>
+      <div class="container">
+        <a class="navbar-brand brand" href="./index.html">
+            <img src="./images/img/Logo_navy.png" alt="WeeClo Logo">
+        </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarCollapsable" aria-controls="navbarCollapsable"
+              aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse align-items-center" id="navbarCollapsable">
+              <ul class="navbar-nav ml-auto " id="sections">
+                  <li class="nav-item mx-2 order-last order-lg-first" title="Search Items">
+                    <form name='indexSearchForm' class="form-inline indexSearchForm"
+                      id='indexSearchForm' action="search.html" method="post">
+                      <div class="form-group">
+                        <input type="text" class="form-control mr-sm-2"
+                          placeholder="Whatcha looking for?" name="indexInputSearch">
+                      </div>
+                      <button id='indexSearchButton' type="submit" class="btn btn-danger"
+                        form='indexSearchForm' name="indexSearchButton">Search</button>
+                    </form>
+                    <!-- onclick='searchSubmit()'-->
+                  </li>
+<script type="text/javascript">
+  var searchForm = document.getElementById('indexSearchForm');
+  searchForm.addEventListener('submit', function(e) {
+    alert("searching");
+    document.location = './search.html';
+    e.preventDefault();
 
-<!-- The Login Modal -->
-<div id="loginModal" class="modal">
+    //allow the people to search but if they want to click on an item, then they are forced to sign up
+    // var loginEmail = $('#loginEmail').val();
+    // var loginPass = $('#loginPass').val();
+    // if(loginEmail == '' || loginPass == '') {
+    //   alert("Missing information");
+    //   e.preventDefault();
+    // } else {
+    //     var correctInfo = validateLogin(loginEmail, loginPass);
+    //     if(!correctInfo){
+    //       alert('incorrect information');
+    //       e.preventDefault();
+    //     }else {
+    //       alert("correct information");
+    //       document.location = './search.html';
+    //     }
+    // }
+  }, false);
+</script>
 
-  <!-- Modal content -->
-  <div class="modal-content">
-    <span id="modalCloseButton" class="close">&times;</span> <br><br>
-    <!--  <div ng-include="'registerModalContent.html'"></div> --><!-- This is for deployed version. Seperate modal content-->
-
-    <div>
-      <div class="w3-container w3-center w3-animate-right" id="loginModalContent">
-
-        <!--INSERT MODAL CONTENT HERE -->
-
-        <!--***************************-->
-
+                  <li class="nav-item mx-2" id='nav-i'>
+                      <a class="nav-link btn-lg" data-toggle="modal"
+                        data-target="#login-modal" data-dismiss="modal"
+                        alt='Login at WeeClo'>Login</a>
+                  </li>
+                  <li class='nav-item mx-2' id='nav-i'>
+                    <a class='nav-link btn-lg' data-toggle="modal"
+                      data-target="#register-modal" data-dismiss="modal"
+                      alt='Register at WeeClo'>Register</a>
+                  </li>
+              </ul>
+          </div>
       </div>
-    </div>
-    <!-- <center><button class="button" id="letsGoButton" onclick=""><span>Lets go</span></button></center> -->
-    <!--  <div ng-include="'checkbox.html'"></div>  --> <!-- Add this when deployed to a server, dev or prod -->
+    </nav>
 
-  </div>
-</div>
-<!--End of Modal component -->
-
-
-
-
-<!-- Trigger/Open The Modal -->
-
-
-<!-- The Modal -->
-<div id="myModal" class="modal">
-
-  <!-- Modal content -->
-  <div class="modal-content">
-    <span id="mainModalCloseButton" class="close">&times;</span> <br><br>
-    <!--  <div ng-include="'registerModalContent.html'"></div> --><!-- This is for deployed version. Seperate modal content-->
-
-    <div>
-      <div class="w3-container w3-center w3-animate-right" id="modalContent">
-
-        <!--INSERT MODAL CONTENT HERE -->
-
-        <!--***************************-->
-
-      </div>
-    </div>
-    <!--  <div ng-include="'checkbox.html'"></div>  --> <!-- Add this when deployed to a server, dev or prod -->
-
-  </div>
-</div>
-<!--End of Modal component -->
-
-<div class="topnav" id="myTopnav">
-  <div class="logo">WeeClo</div>
-  <a href="#home" id="myBtn" onclick="onClickNext()">Sign Up</a>
-  <a id="landingPageLoginButton">Log In</a>
-
-  <!-- <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction2()">&#9776;</a>  -->
-</div>
-
-
-<div class="header">
-  <div id="videoDiv">
-    <div id="videoBlock">
-
-      <div id="videoMessage">
-        <br>
-        <h1 class="spacer bbb">Renting is the new buying!</h1>
-        <h2 class="spacer bbb">Just need an item for the night? The weekend?</h2>
-        <h3 class="spacer bbb">A special project? A special date?</h3>
-        <h2 class="spacer bbb">Try it out!</h2>
-        <p class="videoClick" >
-        <form  id= "gifSearch" class="navbar-form" action="/action_page.php">
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="What are you looking for?" name="search">
-            <div class="input-group-btn">
-              <input type="button" class="button" value="Let's Go">
+    <!--modals-->
+    <!--LOGIN MODAL - COMPlETE-->
+    <div class="modal fade" id='login-modal' tabindex="-1" role='dialog'
+      aria-labelledby='login-modal-label' aria-hidden='true'>
+      <div class="modal-dialog modal-lg" role='document'>
+        <div class="modal-content card rounded">
+          <div class="modal-header card-header text-center">
+            <h3 class='mb-3'>Login to WeeClo</h3>
+            <button type="button" class="close" data-dismiss="modal"
+              aria-label="Close"><span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body card-body">
+            <form name='loginForm' id='loginForm' action='search.html'
+              method="post">
+              <div class="form-group">
+                <label for="loginEmail">Email</label>
+                <input type="text" class="form-control" name='loginEmail'
+                  id='loginEmail' placeholder='johndoe@example.com'>
+              </div>
+              <div class="form-group">
+                <label for="loginPass">Password</label>
+                <input type="password" class='form-control' name="loginPass"
+                  placeholder="***********" id='loginPass' >
+              </div>
+              <button id='loginButton' type="submit" name="loginButton"
+                class='btn btn-success'>Login</button>
+            </form>
+          </div>
+          <div class="card-footer">
+            <div class="row bg-light text-center">
+              <div class="col-sm-6" >
+                <a data-toggle='modal' data-target='#register-modal'
+                  data-dismiss='modal' href="#register-modal"
+                  class='nav-link'>Don't have an account?</a>
+              </div>
+              <div class="col-sm-6">
+                <a data-toggle='modal' data-target='#forgot-password-modal'
+                  data-dismiss='modal'href="#forgot-password-modal"
+                  class='nav-link'>Forgot Password?</a>
+              </div>
             </div>
           </div>
-        </form>
-        </p>
-      </div>
-    </div>
-  </div>
-  <!--<img src="ppl.gif"/> -->
-  <img id="headerPicture" class="hhh" src="images/hood.jpg"/>
-</div>
-
-<!--<nav class="navbar navbar-inverse" id="navbar">
-<div class="navbar-header">
-  <form class="navbar-form navbar-left" action="/action_page.php">
-    <div class="input-group">
-      <input type="text" class="form-control" placeholder="What are you looking for?" name="search">
-      <div class="input-group-btn">
-        <button class="btn btn-default" type="submit">
-          <i class="glyphicon glyphicon-search"></i>
-        </button>
-      </div>
-    </div>
-  </form>
-</div>
-
-
-
-</nav> -->
-<div class="container">
-  <div class="row">
-    <div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel"  data-interval="1000">
-      <div class="MultiCarousel-inner">
-        <div class="item">
-          <div class="pad15" style="background-image:url('images/lawncare.jpeg');background-repeat: no-repeat; background-size:cover;">
-            <p class="lead" style="color:white; background: rgba(0, 0, 0, 0.5);">Lawn & Gardening</p>
-            <br><br><br><br><br><br><br><br>
-
-          </div>
-        </div>
-        <div class="item">
-          <div class="pad15" style="background-image:url('images/wellness.jpg');background-repeat: no-repeat; background-size:100%;">
-            <p class="lead" style="color:white; background: rgba(0, 0, 0, 0.5);">Fitness</p>
-            <br><br><br><br><br><br><br><br>
-
-          </div>
-        </div>
-        <div class="item">
-          <div class="pad15" style="background-image:url('images/costumes.jpeg');background-repeat: no-repeat; background-size:100%;">
-            <p class="lead" style="color:white; background: rgba(0, 0, 0, 0.5);">Cosplay</p>
-            <br><br><br><br><br><br><br><br>
-
-          </div>
-        </div>
-        <div class="item">
-          <div class="pad15" style="background-image:url('images/hiking.jpeg');background-repeat: no-repeat; background-size:cover;">
-            <p class="lead" style="color:white; background: rgba(0, 0, 0, 0.5);">Outdoor & Hiking</p>
-            <br><br><br><br><br><br><br><br>
-
-          </div>
-        </div>
-        <div class="item">
-          <div class="pad15" style="background-image:url('images/guitar.jpeg');background-repeat: no-repeat; background-size:cover;">
-            <p class="lead" style="color:white; background: rgba(0, 0, 0, 0.5);">Musical Instruments</p>
-            <br><br><br><br><br><br><br><br>
-
-          </div>
-        </div>
-        <div class="item">
-          <div class="pad15" style="background-image:url('images/clothing.jpeg');background-repeat: no-repeat; background-size:100%;">
-            <p class="lead" style="color:white; background: rgba(0, 0, 0, 0.5);">Clothing</p>
-            <br><br><br><br><br><br><br><br>
-
-          </div>
-        </div>
-        <div class="item">
-          <div class="pad15" style="background-image:url('images/electronics.jpeg');background-repeat: no-repeat; background-size:cover;">
-            <p class="lead" style="color:white; background: rgba(0, 0, 0, 0.5);">Electronics</p>
-            <br><br><br><br><br><br><br><br>
-
-          </div>
-        </div>
-        <div class="item">
-          <div class="pad15" style="background-image:url('images/cameraEquipment.jpeg');background-repeat: no-repeat; background-size:cover;">
-            <p class="lead" style="color:white; background: rgba(0, 0, 0, 0.5);">Camera Equipment</p>
-            <br><br><br><br><br><br><br><br>
-
-          </div>
-        </div>
-        <div class="item">
-          <div class="pad15" style="background-image:url('images/jewelry.jpeg');background-repeat: no-repeat; background-size:cover;">
-            <p class="lead" style="color:white; background: rgba(0, 0, 0, 0.5);">Jewelery</p>
-            <br><br><br><br><br><br><br><br>
-
-          </div>
-        </div>
-        <div class="item">
-          <div class="pad15" style="background-image:url('images/industrialEquipment.jpeg');background-repeat: no-repeat; background-size:cover;">
-            <p class="lead" style="color:white; background: rgba(0, 0, 0, 0.5);">Industrial</p>
-            <br><br><br><br><br><br><br><br>
-
-          </div>
-        </div>
-        <div class="item">
-          <div class="pad15">
-            <p class="lead">Multi Item Carousel</p>
-            <p>₹ 1</p>
-            <p>₹ 6000</p>
-            <p>50% off</p>
-          </div>
-        </div>
-        <div class="item">
-          <div class="pad15">
-            <p class="lead">Multi Item Carousel</p>
-            <p>₹ 1</p>
-            <p>₹ 6000</p>
-            <p>50% off</p>
-          </div>
-        </div>
-        <div class="item">
-          <div class="pad15">
-            <p class="lead">Multi Item Carousel</p>
-            <p>₹ 1</p>
-            <p>₹ 6000</p>
-            <p>50% off</p>
-          </div>
-        </div>
-        <div class="item">
-          <div class="pad15">
-            <p class="lead">Multi Item Carousel</p>
-            <p>₹ 1</p>
-            <p>₹ 6000</p>
-            <p>50% off</p>
-          </div>
-        </div>
-        <div class="item">
-          <div class="pad15">
-            <p class="lead">Multi Item Carousel</p>
-            <p>₹ 1</p>
-            <p>₹ 6000</p>
-            <p>50% off</p>
-          </div>
-        </div>
-        <div class="item">
-          <div class="pad15">
-            <p class="lead">Multi Item Carousel</p>
-            <p>₹ 1</p>
-            <p>₹ 6000</p>
-            <p>50% off</p>
-          </div>
         </div>
       </div>
-      <button class="btn btn-primary leftLst"><</button>
-      <button class="btn btn-primary rightLst">></button>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12 text-center">
-      <br/><br/><br/>
-      <hr/>
+    <!--REGISTER-MODAL-->
+    <div class="modal fade" id='register-modal' tabindex="-1" role='dialog'
+      aria-labelledby='register-modal-label' aria-hidden='true'>
+      <div class="modal-dialog modal-lg" role='document'>
+        <div class="modal-content card rounded">
+          <div class="modal-header card-header text-center">
+            <h3 class='mb-3'>Register</h3>
+            <button type="button" class="close" data-dismiss="modal"
+              aria-label="Close"><span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body card-body">
+            <form name='registerForm' id='registerForm' action="search.html" method="post">
+              <div class='form' id="step-1">
+                <fieldset>
+                  <legend class='text-center'>
+                    <h4 class='mb-3 h-text-size'>Welcome to WeeClo!</h4>
+                    <p class='text-muted'>What are you here as?</p>
+                  </legend>
+                  <div class="row text-center">
+                    <div class="col-sm-6">
+                      <div class=" card mb-3">
+                        <input class="form-check-input" type="radio" value="renter"
+                          id="renteeRadio" name="ownerType" hidden>
+                        <label class="form-check-label" for="renteeRadio">
+                          <img class="card-img-top" src="./images/img/electronics.jpg"
+                              alt="Photo credit: Toolstotal Visualhunt.com">
+                          <h5 class="card-title">I am a rentee</h5>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-sm-6 ">
+                      <div class="card mb-3">
+                        <input class="form-check-input oT" type="radio" value="owner"
+                          id="ownerRadio" name="ownerType" hidden>
+                        <label class="form-check-label oT" for="ownerRadio">
+                          <img class="card-img-top" src="./images/img/electronics.jpg"
+                            alt="Photo credit: Toolstotal Visualhunt.com">
+                          <h5 class="card-title">I am a owner</h5>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row float-right">
+                      <div class="col-12">
+                        <button id='step1Next' class="btn btn-primary open-step-2"
+                          type="button">Next
+                          <span class="fa fa-arrow-right"></span></button>
+                      </div>
+                  </div>
+                </fieldset>
+              </div>
+              <div class='form' id="step-2">
+                <fieldset>
+                  <legend class='text-center'>
+                    <h4 class='mb-3 h-text-size'>Which Category is the item?</h4>
+                    <p class='text-muted'>Choose one of the following.</p>
+                  </legend>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class=" card mb-3">
+                        <input class="form-check-input" type="radio" value="electronics"
+                          id="electronics" name="itemCategory" hidden>
+                        <label class="form-check-label" for="electronics">
+                          <img class="card-img-top" src="./images/img/electronics.jpg"
+                              alt="Photo credit: Toolstotal Visualhunt.com">
+                          <h5 class="card-title">Electronics</h5>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class=" card mb-3">
+                        <input class="form-check-input" type="radio" value="toys"
+                          id="toys" name="itemCategory" hidden>
+                        <label class="form-check-label" for="toys">
+                          <img class="card-img-top" src="./images/img/toys.jpg"
+                              alt="Photo credit: Toys Visualhunt.com">
+                          <h5 class="card-title">Toys</h5>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class=" card mb-3">
+                        <input class="form-check-input" type="radio" value="guitars"
+                          id="guitars" name="itemCategory" hidden>
+                        <label class="form-check-label" for="guitars">
+                          <img class="card-img-top" src="./images/img/electronics.jpg"
+                              alt="Photo credit: Toolstotal Visualhunt.com">
+                          <h5 class="card-title">Guitars</h5>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class=" card mb-3">
+                        <input class="form-check-input" type="radio" value="gym"
+                          id="gym" name="itemCategory" hidden>
+                        <label class="form-check-label" for="gym">
+                          <img class="card-img-top" src="./images/img/electronics.jpg"
+                              alt="Photo credit: Toolstotal Visualhunt.com">
+                          <h5 class="card-title">Gym</h5>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class=" card mb-3">
+                        <input class="form-check-input" type="radio" value="tools"
+                          id="tools" name="itemCategory" hidden>
+                        <label class="form-check-label" for="tools">
+                          <img class="card-img-top" src="./images/img/electronics.jpg"
+                              alt="Photo credit: Toolstotal Visualhunt.com">
+                          <h5 class="card-title">Tools</h5>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class=" card mb-3">
+                        <input class="form-check-input" type="radio" value="furniture"
+                          id="furniture" name="itemCategory" hidden>
+                        <label class="form-check-label" for="furniture">
+                          <img class="card-img-top" src="./images/img/electronics.jpg"
+                              alt="Photo credit: Toolstotal Visualhunt.com">
+                          <h5 class="card-title">Furniture</h5>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row justify-content-around">
+                    <div class="col-sm-6">
+                      <button id='step2Back' class="btn btn-primary open-step-1" type="button"><span class="fa fa-arrow-left"></span>Back</button>
+                    </div>
+                      <div class="col-sm-6">
+                        <button id='step2Next' class="btn btn-primary open-step-3 justify-content-end float-right" type="button">Next <span class="fa fa-arrow-right"></span></button>
+                      </div>
+                  </div>
+                </fieldset>
+              </div>
+              <div class='form' id="step-3">
+                <fieldset>
+                  <legend class='text-center'>
+                    <h4 class='mb-3 h-text-size'>Where you at?</h4>
+                    <p class='text-muted'>Give Us Your Location</p>
+                  </legend>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class=" card mb-3">
+                        <input class="form-check-input" type="radio" value="atlanta"
+                          id="atlanta" name="regLocation" hidden>
+                        <label class="form-check-label" for="atlanta">
+                          <img class="card-img-top" src="./images/img/electronics.jpg"
+                              alt="Photo credit: Toolstotal Visualhunt.com">
+                          <h5 class="card-title">Atlanta</h5>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class=" card mb-3">
+                        <input class="form-check-input" type="radio" value="brookhaven"
+                          id="brookhaven" name="regLocation" hidden>
+                        <label class="form-check-label" for="brookhaven">
+                          <img class="card-img-top" src="./images/img/electronics.jpg"
+                              alt="Photo credit: Toolstotal Visualhunt.com">
+                          <h5 class="card-title">Brookhaven</h5>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class=" card mb-3">
+                        <input class="form-check-input" type="radio" value="savannah"
+                          id="savannah" name="regLocation" hidden>
+                        <label class="form-check-label" for="savannah">
+                          <img class="card-img-top" src="./images/img/electronics.jpg"
+                              alt="Photo credit: Toolstotal Visualhunt.com">
+                          <h5 class="card-title">Savannah</h5>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class=" card mb-3">
+                        <input class="form-check-input" type="radio" value="marietta"
+                          id="marietta" name="regLocation" hidden>
+                        <label class="form-check-label" for="marietta">
+                          <img class="card-img-top" src="./images/img/electronics.jpg"
+                              alt="Photo credit: Toolstotal Visualhunt.com">
+                          <h5 class="card-title">Marietta</h5>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <button id='step3Back' class="btn btn-primary open-step-2" type="button"><span class="fa fa-arrow-left"></span>Back</button>
+                    </div>
+                      <div class="col-sm-6 float-right">
+                        <button id='step3Next' class="btn btn-primary open-step-4 justify-content-end float-right" type="button">Next <span class="fa fa-arrow-right"></span></button>
+                      </div>
+                  </div>
+                </fieldset>
+              </div>f
+              <div  class='form' id="step-4">
+                <fieldset>
+                  <legend class='text-center'>
+                    <h4 class='mb-3 h-text-size'>Couple more things ...</h4>
+                    <p>Fill out the rest.</p>
+                  </legend>
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label for="regFirst">First Name</label>
+                      <input type="text" class="form-control" id="regFirst" placeholder="ex. John">
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="regLast">Last Name</label>
+                      <input type="text" class="form-control" id="regLast"
+                        placeholder="ex. Doe">
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label for="regEmail">Email</label>
+                      <input type="email" class="form-control" id="regEmail"
+                        placeholder="ex. john.doe@example.com">
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="regPassword">Password</label>
+                      <input type="password" class="form-control"
+                        id="regPassword" placeholder="***********">
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="regPassword2">Confirm Password</label>
+                      <input type="password" class="form-control"
+                        id="regPassword2" placeholder="***********">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <button id='step4Back' class="btn btn-primary open-step-3"
+                      type="button"><span class="fa fa-arrow-left"></span>Back</button>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+            </form>
+          </div>
+          <div class="card-footer">
+            <div class="row justify-content-between text-center">
+              <div class="col-sm-6 text-md-left mb-3 mb-sm-0">
+                <button id='resetButton' class="btn btn-danger" type="button">Reset</button>
+              </div>
+              <div class="col-sm-6 text-md-right">
+                <button id='registerButton' type="submit" name="registerButton"
+                  class='btn btn-info' form='registerForm' disabled>Register</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-<div id="centerBody">
-  <div class="container col-lg-6 col-xs-6">
-    <img id="bodyPics" src="images/houses.jpg"/>
-    <h3>...that jewelry collection that gets used only for special occasions...</h3>
-  </div>
-  <div class="container col-lg-6 col-xs-6">
-    <h3>We're creating a community of neightbors who bought that 1 tool for that 1 job and never returned it....</h3><br><br><br>
-    <img id="bodyPics" src="images/shopping.jpg"/>
-  </div>
-  <div class="container col-lg-6 col-xs-6">
-    <img id="bodyPics" src="http://www.fotolip.com/wp-content/uploads/2016/05/Car-Clipart-1.png"/><br><br><br><br><br><br><br><br><br><br>
-    <h3>...the dress that you bought for that party, someone said "oh, you forgot to take the tag off," which you then instinctively reached back and ripped that thing off...</h3>
-  </div>
-  <div class="container col-lg-6 col-xs-6">
-    <h3>...that spare car you have in your garage that never gets used</h3>  <br><br><br><br>
-    <br><br><br><br><br><br><br><br>
-  </div>
 
-  <div class="container col-lg-6 col-xs-6">
-    <img id="bodyPics" src="images/jewelry.jpg" class="img-responsive"/>
-  </div>
+    <!--FORGET PASSWORD MODAL - COMPLETE-->
+    <div class="modal fade" id="forgot-password-modal" tabindex="-1"
+      role="dialog" aria-labelledby="forgot-password-modal-label"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content card rounded">
+          <div class="modal-header card-header text-center">
+            <h3 class='mb-0'>Whoops!</h3>
+            <button type="button" class="close" data-dismiss="modal"
+              aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body card-body">
+            <div class="row justify-content-center bg-white">
+              <div class="col-12">
+                <form name="forgotPassForm" id="forgotPassForm" method="post"
+                  action="index.html" class="text-center">
+                  <fieldset>
+                    <legend class="text-center">
+                      <h3>Forgot Your Password?</h3>
+                      <p class="text-muted">Type your email and we'll get
+                        you a new one!</p>
+                    </legend>
+                    <br>
+                    <div class="form-group">
+                      <label for="forgotPassEmail">Email</label>
+                      <input class="form-control" id="forgotPassEmail"
+                        type="text" name="forgotPassEmail" placeholder="Email">
+                    </div>
+                  </fieldset>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div class="row justify-content-end text-center">
+              <button class="btn btn-info" id="forgotPassButton" type='submit'
+                name="forgotPassButton" form='forgotPassForm'>Send It!</button>
+                <!-- <button id='loginButton' type="submit" name="loginButton"
+                  class='btn btn-success'>Login</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--PASSWORD RESET MODAL - UNNECESSARY & COMPLETE-->
+    <div class="modal fade" id="pass-reset-modal" tabindex="-1" role="dialog"
+      aria-labelledby="pass-reset-modal-label" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content card rounded">
+          <div class="modal-header card-header text-center">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body card-body">
+            <div class="row justify-content-center bg-white">
+              <div class="col-8 text-center">
+                <h3>Email is sent.</h3>
+                <p class="text-muted">Check your email for a new password.</p>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer card-footer">
+            <div class="row">
+              <div class="col">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-  <div class="container  col-lg-12 col-md-12 col-xs-12" style="background-color:white;">
-    <h3>We want you to be able to take advantage of that ownership and make some extra money in the process.</h3>
-    <img src="images/moneyClipart.jpeg"/>
-    <h3>With WeeClo, you can connect with your neighbors locally in a safe way to borrow that tool rather than buying on yourself for that specialty project, or borrow that dress for a night out.</h3>
-    <br><br>
-    <center><a class="button" id="joinWeecloButton" >Join the WeeClo Experience!</a></center>
-    <center><br><br><h3>Sign up or <a id="loginLink">Log In</a> to start working with your neighbors!</h3></center>
+    <!--LOGOUT MODAL - COMPLETE & UNNECESSARY-->
+    <div class="modal fade" id="logout-modal" tabindex="-1" role="dialog"
+      aria-labelledby="logout-modal-label" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header text-center">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="row justify-content-center bg-white">
+              <div class="col-8 text-center">
+                <h3>Come Back Soon</h3>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <div class="row">
+              <div class="col-xs-6">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-  </div>
-</div>
-<footer style="background-color:transparent;">
-  <center>
-    <a href="https://facebook.com"><img style="width:50px;height:50px;"src='images/facebook-logo.jpg'/></a>
-    <a href="https://twitter.com"><img style="width:50px;height:50px;"src='images/twitter-logo.png'/></a>
-    <a href="https://google.com"><img style="width:50px;height:50px;"src='images/google-plus-badge.png'/></a>
-  </center>
-</footer>
-  <footer>
-    <ul>
-      <li style="float:left;display: block;color: white;text-align: center;padding: 16px;">Copyright &copy; 2018 || WeeClo.com </li>
-      <li><a href="#home">Investor Relations</a></li>
-      <li><a href="#home">About Us</a></li>
-      <li><a href="#home">Feedback</a></li>
-      <li><a href="#home">Contact Us</a></li>
-    </ul>
-  </footer>
-</body>
+    <!--WELCOME MODAL-->
+    <div class="modal fade" id="welcome-modal" tabindex="-1" role="dialog"
+      aria-labelledby="welcome-modal-label" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header text-center">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="row justify-content-center bg-white">
+              <div class="col-8 text-center">
+                <h3>Welcome Back</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-<script src="js/script.js"></script>
+<!--END OF MODALS-->
 
-</body>
+
+  <!-- INDEX PAGE -->
+    <main class='container-fluid'>
+      <section class='jumbotron paral paral-whole paralintro'>
+          <div class="bg-overlay"></div>
+          <div class="jumbotron-text text-white">
+            <div class="row">
+              <!--this needs to be updated-->
+              <h1 class="display-3">Why Own When You Can Rent?</h1>
+            </div>
+          </div>
+      </section>
+
+      <!--quote section-->
+      <section class='section bg-color2'  id="home-quote">
+        <div class="container animation-element bounce-up cf ">
+            <div class="row subject">
+                <blockquote class="blockquote text-center col ">
+                    <p class="m-0 lead display-5 p-text-size">
+                      <!--this needs to be updated to flow with the steps below-->
+                      WeeClo is an spot where renters can check out one-time used items without having
+                      to purchase them brand new while owners have to chance to make money on stuff they don't use anymore.
+                    </p>
+                </blockquote>
+            </div>
+        </div>
+      </section>
+      <section>
+          <div class="row">
+            <div class="col-lg-6 text-center d-none d-lg-inline-block my-auto">
+              <div class="card w-100 border-0">
+                <div class="card-top">
+                  <span>
+                    <i class="fas fa-hand-pointer fa-3x"></i>
+                  </span>
+                </div>
+                <div class="card-body">
+                  <h2 class='h-font-size'>Rent.</h2>
+                  <!--need better content-->
+                  <p class="p-text-size">Browse and find the item you are looking for from our WeeClo inventory</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 jumbotron paral paral-split paralsec3 text-center">
+              <div class="bg-overlay"></div>
+              <div class="card w-100 border-0 d-lg-none bg-transparent text-white">
+                <div class="card-top">
+                  <span>
+                    <i class="fas fa-hand-pointer fa-3x"></i>
+                  </span>
+                </div>
+                <div class="card-body">
+                  <h2 class='h-font-size'>Rent.</h2>
+                  <!--need better content-->
+                  <p class="p-text-size">Browse and find the item you are looking for from our WeeClo inventory</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row ">
+            <div class="col-lg-6 jumbotron paral paral-split paralsec1 text-center ">
+              <div class="bg-overlay"></div>
+              <div class="card w-100 border-0 d-lg-none bg-transparent text-white">
+                <div class="card-top">
+                  <span>
+                    <i class="fas fa-people-carry fa-3x"></i>
+                  </span>
+                </div>
+                <div class="card-body">
+                  <h2 class='h-font-size'>Return.</h2>
+                  <!--need better content-->
+                  <p class="p-text-size">Use and give back item after necessary time</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 text-center d-none d-lg-inline-block my-auto">
+              <div class="card w-100 border-0">
+                <div class="card-top">
+                  <span>
+                    <i class="fas fa-people-carry fa-3x"></i>
+                  </span>
+                </div>
+                <div class="card-body">
+                  <h2 class='h-font-size'>Return.</h2>
+                  <!--need better content-->
+                  <p class="p-text-size">Use and give back item after necessary time</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6 text-center d-none d-lg-inline-block my-auto">
+              <div class="card w-100 border-0">
+                <div class="card-top">
+                  <span>
+                    <i class="fas fa-thumbs-down fa-3x"  data-fa-transform="flip-h"></i>
+                    <i class="fas fa-thumbs-up fa-3x"></i>
+                  </span>
+                </div>
+                <div class="card-body">
+                  <h2 class='h-font-size'>Rate</h2>
+                  <!--need better content-->
+                  <p class="p-text-size">Leave your opinion about the item and your WeeClo experience</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 jumbotron paral paral-split paralsec2 text-center">
+              <div class="bg-overlay"></div>
+              <div class="card w-100 border-0 d-lg-none bg-transparent text-white">
+                <div class="card-top">
+                  <span>
+                    <i class="fas fa-thumbs-down fa-3x"  data-fa-transform="flip-h"></i>
+                    <i class="fas fa-thumbs-up fa-3x"></i>
+                  </span>
+                </div>
+                <div class="card-body">
+                  <h2 class='h-font-size'>Rate</h2>
+                  <!--need better content-->
+                  <p class="p-text-size">Leave your opinion about the item and your WeeClo experience</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row ">
+            <div class="col-lg-6 jumbotron paral paral-split paralsec1 text-center">
+              <div class="bg-overlay"></div>
+              <div class="card w-100 border-0 d-lg-none bg-transparent text-white">
+                <div class="card-top">
+                  <span>
+                    <i class="fas fa-redo fa-3x"></i>
+                  </span>
+                </div>
+                <div class="card-body">
+                  <h2 class='h-font-size'>Repeat.</h2>
+                  <!--need better content-->
+                  <p class="p-text-size">Need something else? Get it at WeeClo</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 text-center d-none d-lg-inline-block my-auto">
+              <div class="card w-100 border-0">
+                <div class="card-top">
+                  <span>
+                    <i class="fas fa-redo fa-3x"></i>
+                  </span>
+                </div>
+                <div class="card-body">
+                  <h2 class='h-font-size'>Repeat.</h2>
+                  <!--need better content-->
+                  <p class="p-text-size">Need something else? Get it at WeeClo</p>
+                </div>
+              </div>
+            </div>
+          </div>
+      </section>
+
+      <section class="py-5 bg-color2" id="home-information">
+        <div class="container">
+          <div class="row my-2 my-md-4 justify-content-center" >
+             <div class="col-md-10 text-center align-items-center">
+               <h3 class='h-text-size disply-3'>Ready for the WeeClo experience??</h3>
+               <a class="btn btn-info btn-lg  text-center my-3" href="#register-modal"
+                 data-toggle="modal" data-target="#register-modal"
+                 data-dismiss="modal"> Join your neighbors!</a>
+                 <br>
+               <a class="my-3" href="#login-modal" data-toggle="modal"
+                  data-target="#login-modal" data-dismiss="modal">
+                  Already a Member?</a>
+             </div>
+          </div>
+        </div>
+      </section>
+      <section  class='bg-gradient py-4'id='socialSection'>
+        <div class="container">
+            <div class="row justify-content-center p-3 text-center py-5 text-white">
+                <div class="col-md-10 col-lg-12 align-items-center">
+                    <h2 class='text-uppercase h-text-size mb-3'>Follow Us</h2>
+                    <div class="" id='social-list'>
+                        <a href="#" class='mx-2 mx-md-4 my-2 d-inline-block'>
+                            <i class="fab fa-instagram fa-3x"></i>
+                            <p>Instagram</p>
+                        </a>
+                        <a href="#" class='mx-2 mx-md-4 my-2 d-inline-block'>
+                            <i class="fab fa-facebook-square fa-3x"></i>
+                            <p>Facebook</p>
+                        </a>
+                        <a href="#" class='mx-2 mx-md-4 my-2 d-inline-block'>
+                            <i class="fab fa-twitter fa-3x"></i>
+                            <p>Twitter</p>
+                        </a>
+                        <a href="#" class='mx-2 mx-md-4 my-2 d-inline-block'>
+                            <i class="fab fa-pinterest fa-3x"></i>
+                            <p>Pinterest</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </section>
+    </main>
+
+    <!--Footer-->
+    <footer class="footer bg-color text-white p-3">
+      <div class="container-fluid">
+        <div class="row text-center">
+          <div class="col-lg-4 order-last order-lg-first text-lg-left" >
+            <p>Copyrighted &copy; - 2018 | <a href="./index.html">WeeClo.com</a></p>
+          </div>
+          <div class="col-lg-8 text-center text-lg-right">
+            <ul class="list-unstyled list-inline">
+              <li class="list-inline-item">
+                <a href="./errorPage.html">Contact Us</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="./errorPage.html">Feedback</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="./errorPage.html">About Us
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="./errorPage.html">Investor Relations</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="./errorPage.html">Terms of Services
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="./errorPage.html">Privacy Policy</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- <script src="js/script.js"></script> -->
+    <script src='js/new-script.js'></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.2.0/js/all.js" integrity="sha384-4oV5EgaV02iISL2ban6c/RmotsABqE4yZxZLcYMAdG7FAPsyHYAPpywE9PJo+Khy" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
 </html>

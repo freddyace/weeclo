@@ -180,7 +180,11 @@ var loginLink = document.getElementById("loginLink");
 var modalCloseButton = document.getElementById("modalCloseButton");
 var mainModalCloseButton = document.getElementById("mainModalCloseButton");
 
-var loginModalContent = "<center><h1>Welcome back!</h1></center><center><form action='/action_page.php'><input id='email' type='email' name='email' placeholder='Email' style='width:300px'><br><input id='password' type='password' name='password' placeholder='Password' style='width:300px'><br><br><br><br><center><a class='button' id='loginEventButton' >Let's Go!</a></center></form></center>";
+var loginModalContent = "<center><h1>Welcome back!</h1></center><center>\
+<form action='/action_page.php'>\
+<input id='email' type='email' name='email' placeholder='Email' style='width:300px'><br>\
+<input id='password' type='password' name='password' placeholder='Password' style='width:300px'>\
+<br><br><br><br><center><a class='button' id='loginEventButton' >Let's Go!</a></center></form></center>";
 
 mainModalCloseButton.onclick=function(){
   modal.style.display="none";
@@ -195,8 +199,8 @@ modalCloseButton.onclick=function(){
 
 loginLink.onclick = function(){
      $(window).scrollTop(0);
-  loginModal.style.display = "block";
-  document.getElementById("loginModalContent").innerHTML = loginModalContent;
+     loginModal.style.display = "block";
+     document.getElementById("loginModalContent").innerHTML = loginModalContent;
 }
 
 // When the user clicks the button, open the modal

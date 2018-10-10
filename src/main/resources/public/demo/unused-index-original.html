@@ -1,0 +1,371 @@
+
+
+
+<!-- The Login Modal -->
+<div id="loginModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span id="modalCloseButton" class="close">&times;</span> <br><br>
+    <!--  <div ng-include="'registerModalContent.html'"></div> --><!-- This is for deployed version. Seperate modal content-->
+
+    <div>
+      <div class="w3-container w3-center w3-animate-right" id="loginModalContent">
+
+        <!--INSERT MODAL CONTENT HERE -->
+
+        <!--***************************-->
+
+      </div>
+    </div>
+    <!-- <center><button class="button" id="letsGoButton" onclick=""><span>Lets go</span></button></center> -->
+    <!--  <div ng-include="'checkbox.html'"></div>  --> <!-- Add this when deployed to a server, dev or prod -->
+
+  </div>
+</div>
+<!--End of Modal component -->
+
+
+
+
+<!-- Trigger/Open The Modal -->
+
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span id="mainModalCloseButton" class="close">&times;</span> <br><br>
+    <!--  <div ng-include="'registerModalContent.html'"></div> --><!-- This is for deployed version. Seperate modal content-->
+
+    <div>
+      <div class="w3-container w3-center w3-animate-right" id="modalContent">
+
+        <!--INSERT MODAL CONTENT HERE -->
+
+        <!--***************************-->
+
+      </div>
+    </div>
+    <!--  <div ng-include="'checkbox.html'"></div>  --> <!-- Add this when deployed to a server, dev or prod -->
+
+  </div>
+</div>
+<!--End of Modal component -->
+
+<div class="topnav" id="myTopnav">
+  <div class="logo">WeeClo</div>
+  <a href="#home" id="myBtn" onclick="onClickNext()">Sign Up</a>
+  <a id="landingPageLoginButton">Log In</a>
+
+  <!-- <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction2()">&#9776;</a>  -->
+</div>
+
+
+<nav class="navbar navbar-expand-md navbar-light border-bottom bg-white">
+    <div class="container">
+      <a class="navbar-brand brand" href="index.html">
+          <img src="./assets/img/logo.png" alt="WeeClo Logo">
+      </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapsable" aria-controls="navbarCollapsable" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse align-items-center" id="navbarCollapsable">
+            <ul class="navbar-nav ml-auto " id="sections">
+                <li class="nav-item mx-2">
+                    <a class="nav-link btn-lg" data-toggle="modal" data-target="#login-modal" data-dismiss="modal">Login Modal</a>
+                </li>
+                <!-- <li class="nav-item mx-2">
+                    <a routerLink='/login' routerLinkActive="active" class="nav-link btn-lg">Login</a>
+                </li> -->
+                <!-- <li class="nav-item mx-2">
+                    <a class="nav-link btn-lg" data-toggle="modal" data-target="#register-modal" data-dismiss="modal">Register Modal</a>
+                </li> -->
+                <!-- <li class="nav-item mx-2">
+                    <a routerLink='/register' routerLinkActive="active" class="nav-link btn-lg">Register</a>
+                </li>
+                <li class="nav-link mx-2">
+                  <a routerLink='/register-final' routerLinkActive="active" class="nav-link btn-lg">Register-Final</a>
+                </li>
+                <li class="nav-link mx-2">
+                  <a routerLink='/reg-form' routerLinkActive="active" class="nav-link btn-lg">Reg Form</a>
+                </li>
+                <li class="nav-link mx-2">
+                  <a routerLink='/reg-modal-form' routerLinkActive="active" class="nav-link btn-lg">Reg Form Modal</a>
+
+                </li> -->
+                <!-- <li class="nav-item mx-2">
+                  <a class="nav-link btn-lg"></a>
+                </li> -->
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+
+<div class="header">
+  <div id="videoDiv">
+    <div id="videoBlock">
+
+      <div id="videoMessage">
+        <br>
+        <h1 class="spacer bbb">Renting is the new buying!</h1>
+        <h2 class="spacer bbb">Just need an item for the night? The weekend?</h2>
+        <h3 class="spacer bbb">A special project? A special date?</h3>
+        <h2 class="spacer bbb">Try it out!</h2>
+        <p class="videoClick" >
+        <form  id= "gifSearch" class="navbar-form" action="/action_page.php">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="What are you looking for?" name="search">
+            <div class="input-group-btn">
+              <input type="button" class="button" value="Let's Go">
+            </div>
+          </div>
+        </form>
+        </p>
+      </div>
+    </div>
+  </div>
+  <!--<img src="ppl.gif"/> -->
+  <img id="headerPicture" class="hhh" src="images/hood.jpg"/>
+</div>
+
+<!--<nav class="navbar navbar-inverse" id="navbar">
+<div class="navbar-header">
+  <form class="navbar-form navbar-left" action="/action_page.php">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="What are you looking for?" name="search">
+      <div class="input-group-btn">
+        <button class="btn btn-default" type="submit">
+          <i class="glyphicon glyphicon-search"></i>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+
+</nav> -->
+<div class="container">
+  <div class="row">
+    <div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel"  data-interval="1000">
+      <div class="MultiCarousel-inner">
+        <div class="item">
+          <div class="pad15" style="background-image:url('images/lawncare.jpeg');background-repeat: no-repeat; background-size:cover;">
+            <p class="lead" style="color:white; background: rgba(0, 0, 0, 0.5);">Lawn & Gardening</p>
+            <br><br><br><br><br><br><br><br>
+
+          </div>
+        </div>
+        <div class="item">
+          <div class="pad15" style="background-image:url('images/wellness.jpg');background-repeat: no-repeat; background-size:100%;">
+            <p class="lead" style="color:white; background: rgba(0, 0, 0, 0.5);">Fitness</p>
+            <br><br><br><br><br><br><br><br>
+
+          </div>
+        </div>
+        <div class="item">
+          <div class="pad15" style="background-image:url('images/costumes.jpeg');background-repeat: no-repeat; background-size:100%;">
+            <p class="lead" style="color:white; background: rgba(0, 0, 0, 0.5);">Cosplay</p>
+            <br><br><br><br><br><br><br><br>
+
+          </div>
+        </div>
+        <div class="item">
+          <div class="pad15" style="background-image:url('images/hiking.jpeg');background-repeat: no-repeat; background-size:cover;">
+            <p class="lead" style="color:white; background: rgba(0, 0, 0, 0.5);">Outdoor & Hiking</p>
+            <br><br><br><br><br><br><br><br>
+
+          </div>
+        </div>
+        <div class="item">
+          <div class="pad15" style="background-image:url('images/guitar.jpeg');background-repeat: no-repeat; background-size:cover;">
+            <p class="lead" style="color:white; background: rgba(0, 0, 0, 0.5);">Musical Instruments</p>
+            <br><br><br><br><br><br><br><br>
+
+          </div>
+        </div>
+        <div class="item">
+          <div class="pad15" style="background-image:url('images/clothing.jpeg');background-repeat: no-repeat; background-size:100%;">
+            <p class="lead" style="color:white; background: rgba(0, 0, 0, 0.5);">Clothing</p>
+            <br><br><br><br><br><br><br><br>
+
+          </div>
+        </div>
+        <div class="item">
+          <div class="pad15" style="background-image:url('images/electronics.jpeg');background-repeat: no-repeat; background-size:cover;">
+            <p class="lead" style="color:white; background: rgba(0, 0, 0, 0.5);">Electronics</p>
+            <br><br><br><br><br><br><br><br>
+
+          </div>
+        </div>
+        <div class="item">
+          <div class="pad15" style="background-image:url('images/cameraEquipment.jpeg');background-repeat: no-repeat; background-size:cover;">
+            <p class="lead" style="color:white; background: rgba(0, 0, 0, 0.5);">Camera Equipment</p>
+            <br><br><br><br><br><br><br><br>
+
+          </div>
+        </div>
+        <div class="item">
+          <div class="pad15" style="background-image:url('images/jewelry.jpeg');background-repeat: no-repeat; background-size:cover;">
+            <p class="lead" style="color:white; background: rgba(0, 0, 0, 0.5);">Jewelery</p>
+            <br><br><br><br><br><br><br><br>
+
+          </div>
+        </div>
+        <div class="item">
+          <div class="pad15" style="background-image:url('images/industrialEquipment.jpeg');background-repeat: no-repeat; background-size:cover;">
+            <p class="lead" style="color:white; background: rgba(0, 0, 0, 0.5);">Industrial</p>
+            <br><br><br><br><br><br><br><br>
+
+          </div>
+        </div>
+        <div class="item">
+          <div class="pad15">
+            <p class="lead">Multi Item Carousel</p>
+            <p>₹ 1</p>
+            <p>₹ 6000</p>
+            <p>50% off</p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="pad15">
+            <p class="lead">Multi Item Carousel</p>
+            <p>₹ 1</p>
+            <p>₹ 6000</p>
+            <p>50% off</p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="pad15">
+            <p class="lead">Multi Item Carousel</p>
+            <p>₹ 1</p>
+            <p>₹ 6000</p>
+            <p>50% off</p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="pad15">
+            <p class="lead">Multi Item Carousel</p>
+            <p>₹ 1</p>
+            <p>₹ 6000</p>
+            <p>50% off</p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="pad15">
+            <p class="lead">Multi Item Carousel</p>
+            <p>₹ 1</p>
+            <p>₹ 6000</p>
+            <p>50% off</p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="pad15">
+            <p class="lead">Multi Item Carousel</p>
+            <p>₹ 1</p>
+            <p>₹ 6000</p>
+            <p>50% off</p>
+          </div>
+        </div>
+      </div>
+      <button class="btn btn-primary leftLst"><</button>
+      <button class="btn btn-primary rightLst">></button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <br/><br/><br/>
+      <hr/>
+    </div>
+  </div>
+</div>
+<div id="centerBody">
+  <div class="container col-lg-6 col-xs-6">
+    <img id="bodyPics" src="images/houses.jpg"/>
+    <h3>...that jewelry collection that gets used only for special occasions...</h3>
+  </div>
+  <div class="container col-lg-6 col-xs-6">
+    <h3>We're creating a community of neightbors who bought that 1 tool for that 1 job and never returned it....</h3><br><br><br>
+    <img id="bodyPics" src="images/shopping.jpg"/>
+  </div>
+  <div class="container col-lg-6 col-xs-6">
+    <img id="bodyPics" src="http://www.fotolip.com/wp-content/uploads/2016/05/Car-Clipart-1.png"/><br><br><br><br><br><br><br><br><br><br>
+    <h3>...the dress that you bought for that party, someone said "oh, you forgot to take the tag off," which you then instinctively reached back and ripped that thing off...</h3>
+  </div>
+  <div class="container col-lg-6 col-xs-6">
+    <h3>...that spare car you have in your garage that never gets used</h3>  <br><br><br><br>
+    <br><br><br><br><br><br><br><br>
+  </div>
+
+  <div class="container col-lg-6 col-xs-6">
+    <img id="bodyPics" src="images/jewelry.jpg" class="img-responsive"/>
+  </div>
+
+  <div class="container  col-lg-12 col-md-12 col-xs-12" style="background-color:white;">
+    <h3>We want you to be able to take advantage of that ownership and make some extra money in the process.</h3>
+    <img src="images/moneyClipart.jpeg"/>
+    <h3>With WeeClo, you can connect with your neighbors locally in a safe way to borrow that tool rather than buying on yourself for that specialty project, or borrow that dress for a night out.</h3>
+    <br><br>
+    <center><a class="button" id="joinWeecloButton" >Join the WeeClo Experience!</a></center>
+    <center><br><br><h3>Sign up or <a id="loginLink">Log In</a> to start working with your neighbors!</h3></center>
+
+  </div>
+</div>
+<footer class="footer bg-dark text-white p-3">
+  <div class="container-fluid">
+    <div class="row text-center">
+      <div class="col-md-4 order-last order-md-first text-md-left" >
+        <p>Copyrighted &copy; - 2018 | <a href="#">WeeClo.com</a></p>
+
+      </div>
+      <div class="col-md-8 text-center text-md-right">
+        <ul class="list-unstyled list-inline">
+          <li class="list-inline-item">
+            <a href="#">Contact Us</a>
+          </li>
+          <li class="list-inline-item">
+            <a href="#">Feedback</a>
+          </li>
+          <li class="list-inline-item">
+            <a href="#">About Us
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a href="#">Investor Relations</a>
+          </li>
+          <li class="list-inline-item">
+            <a href="#">Terms of Services
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a href="#">Privacy Policy</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!--
+<footer style="background-color:transparent;">
+  <center>
+    <a href="https://facebook.com"><img style="width:50px;height:50px;"src='images/facebook-logo.jpg'/></a>
+    <a href="https://twitter.com"><img style="width:50px;height:50px;"src='images/twitter-logo.png'/></a>
+    <a href="https://google.com"><img style="width:50px;height:50px;"src='images/google-plus-badge.png'/></a>
+  </center>
+</footer>
+  <footer>
+    <ul>
+      <li style="float:left;display: block;color: white;text-align: center;padding: 16px;">Copyright &copy; 2018 || WeeClo.com </li>
+      <li><a href="#home">Investor Relations</a></li>
+      <li><a href="#home">About Us</a></li>
+      <li><a href="#home">Feedback</a></li>
+      <li><a href="#home">Contact Us</a></li>
+    </ul>
+  </footer> -->
+
+</html>

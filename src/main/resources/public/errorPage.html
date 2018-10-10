@@ -1,0 +1,382 @@
+<!--This is the default page when the page does not exist on the website and will
+redirect the user to go back to the home page-->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Error - WeeClo</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/new-style.css">
+  </head>
+  <body>
+    <!--Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-color" id='index-navbar'>
+      <div class="container">
+        <a class="navbar-brand brand" href="./index.html">
+            <img src="./images/img/logo.png" alt="WeeClo Logo">
+        </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapsable" aria-controls="navbarCollapsable" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse align-items-center" id="navbarCollapsable">
+              <ul class="navbar-nav ml-auto " id="sections">
+                  <li class="nav-item mx-2 order-last order-lg-first" title="Search Items">
+                    <form name='searchForm' class="form-inline" id='searchForm' action="index2.html" method="post">
+                      <div class="form-group">
+                        <input type="text" class="form-control mr-sm-2"
+                          placeholder="Whatcha looking for?" name="search">
+                      </div>
+                      <button id='searchButton' type="submit" class="btn btn-outline-primary"
+                        form='searchForm' onclick='searchSubmit()' name="searchButton">Search</button>
+                    </form>
+                  </li>
+                  <li class="nav-item mx-2" id='nav-i'>
+                      <a class="nav-link btn-lg" data-toggle="modal" data-target="#login-modal" data-dismiss="modal">Login</a>
+                  </li>
+                  <li class='nav-item mx-2' id='nav-i'>
+                    <a class='nav-link btn-lg' data-toggle="modal" data-target="#register-modal" data-dismiss="modal">Register</a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+    </nav>
+
+    <!--modals-->
+    <!--LOGIN MODAL - COMPlETE-->
+    <div class="modal fade" id='login-modal' tabindex="-1" role='dialog'
+      aria-labelledby='login-modal-label' aria-hidden='true'>
+      <div class="modal-dialog" role='document'>
+        <div class="modal-content card rounded">
+          <div class="modal-header card-header text-center">
+            <h3 class='mb-3'>Login to WeeClo</h3>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body card-body">
+            <form name='loginForm' id='loginForm' action='' method="post" onsubmit="return validateLogin()" ><!--onsubmit="return validateLogin()"-->
+              <div class="form-group">
+                <label for="loginEmail">Email</label>
+                <input type="text" class="form-control" name='loginEmail' id='loginEmail'
+                  placeholder='johndoe@example.com' [class.is-invalid]='loginEmail.untouched'>
+                  <div class="invalid-feedback">Example invalid feedback text</div>
+              </div>
+              <div class="form-group">
+                <label for="loginPass">Password</label>
+                <input type="password" class='form-control' name="loginPass" id='loginPass' >
+              </div>
+              <button id='loginButton' type="submit" name="loginButton"
+                class='btn btn-success'>Login</button>
+            </form>
+          </div>
+          <div class="card-footer">
+            <div class="row justify-content-between bg-light">
+              <div class="col-mb-6 text-left">
+                <a data-toggle='modal' data-target='#register-modal' data-dismiss='modal'
+                  href="#register-modal" class='nav-link'>Don't have an account?</a>
+              </div>
+              <div class="col-md-6 text-right">
+                <a data-toggle='modal' data-target='#forgot-password-modal' data-dismiss='modal'
+                  href="#forgot-password-modal" class='nav-link text-right'>Forgot Password?</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+      // document.getElementById('loginForm').onsubmit = function() {}
+    </script>
+    <!--REGISTER-MODAL-->
+    <div class="modal fade" id='register-modal' tabindex="-1" role='dialog'
+      aria-labelledby='register-modal-label' aria-hidden='true'>
+      <div class="modal-dialog" role='document'>
+        <div class="modal-content card rounded">
+          <div class="modal-header card-header text-center">
+            <h3 class='mb-3'>Register</h3>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body card-body">
+            <form name='registerForm' id='registerForm' action="" method="post" onsubmit="return validateRegister()">
+              <div class="step-1">
+                <fieldset>
+                  <legend>
+                    <h4 class='mb-3 text-center'>Welcome to WeeClo!</h4>
+                    <p class='text-muted'>What are you here as?</p>
+                  </legend>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class=" text-center card mb-3">
+                        <input class="form-check-input" type="radio" value="" id="renteeRadio" name="ownerType" hidden>
+                        <label class="form-check-label" for="renteeRadio">
+                          <img class="card-img-top" src="./images/img/electronics.jpg"
+                              alt="Photo credit: Toolstotal Visualhunt.com">
+                          <h5 class="card-title">I am a rentee</h5>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class=" text-center card mb-3">
+                        <input class="form-check-input oT" type="radio" value="" id="ownerRadio" name="ownerType" hidden>
+                        <label class="form-check-label oT" for="ownerRadio">
+                          <img class="card-img-top" src="./images/img/electronics.jpg"
+                            alt="Photo credit: Toolstotal Visualhunt.com">
+                          <h5 class="card-title">I am a owner</h5>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+              <script type="text/javascript">
+
+                $(function () {
+                  // var ownerType = $('input[name="ownerType"]:checked').val();
+                  // alert(ownerType);
+                  $("#registerButton").click(function() {
+                    alert("clicked");
+                    var oT = $('input[name="ownerType"]:checked').val();
+                    if(oT) {
+                      alert(oT);
+                    }else {
+                      alert('hell');
+                    }
+                  });
+
+                });
+                // var ownerType = document.querySelector('input[name="ownerType"]:checked').value;
+
+                // alert(ownerType);
+
+              </script>
+
+              <!-- <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+              </div> -->
+              <button id='registerButton' type="submit" name="registerButton"
+                class='btn btn-primary'>Register</button>
+            </form>
+          </div>
+          <div class="card-footer">
+            <div class="row justify-content-between">
+              <div class="col-mb-6 text-left">
+                <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+              </div>
+              <div class="col-mb-6 text-right">
+                <!-- <a data-toggle="modal" href="#pass-reset-modal" data-target="#pass-reset-modal" data-dismiss="modal" class="nav-link btn btn-primary">Send</a> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--FORGET PASSWORD MODAL - COMPLETE-->
+    <div class="modal fade" id="forgot-password-modal" tabindex="-1" role="dialog" aria-labelledby="forgot-password-modal-label" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content card rounded">
+          <div class="modal-header card-header text-center">
+            <h3 class='mb-0'>Whoops!</h3>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body card-body">
+            <div class="row justify-content-center bg-white">
+              <div class="col-8">
+                <form name="forgotPassForm" id="forgotPassForm" method="post" action="index2.html" class="text-center">
+                  <fieldset>
+                    <legend class="text-center">
+                      <h4>Forgot Your Password?</h4>
+                      <p class="text-muted">Give us your email address and we'll send you a temporary one!</p>
+                    </legend>
+                    <br>
+                    <div class="form-group">
+                      <label for="forgotPassEmail">Email</label>
+                      <input class="form-control" id="forgotPassUsername" type="text" name="forgotPassEmail" placeholder="Email">
+                    </div>
+                    <button class="btn btn-danger" id="forgotPassButton" type="button"
+                      name="ForgotButton" data-dismiss="modal" onclick='forgotPassSubmit()' form='forgotPassForm'>Send It!</button>
+                  </fieldset>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class=" card-footer">
+            <div class="row justify-content-between">
+              <div class="col-mb-6 text-left">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+              <div class="col-mb-6 text-right">
+                <a data-toggle="modal" href="#pass-reset-modal" data-target="#pass-reset-modal" data-dismiss="modal" class="nav-link btn btn-primary">Send</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--PASSWORD RESET MODAL - COMPLETE-->
+    <div class="modal fade" id="pass-reset-modal" tabindex="-1" role="dialog" aria-labelledby="pass-reset-modal-label" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content card rounded">
+          <div class="modal-header card-header text-center">
+            <!-- <h3 class='mb-0'>Change Password</h3> -->
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body card-body">
+            <div class="row justify-content-center bg-white">
+              <div class="col-8 text-center">
+                <h3>Email is sent.</h3>
+                <p class="text-muted">Check your email for a new password.</p>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer card-footer">
+            <div class="row">
+              <div class="col">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!--LOGOUT MODAL-->
+    <div class="modal fade" id="logout-modal" tabindex="-1" role="dialog"
+      aria-labelledby="logout-modal-label" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header text-center">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="row justify-content-center bg-white">
+              <div class="col-8 text-center">
+                <h3>Come Back Soon</h3>
+                <!-- <p class="text-muted">Check your email for a new password.</p> -->
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <div class="row">
+              <div class="col-xs-6">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <!-- <button id="submit-btn" class="btn btn-success" type="button">Submit </button> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <main class='container-fluid'>
+      <section class='jumbotron paral paral-whole paralintro'>
+          <div class="bg-overlay"></div>
+          <div class="jumbotron-text text-white">
+            <div class="row text-center">
+              <h1 class="display-3">Opps. Page does not exist.</h1>
+              <div class="col-12">
+                <p>Let's get back on track.</p>
+              </div>
+              <div class="col-12">
+                <a href="./index.html" class='btn btn-dark'>Back to Site</a>
+              </div>
+            </div>
+          </div>
+      </section>
+    </main>
+
+    <!--Footer-->
+    <footer class="footer bg-dark text-white p-3">
+      <div class="container-fluid">
+        <div class="row text-center">
+          <div class="col-lg-4 order-last order-lg-first text-lg-left" >
+            <p>Copyrighted &copy; - 2018 <span class='d-none d-md-inline-block mx-2'> | </span> <a class='mx-2' href="./index.html">WeeClo.com</a></p>
+          </div>
+          <div class="col-lg-8 text-center text-lg-right">
+            <ul class="list-unstyled list-inline">
+              <li class="list-inline-item">
+                <a href="./errorPage.html">Contact Us</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="./errorPage.html">Feedback</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="./errorPage.html">About Us
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="./errorPage.html">Investor Relations</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="./errorPage.html">Terms of Services
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="./errorPage.html">Privacy Policy</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- <script src="js/script.js"></script> -->
+    <script src='js/new-script.js'></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+
+    <!-- <style media="screen">
+        .fadein-jquery { position:relative; width:100%; height:332px; }
+        .fadein-jquery img { position:absolute; left:0; top:0; }
+    </style> -->
+    <!-- <h1>JQuery Slideshow</h1> -->
+    <!-- <section class='fadein-jquery'>
+      <img src="https://farm3.static.flickr.com/2610/4148988872_990b6da667.jpg" class='img-fluid w-100'>
+      <img src="https://farm3.static.flickr.com/2597/4121218611_040cd7b3f2.jpg" class='img-fluid w-100'>
+      <img src="https://farm3.static.flickr.com/2531/4121218751_ac8bf49d5d.jpg" class='img-fluid w-100'>
+    </section> -->
+    <!-- <div class="fadein-jquery">
+      <img src="https://farm3.static.flickr.com/2610/4148988872_990b6da667.jpg">
+      <img src="https://farm3.static.flickr.com/2597/4121218611_040cd7b3f2.jpg">
+      <img src="https://farm3.static.flickr.com/2531/4121218751_ac8bf49d5d.jpg">
+    </div> -->
+    <!-- <script>
+    // if($(window).width() > 400) {
+    // if($(window).resize(function(){
+    //     if($(window).width() > 500) {
+    //         alert("asdasdas");
+    //     }else{
+    //         alert("sasdaadasdasdasdsada");
+    //         // $(".fadein-jquery.img").css({"position", "relative"}, {"display", "block"});
+    //
+    //     }
+    // })});
+        // alert("cicken/");
+        $(function(){
+            $('.fadein-jquery img:gt(0)').hide();//hide all but the first one
+            setInterval(function(){ //iterates through images
+              $('.fadein-jquery :first-child').fadeOut() //fade first images
+                 .next('img').fadeIn() //next image to fade in
+                 .end().appendTo('.fadein-jquery');},//adds the first image to the end and goes in circles
+              3000);
+            });
+        // }else{
+        //     alert("too small");
+        // }
+    </script> -->

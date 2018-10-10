@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>DASHBOARD - WeeClo</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/new-style.css">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand navbar-light bg-white bg-color">
+      <div class="container-fluid">
+        <a class="navbar-brand brand d-none d-md-inline-block" href="index2.html">
+            <img src="./images/img/logo.png" alt="WeeClo Logo">
+        </a>
+              <ul class="navbar-nav mr-auto align-items-center" id="sections">
+                <li class="nav-item dropdown mx-2">
+                  <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-envelope"></i>
+                  </a>
+                  <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Something</a>
+                  </div>
+                </li>
+                <li class="nav-item dropdown mx-2">
+                  <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-bell"></i>
+                  </a>
+                  <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Something</a>
+                  </div>
+                </li>
+                <li class="nav-item dropdown mx-2"><a href="./results.html"><i class="fas fa-shopping-cart"></i></a></li>
+                <li class="nav-item dropdown mx-2"><a href="./categories.html"><i class="fas fa-th-large"></i></a></li>
+              </ul>
+              <ul class='navbar-nav float-lg-right d-flex '>
+                      <li class="nav-item dropdown d-none mx-2">
+                        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="fas fa-envelope"></i>
+                        </a>
+                        <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item" href="#">Action</a>
+                          <a class="dropdown-item" href="#">Another</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#">Something</a>
+                        </div>
+                      </li>
+                      <li class="nav-item dropdown d-none mx-2">
+                        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="fas fa-bell"></i>
+                        </a>
+                        <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item" href="#">Action</a>
+                          <a class="dropdown-item" href="#">Another</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#">Something</a>
+                        </div>
+                      </li>
+                      <li class="nav-item dropdown d-none mx-2">
+                        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="fas fa-cog"></i>
+                        </a>
+                        <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item" href="#">Action</a>
+                          <a class="dropdown-item" href="#">Another</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#">Something</a>
+                        </div>
+                      </li>
+                  <li class="nav-item dropdown mx-sm-2 ">
+                    <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <div class="img d-inline">
+                            <i class='fas fa-user'></i>
+                        </div>
+                        <span class='user d-none d-md-inline-block'>John Doe</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                      <p class='user d-block d-md-none text-center' disabled>John Doe</p>
+                      <div class="dropdown-divider d-block d-md-none"></div>
+                      <a class="dropdown-item" href="./dashboard.html">Dashboard</a>
+                      <a class="dropdown-item" href="#"> <i class="fas fa-cog mx-2"></i>Settings</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" data-toggle="modal" data-target="#logout-modal"
+                        onclick='logoutSubmit()' data-dismiss="modal">Logout</a>
+                    </div>
+                  </li>
+              </ul>
+      </div>
+    </nav>
+    <!-- <header class='mt-0 sticky-top bg-color border-bottom bg-white'>
+      <div class=" justify-content-center text-center">
+          <form class="form-inline my-lg-0 justify-content-center ">
+            <div class="input-group my-3 w-100 px-4">
+              <div class="input-group-prepend d-none d-md-inline-block">
+                <select class="custom-select " id="searchStuffCat">
+                  <option selected>Category</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                </select>
+              </div>
+              <input type="text" class="form-control" id='searchStuff' aria-label="Text input with segmented dropdown button" placeholder="Toys, Clothes, Cameras, etc.">
+              <div class="input-group-apend">
+                <button type="button" class="btn btn-outline-secondary"><i class="fas fa-search"></i>Search</button>
+              </div>
+            </div>
+          </form>
+      </div>
+    </header> -->
+    <main class='container-fluid'>
+      <div class="jumbotron paral paral-split paralsec2 ">
+        <div class="bg-overlay"></div>
+        <h1 class="display-3">Dashboard</h1>
+      </div>
+      <header class='mt-0 sticky-top bg-color border-bottom bg-white'>
+        <div class=" justify-content-center text-center">
+            <form class="form-inline my-lg-0 justify-content-center ">
+              <div class="input-group my-3 w-100 px-4">
+                <div class="input-group-prepend d-none d-md-inline-block">
+                  <select class="custom-select " id="searchStuffCat">
+                    <option selected>Category</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+                </div>
+                <input type="text" class="form-control" id='searchStuff' aria-label="Text input with segmented dropdown button" placeholder="Toys, Clothes, Cameras, etc.">
+                <div class="input-group-apend">
+                  <button type="button" class="btn btn-outline-secondary"><i class="fas fa-search"></i>Search</button>
+                </div>
+              </div>
+            </form>
+        </div>
+      </header>
+        <div class="row bg-light my-5">
+          <div class="col-md-4 my-3 px-2 ">
+            <div class="nav flex-column nav-pills border-none border-md-right px-2 px-lg-5 bg-light" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+              <a class="nav-link active border-bottom border-right" id="v-pills-dash-tab" data-toggle="pill" href="#v-pills-dash"
+              role="tab" aria-controls="v-pills-dash" aria-selected="true"> Dashboard</a>
+              <a class="nav-link border-bottom border-right" id="v-pills-account-tab" data-toggle="pill" href="#v-pills-account"
+              role="tab" aria-controls="v-pills-account" aria-selected="false">Account</a>
+              <a class="nav-link border-bottom border-right" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages"
+              role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</a>
+              <!--hide settings until we figure out what to do with it-->
+              <!-- <a class="nav-link border-bottom border-right" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings"
+              role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a> -->
+            </div>
+          </div>
+          <div class="col-md-8 my-3">
+            <div class="tab-content" id="v-pills-tabContent">
+              <!--dashboard-->
+              <div class="tab-pane fade show active mb-5" id="v-pills-dash" role="tabpanel" aria-labelledby="v-pills-dash-tab">
+                <ul class="nav nav-pills mb-3 bg-light justify-content-center border-bottom" id="pills-tab" role="tablist">
+                  <li class="nav-item mx-2">
+                    <a class="nav-link active" id="pills-dash-summary-tab" data-toggle="pill" href="#pills-dash-summary"
+                      role="tab" aria-controls="pills-dash-summary" aria-selected="true">Summary</a>
+                  </li>
+                  <li class="nav-item mx-2">
+                    <a class="nav-link" id="pills-dash-favorites-tab" data-toggle="pill" href="#pills-dash-favorites"
+                      role="tab" aria-controls="pills-dash-favorites" aria-selected="false">Favorites</a>
+                  </li>
+                  <li class="nav-item mx-2">
+                    <a class="nav-link" id="pills-dash-cart-tab" data-toggle="pill" href="#pills-dash-cart" role="tab"
+                      aria-controls="pills-dash-cart" aria-selected="false">My Cart</a>
+                  </li>
+                  <li class="nav-item mx-2">
+                    <a class="nav-link" id="pills-dash-checked-tab" data-toggle="pill" href="#pills-dash-checked"
+                      role="tab" aria-controls="pills-dash-checked" aria-selected="false">Checked Out</a>
+                  </li>
+                  <li class="nav-item mx-2">
+                    <a class="nav-link" id="pills-dash-history-tab" data-toggle="pill" href="#pills-dash-history"
+                      role="tab" aria-controls="pills-dash-history" aria-selected="false">Rental History</a>
+                  </li>
+                  <li class="nav-item mx-2">
+                    <a class="nav-link" id="pills-dash-s-tab" data-toggle="pill" href="#pills-dash-s"
+                      role="tab" aria-controls="pills-dash-s" aria-selected="true">Summary2</a>
+                  </li>
+                </ul>
+                <div class="tab-content bg-white" id="pills-dashContent">
+                  <div class="tab-pane fade show active" id="pills-dash-summary" role="tabpanel" aria-labelledby="pills-dash-summary-tab">
+                    <h4 class='my-3'>Summary</h4>
+                    <div class="row justify-content-center">
+                      <div class="col-lg-6 col-xl-4 mb-3">
+                        <a href="./categories.html">
+                          <div class="card text-center">
+                            <img class="card-img-top" src="./images/img/tools.jpg" alt="Some ALT for image">
+                            <div class="card-body">
+                              <h5 class="card-title">Browse Items</h5>
+                              <p class='card-text'>Find what you need right now</p>
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                      <div class="col-lg-6 col-xl-4 mb-3">
+                        <a href="./dashboard.html#pills-dash-favorites-tab">
+                          <div class="card">
+                            <img class="card-img-top" src="./images/img/tools.jpg" alt="Some ALT for image">
+                            <div class="card-body">
+                              <h5 class="card-title">Browse Items</h5>
+                              <p class='card-text'>Find what you need right now</p>
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                      <div class="col-lg-6 col-xl-4 mb-3">
+                        <a href="#">
+                          <div class="card">
+                            <img class="card-img-top" src="./images/img/tools.jpg" alt="Some ALT for image">
+                            <div class="card-body">
+                              <h5 class="card-title">Browse Items</h5>
+                              <p class='card-text'>Find what you need right now</p>
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="pills-dash-favorites" role="tabpanel" aria-labelledby="pills-dash-favorites-tab">
+                    <h4 class='mb-3'>Favorites</h4>
+                    <div class="list-group">
+                      <li class="list-group-item">
+                        <div class="row">
+                          <div class="col-lg-4 bg-dark">
+                            <a href="#">
+                              <img src="./images/img/tools.jpg" alt="Image" class="w-100 h-100 img-fluid">
+                            </a>
+                          </div>
+                          <div class="col-lg-8 bg-light d-flex flex-column">
+                            <p class='font-weight-bold'>
+                              <span class='itemName'>Item Name</span>
+                              <span class='itemNeighborhood float-right'>
+                                <i class="fas fa-map-marker"></i>
+                                Location
+                              </span>
+                            </p>
+                            <span class='itemDesc'>Item description will go here</span>
+                            <span class='itemRating'>
+                              <span class='itemPrice font-weight-bold mx-3'>$$$</span>
+                              <i class="fas fa-star"></i>
+                              <i class="fas fa-star"></i>
+                            </span>
+                            <span class='renterName'><a href='#'>@username</a></span>
+                            <a href="#" class='btn btn-danger my-2'>
+                              <i class="fas fa-heart mx-2"></i>
+                              <span class='d-none d-sm-inline-block'>Remove to Favorites</span>
+                            </a>
+                            <a href="#" class='btn btn-info my-2'>
+                              <i class="fas fa-cart-arrow-down mx-2"></i>
+                              <span class='d-none d-sm-inline-block'>Add to Cart</span>
+                            </a>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="list-group-item">
+                        <div class="row">
+                          <div class="col-lg-4 bg-dark">
+                            <a href="#">
+                              <img src="./images/img/tools.jpg" alt="Image" class="w-100 h-100 img-fluid">
+                            </a>
+                          </div>
+                          <div class="col-lg-8 bg-light d-flex flex-column">
+                            <p class='font-weight-bold'>
+                              <span class='itemName'>Item Name</span>
+                              <span class='itemNeighborhood float-right'>
+                                <i class="fas fa-map-marker"></i>
+                                Location
+                              </span>
+                            </p>
+                            <span class='itemDesc'>Item description will go here</span>
+                            <span class='itemRating'>
+                              <span class='itemPrice font-weight-bold mx-3'>$$$</span>
+                              <i class="fas fa-star"></i>
+                              <i class="fas fa-star"></i>
+                            </span>
+                            <span class='renterName'><a href='#'>@username</a></span>
+                            <a href="#" class='btn btn-danger my-2'>
+                              <i class="fas fa-heart mx-2"></i>
+                              <span class='d-none d-sm-inline-block'>Remove to Favorites</span>
+                            </a>
+                            <a href="#" class='btn btn-info my-2'>
+                              <i class="fas fa-cart-arrow-down mx-2"></i>
+                              <span class='d-none d-sm-inline-block'>Add to Cart</span>
+                            </a>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="list-group-item">
+                        <div class="row">
+                          <div class="col-lg-4 bg-dark">
+                            <a href="#">
+                              <img src="./images/img/tools.jpg" alt="Image" class="w-100 h-100 img-fluid">
+                            </a>
+                          </div>
+                          <div class="col-lg-8 bg-light d-flex flex-column">
+                            <p class='font-weight-bold'>
+                              <span class='itemName'>Item Name</span>
+                              <span class='itemNeighborhood float-right'>
+                                <i class="fas fa-map-marker"></i>
+                                Location
+                              </span>
+                            </p>
+                            <span class='itemDesc'>Item description will go here</span>
+                            <span class='itemRating'>
+                              <span class='itemPrice font-weight-bold mx-3'>$$$</span>
+                              <i class="fas fa-star"></i>
+                              <i class="fas fa-star"></i>
+                            </span>
+                            <span class='renterName'><a href='#'>@username</a></span>
+                            <a href="#" class='btn btn-danger my-2'>
+                              <i class="fas fa-heart mx-2"></i>
+                              <span class='d-none d-sm-inline-block'>Remove to Favorites</span>
+                            </a>
+                            <a href="#" class='btn btn-info my-2'>
+                              <i class="fas fa-cart-arrow-down mx-2"></i>
+                              <span class='d-none d-sm-inline-block'>Add to Cart</span>
+                            </a>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="list-group-item">
+                        <div class="row">
+                          <div class="col-lg-4 bg-dark">
+                            <a href="#">
+                              <img src="./images/img/tools.jpg" alt="Image" class="w-100 h-100 img-fluid">
+                            </a>
+                          </div>
+                          <div class="col-lg-8 bg-light d-flex flex-column">
+                            <p class='font-weight-bold'>
+                              <span class='itemName'>Item Name</span>
+                              <span class='itemNeighborhood float-right'>
+                                <i class="fas fa-map-marker"></i>
+                                Location
+                              </span>
+                            </p>
+                            <span class='itemDesc'>Item description will go here</span>
+                            <span class='itemRating'>
+                              <span class='itemPrice font-weight-bold mx-3'>$$$</span>
+                              <i class="fas fa-star"></i>
+                              <i class="fas fa-star"></i>
+                            </span>
+                            <span class='renterName'><a href='#'>@username</a></span>
+                            <a href="#" class='btn btn-danger my-2'>
+                              <i class="fas fa-heart mx-2"></i>
+                              <span class='d-none d-sm-inline-block'>Remove to Favorites</span>
+                            </a>
+                            <a href="#" class='btn btn-info my-2'>
+                              <i class="fas fa-cart-arrow-down mx-2"></i>
+                              <span class='d-none d-sm-inline-block'>Add to Cart</span>
+                            </a>
+                          </div>
+                        </div>
+                      </li>
+
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="pills-dash-cart" role="tabpanel" aria-labelledby="pills-dash-cart-tab">
+                    <h4 class='mb-3'>My Cart</h4>
+                    <div class="list-group">
+                      <li class="list-group-item">
+                        <div class="row">
+                          <div class="col-lg-4 bg-dark">
+                            <a href="#">
+                              <img src="./images/img/tools.jpg" alt="Image" class="w-100 h-100 img-fluid">
+                            </a>
+                          </div>
+                          <div class="col-lg-8 bg-light d-flex flex-column">
+                            <p class='font-weight-bold'>
+                              <span class='itemName'>Item Name</span>
+                              <span class='itemNeighborhood float-right'>
+                                <i class="fas fa-map-marker"></i>
+                                Location
+                              </span>
+                            </p>
+                            <span class='itemDesc'>Item description will go here</span>
+                            <span class='itemRating'>
+                              <span class='itemPrice font-weight-bold mx-3'>$$$</span>
+                              <i class="fas fa-star"></i>
+                              <i class="fas fa-star"></i>
+                            </span>
+                            <span class='renterName'><a href='#'>@username</a></span>
+                            <a href="#" class='btn btn-danger my-2'>
+                              <i class="fas fa-heart mx-2"></i>
+                              <span class='d-none d-sm-inline-block'>Remove to Favorites</span>
+                            </a>
+                            <a href="#" class='btn btn-info my-2'>
+                              <i class="fas fa-cart-arrow-down mx-2"></i>
+                              <span class='d-none d-sm-inline-block'>Add to Cart</span>
+                            </a>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="list-group-item">
+                        <div class="row">
+                          <div class="col-lg-4 bg-dark">
+                            <a href="#">
+                              <img src="./images/img/tools.jpg" alt="Image" class="w-100 h-100 img-fluid">
+                            </a>
+                          </div>
+                          <div class="col-lg-8 bg-light d-flex flex-column">
+                            <p class='font-weight-bold'>
+                              <span class='itemName'>Item Name</span>
+                              <span class='itemNeighborhood float-right'>
+                                <i class="fas fa-map-marker"></i>
+                                Location
+                              </span>
+                            </p>
+                            <span class='itemDesc'>Item description will go here</span>
+                            <span class='itemRating'>
+                              <span class='itemPrice font-weight-bold mx-3'>$$$</span>
+                              <i class="fas fa-star"></i>
+                              <i class="fas fa-star"></i>
+                            </span>
+                            <span class='renterName'><a href='#'>@username</a></span>
+                            <a href="#" class='btn btn-danger my-2'>
+                              <i class="fas fa-heart mx-2"></i>
+                              <span class='d-none d-sm-inline-block'>Remove to Favorites</span>
+                            </a>
+                            <a href="#" class='btn btn-info my-2'>
+                              <i class="fas fa-cart-arrow-down mx-2"></i>
+                              <span class='d-none d-sm-inline-block'>Add to Cart</span>
+                            </a>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="list-group-item">
+                        <div class="row">
+                          <div class="col-lg-4 bg-dark">
+                            <a href="#">
+                              <img src="./images/img/tools.jpg" alt="Image" class="w-100 h-100 img-fluid">
+                            </a>
+                          </div>
+                          <div class="col-lg-8 bg-light d-flex flex-column">
+                            <p class='font-weight-bold'>
+                              <span class='itemName'>Item Name</span>
+                              <span class='itemNeighborhood float-right'>
+                                <i class="fas fa-map-marker"></i>
+                                Location
+                              </span>
+                            </p>
+                            <span class='itemDesc'>Item description will go here</span>
+                            <span class='itemRating'>
+                              <span class='itemPrice font-weight-bold mx-3'>$$$</span>
+                              <i class="fas fa-star"></i>
+                              <i class="fas fa-star"></i>
+                            </span>
+                            <span class='renterName'><a href='#'>@username</a></span>
+                            <a href="#" class='btn btn-danger my-2'>
+                              <i class="fas fa-heart mx-2"></i>
+                              <span class='d-none d-sm-inline-block'>Remove to Favorites</span>
+                            </a>
+                            <a href="#" class='btn btn-info my-2'>
+                              <i class="fas fa-cart-arrow-down mx-2"></i>
+                              <span class='d-none d-sm-inline-block'>Add to Cart</span>
+                            </a>
+                          </div>
+                        </div>
+                      </li>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="pills-dash-checked" role="tabpanel" aria-labelledby="pills-dash-checked-tab">
+                    <h4 class='mb-3'>My Checked Out Items</h4>
+                    <div class="list-group">
+                      <li class="list-group-item">
+                        <div class="row">
+                          <div class="col-lg-4 bg-dark">
+                            <a href="#">
+                              <img src="./images/img/tools.jpg" alt="Image" class="w-100 h-100 img-fluid">
+                            </a>
+                          </div>
+                          <div class="col-lg-8 bg-light d-flex flex-column">
+                            <p class='font-weight-bold'>
+                              <span class='itemName'>Item Name</span>
+                              <span class='itemNeighborhood float-right'>
+                                <i class="fas fa-map-marker"></i>
+                                Location
+                              </span>
+                            </p>
+                            <span class='itemDesc'>Item description will go here</span>
+                            <span class='itemRating'>
+                              <span class='itemPrice font-weight-bold mx-3'>$$$</span>
+                              <i class="fas fa-star"></i>
+                              <i class="fas fa-star"></i>
+                            </span>
+                            <span class='renterName'><a href='#'>@username</a></span>
+                            <a href="#" class='btn btn-danger my-2'>
+                              <i class="fas fa-heart mx-2"></i>
+                              <span class='d-none d-sm-inline-block'>Remove to Favorites</span>
+                            </a>
+                            <a href="#" class='btn btn-info my-2'>
+                              <i class="fas fa-cart-arrow-down mx-2"></i>
+                              <span class='d-none d-sm-inline-block'>Add to Cart</span>
+                            </a>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="list-group-item">
+                        <div class="row">
+                          <div class="col-lg-4 bg-dark">
+                            <a href="#">
+                              <img src="./images/img/tools.jpg" alt="Image" class="w-100 h-100 img-fluid">
+                            </a>
+                          </div>
+                          <div class="col-lg-8 bg-light d-flex flex-column">
+                            <p class='font-weight-bold'>
+                              <span class='itemName'>Item Name</span>
+                              <span class='itemNeighborhood float-right'>
+                                <i class="fas fa-map-marker"></i>
+                                Location
+                              </span>
+                            </p>
+                            <span class='itemDesc'>Item description will go here</span>
+                            <span class='itemRating'>
+                              <span class='itemPrice font-weight-bold mx-3'>$$$</span>
+                              <i class="fas fa-star"></i>
+                              <i class="fas fa-star"></i>
+                            </span>
+                            <span class='renterName'><a href='#'>@username</a></span>
+                            <a href="#" class='btn btn-danger my-2'>
+                              <i class="fas fa-heart mx-2"></i>
+                              <span class='d-none d-sm-inline-block'>Remove to Favorites</span>
+                            </a>
+                            <a href="#" class='btn btn-info my-2'>
+                              <i class="fas fa-cart-arrow-down mx-2"></i>
+                              <span class='d-none d-sm-inline-block'>Add to Cart</span>
+                            </a>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="list-group-item">
+                        <div class="row">
+                          <div class="col-lg-4 bg-dark">
+                            <a href="#">
+                              <img src="./images/img/tools.jpg" alt="Image" class="w-100 h-100 img-fluid">
+                            </a>
+                          </div>
+                          <div class="col-lg-8 bg-light d-flex flex-column">
+                            <p class='font-weight-bold'>
+                              <span class='itemName'>Item Name</span>
+                              <span class='itemNeighborhood float-right'>
+                                <i class="fas fa-map-marker"></i>
+                                Location
+                              </span>
+                            </p>
+                            <span class='itemDesc'>Item description will go here</span>
+                            <span class='itemRating'>
+                              <span class='itemPrice font-weight-bold mx-3'>$$$</span>
+                              <i class="fas fa-star"></i>
+                              <i class="fas fa-star"></i>
+                            </span>
+                            <span class='renterName'><a href='#'>@username</a></span>
+                            <a href="#" class='btn btn-danger my-2'>
+                              <i class="fas fa-heart mx-2"></i>
+                              <span class='d-none d-sm-inline-block'>Remove to Favorites</span>
+                            </a>
+                            <a href="#" class='btn btn-info my-2'>
+                              <i class="fas fa-cart-arrow-down mx-2"></i>
+                              <span class='d-none d-sm-inline-block'>Add to Cart</span>
+                            </a>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="list-group-item">
+                        <div class="row">
+                          <div class="col-lg-4 bg-dark">
+                            <a href="#">
+                              <img src="./images/img/tools.jpg" alt="Image" class="w-100 h-100 img-fluid">
+                            </a>
+                          </div>
+                          <div class="col-lg-8 bg-light d-flex flex-column">
+                            <p class='font-weight-bold'>
+                              <span class='itemName'>Item Name</span>
+                              <span class='itemNeighborhood float-right'>
+                                <i class="fas fa-map-marker"></i>
+                                Location
+                              </span>
+                            </p>
+                            <span class='itemDesc'>Item description will go here</span>
+                            <span class='itemRating'>
+                              <span class='itemPrice font-weight-bold mx-3'>$$$</span>
+                              <i class="fas fa-star"></i>
+                              <i class="fas fa-star"></i>
+                            </span>
+                            <span class='renterName'><a href='#'>@username</a></span>
+                            <a href="#" class='btn btn-danger my-2'>
+                              <i class="fas fa-heart mx-2"></i>
+                              <span class='d-none d-sm-inline-block'>Remove to Favorites</span>
+                            </a>
+                            <a href="#" class='btn btn-info my-2'>
+                              <i class="fas fa-cart-arrow-down mx-2"></i>
+                              <span class='d-none d-sm-inline-block'>Add to Cart</span>
+                            </a>
+                          </div>
+                        </div>
+                      </li>
+
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="pills-dash-history" role="tabpanel" aria-labelledby="pills-dash-history-tab">
+                    <h4 class='mb-3'>Rental History</h4>
+                    <div class="row">
+                      <div class="col-lg-6 col-xl-4 mb-3">
+                        <a href="./categories.html">
+                          <div class="card text-center">
+                            <img class="card-img-top" src="./images/img/tools.jpg" alt="Some ALT for image">
+                            <div class="card-body">
+                              <h5 class="card-title">Browse Items</h5>
+                              <p class='card-text'>Find what you need right now</p>
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                      <div class="col-lg-6 col-xl-4 mb-3">
+                        <a href="./dashboard.html#pills-dash-favorites-tab">
+                          <div class="card">
+                            <img class="card-img-top" src="./images/img/tools.jpg" alt="Some ALT for image">
+                            <div class="card-body">
+                              <h5 class="card-title">Browse Items</h5>
+                              <p class='card-text'>Find what you need right now</p>
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                      <div class="col-lg-6 col-xl-4 mb-3">
+                        <a href="#">
+                          <div class="card">
+                            <img class="card-img-top" src="./images/img/tools.jpg" alt="Some ALT for image">
+                            <div class="card-body">
+                              <h5 class="card-title">Browse Items</h5>
+                              <p class='card-text'>Find what you need right now</p>
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade show" id="pills-dash-s" role="tabpanel" aria-labelledby="pills-dash-s-tab">
+
+                    <button class="tablink" onclick="openCity('London', this, 'red')" id="defaultOpen">London</button>
+                    <button class="tablink" onclick="openCity('Paris', this, 'green')">Paris</button>
+                    <button class="tablink" onclick="openCity('Tokyo', this, 'blue')">Tokyo</button>
+                    <button class="tablink" onclick="openCity('Oslo', this, 'orange')">Oslo</button>
+                    <style>
+                      .tablink {  background-color: #555;    color: white;    float: left;    border: none;    outline: none;    cursor: pointer;  padding: 14px 16px;  font-size: 17px;    width: 25%;  }
+                      .tablink:hover {    background-color: #777;  }
+                      /* Style the tab content */
+                      .tabcontent {    color: white;    display: none;    padding: 50px;    text-align: center;  }
+                      #London {background-color:red;}
+                      #Paris {background-color:green;}
+                      #Tokyo {background-color:blue;}
+                      #Oslo {background-color:orange;}
+                      </style>
+                      <div id="London" class="tabcontent">
+                        <h3>London</h3>
+                        <p>London is the capital city of England.</p>
+                      </div>
+                      <div id="Paris" class="tabcontent">
+                        <h3>Paris</h3>
+                        <p>Paris is the capital of France.</p>
+                      </div>
+                      <div id="Tokyo" class="tabcontent">
+                        <h3>Tokyo</h3>
+                        <p>Tokyo is the capital of Japan.</p>
+                      </div>
+                      <div id="Oslo" class="tabcontent">
+                        <h3>Oslo</h3>
+                        <p>Oslo is the capital of Norway.</p>
+                      </div>
+                      <script>
+                        function openCity(cityName,elmnt,color) {
+                          var i, tabcontent, tablinks;
+                          tabcontent = document.getElementsByClassName("tabcontent");
+                          for (i = 0; i < tabcontent.length; i++) {
+                              tabcontent[i].style.display = "none";
+                          }
+                          tablinks = document.getElementsByClassName("tablink");
+                          for (i = 0; i < tablinks.length; i++) {
+                              tablinks[i].style.backgroundColor = "";
+                          }
+                          document.getElementById(cityName).style.display = "block";
+                          elmnt.style.backgroundColor = color;
+
+                        }
+                        // Get the element with id="defaultOpen" and click on it
+                        document.getElementById("defaultOpen").click();
+                      </script>
+                    </div>
+                </div>
+              </div>
+
+              <!--account-->
+              <div class="tab-pane fade mb-5" id="v-pills-account" role="tabpanel" aria-labelledby="v-pills-account-tab">
+                <ul class="nav nav-pills mb-3 bg-light justify-content-center border-bottom" id="pills-tab" role="tablist">
+                  <li class="nav-item mx-2  ">
+                    <a class="nav-link active" id="pills-acc-personal-tab" data-toggle="pill" href="#pills-acc-personal" role="tab"
+                      aria-controls="pills-acc-personal" aria-selected="true">Personal Information</a>
+                  </li>
+                  <li class="nav-item mx-2  ">
+                    <a class="nav-link" id="pills-acc-financial-tab" data-toggle="pill" href="#pills-acc-financial" role="tab"
+                      aria-controls="pills-acc-financial" aria-selected="false">Financial Information</a>
+                  </li>
+                  <li class="nav-item mx-2  ">
+                    <a class="nav-link" id="pills-acc-contact-tab" data-toggle="pill" href="#pills-acc-contact" role="tab"
+                      aria-controls="pills-acc-contact" aria-selected="false">Contact Information</a>
+                  </li>
+                </ul>
+
+                <div class="tab-content bg-light" id="pills-accContent">
+                  <div class="tab-pane fade show active" id="pills-acc-personal" role="tabpanel" aria-labelledby="pills-acc-personal-tab">
+                    <form name='editPersonalForm' id='editPersonalForm' class='p-3'>
+                      <fieldset>
+                        <legend>
+                          <h4 class='mb-3'>My Personal Information</h4>
+                        </legend>
+                      </fieldset>
+                      <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <label for="editPerFirst">First Name</label>
+                          <input type="text" class="form-control" id="editPerFirst" placeholder="" value='' disabled>
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label for="editPerLast">Last Name</label>
+                          <input type="text" class="form-control" id="editPerLast" placeholder="" value='' disabled>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="editPerAddress">Address</label>
+                        <input type="text" class="form-control" id="editPerAddress" value='' disabled>
+                      </div>
+                      <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <label for="editPerCity">City</label>
+                          <input type="text" class="form-control" id="editPerCity" value='' disabled>
+                        </div>
+                        <div class="form-group col-md-2">
+                          <label for="editPerZip">Zip</label>
+                          <input type="text" class="form-control" id="editPerZip" value="" disabled>
+                        </div>
+                        <div class="form-group col-md-4">
+                          <label for="editPerPhone">Phone</label>
+                          <input type="text" class="form-control" id="editPerPhone" value='' disabled>
+                        </div>
+                      </div>
+                      <div class="form-row float-right">
+                        <button class=' btn btn-info' type="button" name="editButton" id='editPerButton'>Edit</button>
+                        <button type="button" class="btn btn-primary ml-2" id='savePerButton'>Save</button>
+                      </div>
+                    </form>
+
+                  </div>
+                  <div class="tab-pane fade" id="pills-acc-financial" role="tabpanel" aria-labelledby="pills-acc-financial-tab">
+                    <form class="p-3" name='editFinancialForm' id='editFinancialForm'>
+                      <fieldset>
+                        <legend>
+                          <h4 class='mb-3'>My Financial Information</h4>
+                        </legend>
+                      </fieldset>
+                      <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <label for="editCCName">Card Name</label>
+                          <input type="email" class="form-control" id="editCCName" value='' disabled>
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label for="editCCNumber">Card Number</label>
+                          <input type="password" class="form-control" id="editPassword" value='' disabled>
+                        </div>
+                      </div>
+                      <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <label for="editCCCode">Security Code</label>
+                          <input type="text" class="form-control" id="editCCCode" placeholder='' value='' disabled>
+                        </div>
+                        <div class="form-group col-md-2">
+                          <label for="editCCZip">Zip Code</label>
+                          <input type="text" class="form-control" id="editCCZip" placeholder="" value="" disabled>
+                        </div>
+                      </div>
+                      <div class="form-row float-right">
+                        <button class=' btn btn-info' type="button" name="editCCButton" id='editCCButton'>Edit</button>
+                        <button type="button" class="btn btn-primary ml-2" id='saveCCButton'>Save</button>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="tab-pane fade" id="pills-acc-contact" role="tabpanel" aria-labelledby="pills-acc-contact-tab">
+                    <form  class="p-3" name='editContactForm' id='editContactForm'>
+                      <fieldset>
+                        <legend>
+                          <h4 class='mb-3'>My Account Information</h4>
+                        </legend>
+                      </fieldset>
+                      <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <label for="editConUsername">Username</label>
+                          <input type="email" class="form-control" id="editConUsername" value='' disabled>
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label for="editConEmail">Email</label>
+                          <input type="text" class="form-control" id="editConEmail" value='' disabled>
+                        </div>
+                      </div>
+                      <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <label for="editConPassword">Old Password</label>
+                          <input type="text" class="form-control" id="editConPassword" value='' disabled>
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label for="editConPassword2">New Password</label>
+                          <input type="text" class="form-control" id="editConPassword2" value='' disabled>
+                        </div>
+                      </div>
+                      <div class="form-row float-right">
+                        <button class=' btn btn-info' type="button" name="editConButton" id='editConButton'>Edit</button>
+                        <button type="button" class="btn btn-primary ml-2" id='saveConButton'>Save</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <!--messages-->
+              <div class="tab-pane fade mb-5" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                <ul class="nav nav-pills mb-3 bg-light justify-content-center border-bottom" id="pills-tab" role="tablist">
+                  <li class="nav-item mx-2  ">
+                    <a class="nav-link active" id="pills-mes-inbox-tab" data-toggle="pill" href="#pills-mes-inbox" role="tab" aria-controls="pills-mes-inbox" aria-selected="true">Inbox</a>
+                  </li>
+                  <li class="nav-item mx-2  ">
+                    <a class="nav-link" id="pills-mes-outbox-tab" data-toggle="pill" href="#pills-mes-outbox" role="tab" aria-controls="pills-mes-outbox" aria-selected="false">Outbox</a>
+                  </li>
+                  <li class="nav-item mx-2  ">
+                    <a class="nav-link" id="pills-mes-trash-tab" data-toggle="pill" href="#pills-mes-trash" role="tab" aria-controls="pills-mes-trash" aria-selected="false">Trash</a>
+                  </li>
+                  <li class="nav-item mx-2  ">
+                    <a class="nav-link" id="pills-mes-archive-tab" data-toggle="pill" href="#pills-mes-archive" role="tab" aria-controls="pills-mes-archive" aria-selected="false">Archive</a>
+                  </li>
+                </ul>
+                <div class="tab-content" id="pills-mesContent">
+                  <div class="tab-pane fade show active" id="pills-mes-inbox" role="tabpanel" aria-labelledby="pills-mes-inbox-tab">
+                    <h4 class='mb-3'>Inbox Messages</h4>
+                    <div class="list-group">
+                      <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
+                      <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
+                      <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="pills-mes-outbox" role="tabpanel" aria-labelledby="pills-mes-outbox-tab">
+                    <h4 class='mb-3'>Outbox Messages</h4>
+                    <div class="list-group">
+                      <a href="#" class="list-group-item list-group-item-action">Cras justo odio</a>
+                      <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
+                      <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
+                      <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="pills-mes-trash" role="tabpanel" aria-labelledby="pills-mes-trash-tab">
+                    <h4 class='mb-3'>Trash Messages</h4>
+                    <div class="list-group">
+                      <a href="#" class="list-group-item list-group-item-action">ras justo odio</a>
+                      <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="pills-mes-archive" role="tabpanel" aria-labelledby="pills-mes-archive-tab">
+                    <h4 class='mb-3'>Archives</h4>
+                    <div class="list-group">
+                      <p>No Messages</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--settings- hidden until decided--->
+              <div class="tab-pane fade mb-5" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                <ul class="nav nav-pills mb-3 bg-light justify-content-center border-bottom" id="pills-tab" role="tablist">
+                  <li class="nav-item mx-2  ">
+                    <a class="nav-link active" id="pills-home4-tab" data-toggle="pill" href="#pills-home4" role="tab" aria-controls="pills-home4" aria-selected="true">Home</a>
+                  </li>
+                  <li class="nav-item mx-2  ">
+                    <a class="nav-link" id="pills-profile4-tab" data-toggle="pill" href="#pills-profile4" role="tab" aria-controls="pills-profile4" aria-selected="false">Profile</a>
+                  </li>
+                  <li class="nav-item mx-2  ">
+                    <a class="nav-link" id="pills-contact4-tab" data-toggle="pill" href="#pills-contact4" role="tab" aria-controls="pills-contact4" aria-selected="false">Contact</a>
+                  </li>
+                </ul>
+                <div class="tab-content bg-white" id="pills-setContent">
+                  <div class="tab-pane fade show active" id="pills-home4" role="tabpanel" aria-labelledby="pills-home4-tab">asdasd...</div>
+                  <div class="tab-pane fade" id="pills-profile4" role="tabpanel" aria-labelledby="pills-profile4-tab">.asdasd..</div>
+                  <div class="tab-pane fade" id="pills-contact4" role="tabpanel" aria-labelledby="pills-contact4-tab">..asdasdasdas.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </main>
+    <footer class="footer bg-dark text-white p-3 mt-5">
+      <div class="container-fluid">
+        <div class="row text-center">
+          <div class="col-lg-4 order-last order-lg-first text-lg-left" >
+            <p>Copyrighted &copy; - 2018 | <a href="#">WeeClo.com</a></p>
+          </div>
+          <div class="col-lg-8 text-center text-lg-right">
+            <ul class="list-unstyled list-inline">
+              <li class="list-inline-item">
+                <a href="./errorPage.html">Contact Us</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="./errorPage.html">Feedback</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="./errorPage.html">About Us</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="./errorPage.html">Investor Relations</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="./errorPage.html">Terms of Services</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="./errorPage.html">Privacy Policy</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="js/script.js"></script>
+    <script src='js/new-script.js'></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>

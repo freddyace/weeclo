@@ -1,0 +1,33 @@
+{
+    "categories": [
+    {
+        "id": "1",
+        "name": "Electronics",
+        "imgPath": "../img/electronics.jpg"
+    },
+    {
+        "id": "2",
+        "name": "Toys",
+        "imgPath": "../img/toys.jpg"
+    },
+    {
+        "id": "3",
+        "name": "Guitars",
+        "imgPath": "../img/guitars.jpg"
+    },
+    {
+        "id": "4",
+        "name": "Gym",
+        "imgPath": "../img/gym.jpg"
+    },
+    {
+        "id": "5",
+        "name": "Tools",
+        "imgPath": "../img/tools.jpg"
+    },
+    {
+      "id": "6",
+      "name": "Furniture",
+      "imgPath": "../img/furniture.jpg"
+    }]
+}

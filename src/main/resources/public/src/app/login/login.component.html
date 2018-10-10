@@ -1,0 +1,83 @@
+<app-indexheader></app-indexheader>
+<!-- <app-header></app-header> -->
+<div class="container section my-5">
+  <!-- <div class="row mx-auto"> -->
+    <div class="card rounded">
+      <div class="card-header text-center">
+        <h3 class="mb-0">Login to WeeClo</h3>
+      </div>
+      <div class="card-body">
+        <form #loginForm='ngForm'(ngSubmit)='loginSubmit()' novalidate>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input id="email" class="form-control" type="text"
+              name="email"
+              #email='ngModel' [(ngModel)]="userModel.email"
+              [class.is-invalid]='email.invalid && email.touched' required>
+              <small [class.d-none]='email.valid || email.untouched'
+                class="text-danger">Email is invalid</small>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input id="password" class="form-control" type="text" name="password"
+              #password='ngModel' [(ngModel)]="userModel.password"
+              [class.is-invalid]='password.invalid && password.touched' required>
+              <small [class.d-none]='password.valid || password.untouched'
+                class="text-danger">Password is invalid</small>
+          </div>
+          <button type="submit" class="btn btn-success"
+            [disabled]='loginForm.form.invalid' name="button">Login</button>
+        </form>
+      </div>
+      <div class="card-footer">
+        <div class="row">
+          <div class="col-6">
+            <a routerLink='/register' class="nav-link right">Don't have an account? </a>
+          </div>
+          <div class="col-6 text-right ">
+            <a routerLink='/' class="nav-link right">Forgot Password?</a>
+          </div>
+        </div>
+      </div>
+    <!-- </div> -->
+  </div>
+
+
+  <!-- <h1 class="text-center">Login</h1> -->
+<!--template driven form-->
+  <!-- <form #loginForm='ngForm'(ngSubmit)='loginSubmit()' novalidate>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input id="email" class="form-control" type="text" name="email"
+        #email='ngModel' [(ngModel)]="userModel.email"
+        [class.is-invalid]='email.invalid && email.touched' required>
+        <small [class.d-none]='email.valid || email.untouched'
+          class="text-danger">Email is invalid</small>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input id="password" class="form-control" type="text" name="password"
+        #password='ngModel' [(ngModel)]="userModel.password"
+        [class.is-invalid]='password.invalid && password.touched' required>
+        <small [class.d-none]='password.valid || password.untouched'
+          class="text-danger">Password is invalid</small>
+    </div>
+    <button type="submit" class="btn btn-success"
+      [disabled]='loginForm.form.invalid' name="button">Login</button>
+
+  </form> -->
+  <!-- <a routerLink='/register' class="nav-link">Don't have an account? </a> -->
+</div>
+
+<!--reactive form stuff-->
+  <!-- <form [formGroup]='loginForm' (ngSubmit)='submitLogin(loginForm.value)'>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input class="form-control" formControlName='email' type="text" name="email" value="">
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input class="form-control" formControlName='password' type="text" name="password" value="">
+    </div>
+    <button type="submit" class="btn btn-success" name="button">Login</button>
+  </form> -->

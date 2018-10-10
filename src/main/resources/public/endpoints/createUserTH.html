@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+  button{
+    background-color: #843534;
+    height:30px;
+    width:90px;
+    color:white;
+  }
+</style>
+<body>
+<div id="ErrorMessage"></div>
+<center>
+<form>
+  First name:<br>
+  <input type="text" id="firstname" placeholder="First Name">
+  <br>
+  Last name:<br>
+  <input type="text" id="lastname" placeholder="Last Name">
+  <br>
+  User name:<br>
+  <input type="text" id="username" placeholder="User Name">
+  <br>
+  Email Address:<br>
+  <input type="text" id="emailAddress" placeholder="Email Address">
+  <br>
+  password:<br>
+  <input type="text" id="password" placeholder="Password">
+  <br>
+  confirm password:<br>
+  <input type="text" id="passwordConfirmation" placeholder="Password">
+  <br>
+  Phone Number:<br>
+  <input type="text" id="phoneNumber" placeholder="Phone Number">
+  <br>
+  Address 1:<br>
+  <input type="text" id="addressLine1" placeholder="Address 1">
+  <br>
+  Address 2:<br>
+  <input type="text" id="addressLine2" placeholder="Address 2">
+  <br>
+  City:<br>
+  <input type="text" id="city" placeholder="City">
+  <br>
+  State:<br>
+  <input type="text" id="state" placeholder="State">
+  <br>
+  zip:<br>
+  <input type="text" id="zipcode" placeholder="Zip">
+  <br>
+  Neighborhood:<br>
+  <input type="text" id="Neighborhood" placeholder="Neighborhood">
+  <br>
+  Date of birth:<br>
+  <input type="text" id="dateOfBirth" placeholder="Date of birth">
+  <br>
+  Unique 1-11 Integer ID:
+  <input type="text" id="uniqueID" placeholder="Unique 1-11 digit ID">
+  <br><br>
+</form>
+<h1>Upload a profile picture</h1>
+<form enctype="multipart/form-data" method="post" id="form1">
+  <input type="file" id="myFile" name="file">
+</form>
+<br><br><br>
+<!--<button value="Submit" onclick="persistStubUser()">Submit</button><br><br><br>-->
+  <button value="Submit" onclick="populateFormAndPersist()">Submit</button><br><br><br>
+  <button onclick="navigateToAdminDashboard()">Back</button>
+</center>
+</body>
+</html>

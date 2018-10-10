@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+@import "node_modules/bootstrap/scss/bootstrap";
+
+*,*:before,*:after {box-sizing: border-box;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;}
+// body{ }
+// .section {padding: 5rem 3rem; display: block;}
+
+body {
+  height:100%; font-family: 'Jua', sans-serif;
+  .brand img{width:150px;height:auto;}
+  .section {padding: 5rem 3rem; display: block;}
+
+}
+
+/*Background Image Styling*/
+.background-img { z-index: -5;background-size: cover;background-repeat: no-repeat;}
+// .bg-overlay{content:""; opacity: .55; background-color:rgb(33,37,41);bottom:0;
+// position:absolute; top:0; right:0; left:0; bottom:0; z-index:-1; display:block;}
+.whole{height:100%} .half{height:50%;} .third{height:66%;}
+.background-text{height:100%;color:black;}
+
+/*Section - Home*/
+#home-intro{background-image: url("./assets/img/home-hero.jpg"); }/*Photo by Ashim D’Silva on Unsplash*/
+.home-text{font-size: 1.5em;}
+.blockquote p {font-size: 1.75em;}

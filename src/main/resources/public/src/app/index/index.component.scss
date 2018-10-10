@@ -1,0 +1,26 @@
+.navbar {
+  z-index: 5;
+}
+.modal {
+
+  // .modal-content {height: 1000px;}
+  .modal-dialog { max-width:  95%;}
+
+  .frm button {width:95%;}
+}
+
+.card {
+  .card-img-top{width:200px;height:auto; width:95%; text-align: center;}
+
+}
+
+input[type=checkbox]:checked + label {
+  border: 4px solid red;
+  color: #f00;
+
+}
+input[type=radio]:checked + label {
+  border: 4px solid blue;
+  color: blue;
+
+}

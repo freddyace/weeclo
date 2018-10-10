@@ -1,0 +1,246 @@
+<app-indexheader></app-indexheader>
+<div class="container section">
+  <form name="basicform" id="basicform" method="post" action="yourpage.html" class="text-center">
+      <!--decide if if renter or celler-->
+      <div id="step-1" class="frm"><!--step-1-->
+        <fieldset>
+            <legend class="text-center">
+              <h3>Welcome to WeeClo!</h3>
+              <p class="text-muted">What are you here as?</p>
+            </legend>
+            <div class="row">
+            <!-- <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" >
+                <label class="form-check-label" for="defaultCheck1">
+                  <img src="brookhaven.jpg" alt="">
+                </label>
+              </div> -->
+              <div class="col-6">
+                <button type="button" name="renteeBtn" (click)='isRentee()' class="open-step-2">
+                  <div class="card mb-3">
+                    <div class="card-body">
+                      <h5 class="card-title">I am a Rentee!</h5>
+                      <p class="card-text">I am ready to rent everything around me!</p>
+                    </div>
+                  </div>
+                </button>
+              </div>
+              <div class="col-6">
+                <button type="button" name="renterBtn" (click)="isRenter()" class="open-step-3">
+                  <div class="card mb-3">
+                    <!-- <img class="card-img-top" src=".../100px180/" alt="Card image cap"> -->
+                    <div class="card-body">
+                      <h5 class="card-title">I am a Renter!</h5>
+                      <p class="card-text">This is my chance to make some money with some of my stuff.</p>
+                    </div>
+                  </div>
+                </button>
+              </div>
+            </div>
+            <!-- <div class="row">
+              <div class="col-lg-12">
+                <button class="btn btn-primary open-step-2" type="button">Next <span class="fa fa-arrow-right"></span></button>
+              </div>
+            </div> -->
+        </fieldset>
+      </div>
+      <div id="step-2" class="frm"><!--Renting Stuff-->
+        <fieldset>
+          <legend class="text-center">
+            <h3>What do you need to rent?</h3>
+            <p class="text-muted">Choose one from the categories below.</p>
+          </legend>
+          <div class="row">
+            <div class="col-sm-6 col-md-4 mb-3">
+
+              <button type="button" name="RenteeElectronics" class="open-step-4">
+                <div class="card mb-3">
+                  <img class="card-img-top" src="../assets/img/electronics.jpg" alt="Photo credit: Toolstotal Visualhunt.com">
+                  <div class="card-body">
+                    <h5 class="card-title">Electronics</h5>
+                  </div>
+                </div>
+              </button>
+            </div>
+            <div class="col-sm-6 col-md-4 mb-3">
+              <button type="button" name="RenteeToys" class="open-step-4">
+                <div class="card mb-3">
+                  <img class="card-img-top" src="../assets/img/toys.jpg" alt="Photo of toys on VisualHunt>">
+                  <div class="card-body">
+                    <h5 class="card-title">Toys</h5>
+                  </div>
+                </div>
+              </button>
+            </div>
+            <div class="col-sm-6 col-md-4 mb-3">
+              <button type="button" name="RenteeGuitars" class="open-step-4">
+                <div class="card mb-3">
+                  <img class="card-img-top" src="../assets/img/guitars.jpg" alt="Photo credit: Gene Wilburn on Visual Hunt">
+                  <div class="card-body">
+                    <h5 class="card-title">Guitars</h5>
+                  </div>
+                </div>
+              </button>
+            </div>
+            <div class="col-sm-6 col-md-4 mb-3">
+              <button type="button"  name="RenteeGym" class="open-step-4">
+                <div class="card mb-3">
+                  <img class="card-img-top" src="../assets/img/gym.jpg" alt="Photo on Visualhunt" >
+
+                  <div class="card-body">
+                    <h5 class="card-title">Gym Equipment</h5>
+                  </div>
+                </div>
+              </button>
+            </div>
+            <div class="col-sm-6 col-md-4 mb-3">
+              <button type="button" name="RenteeTools" class="open-step-4">
+                <div class="card mb-3">
+                  <img class="card-img-top" src="../assets/img/tools.jpg" alt="Photo of tools by VisualHunt">
+                  <div class="card-body">
+                    <h5 class="card-title">Tools</h5>
+                  </div>
+                </div>
+              </button>
+            </div>
+            <div class="col-sm-6 col-md-4 mb-3">
+              <button type="button" name="RenteeFurniture" class="open-step-4">
+                <div class="card mb-3">
+                  <img class="card-img-top" src="../assets/img/furniture.jpg" alt="Photo of furniture by VisualHunt">
+                  <div class="card-body">
+                    <h5 class="card-title">Furniture</h5>
+                  </div>
+                </div>
+              </button>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+      <!--Have stuff to rent out to others-->
+      <div id="step-3" class="frm">
+        <fieldset>
+          <legend class="text-center">
+            <h3>What are you looking to rent out?</h3>
+            <p class="text-muted">Make some cash on a couple of items you rent out!</p>
+          </legend>
+          <div class="row">
+            <div class="col-sm-6 col-md-4 mb-3">
+              <button type="button" name="RenterElectronics" class="open-step-4">
+                <div class="card mb-3">
+                  <img class="card-img-top" src="../assets/img/electronics.jpg" alt="Photo credit: Toolstotal Visualhunt.com">
+                  <div class="card-body">
+                    <h5 class="card-title">Electronics</h5>
+                  </div>
+                </div>
+              </button>
+            </div>
+            <div class="col-sm-6 col-md-4 mb-3">
+              <button type="button" name="RenterToys" class="open-step-4">
+                <div class="card mb-3">
+                  <img class="card-img-top" src="../assets/img/toys.jpg" alt="Photo of toys on VisualHunt>">
+                  <div class="card-body">
+                    <h5 class="card-title">Toys</h5>
+                  </div>
+                </div>
+              </button>
+            </div>
+            <div class="col-sm-6 col-md-4 mb-3">
+              <button type="button" name="RenterGuitars" class="open-step-4">
+                <div class="card mb-3">
+                  <img class="card-img-top" src="../assets/img/guitars.jpg" alt="Photo credit: Gene Wilburn on Visual Hunt">
+                  <div class="card-body">
+                    <h5 class="card-title">Guitars</h5>
+                  </div>
+                </div>
+              </button>
+            </div>
+            <div class="col-sm-6 col-md-4 mb-3">
+              <button type="button" name="RenterGym" class="open-step-4">
+                <div class="card mb-3">
+                  <img class="card-img-top" src="../assets/img/gym.jpg" alt="Photo on Visualhunt" >
+                  <div class="card-body">
+                    <h5 class="card-title">Gym Equipment</h5>
+                  </div>
+                </div>
+              </button>
+            </div>
+            <div class="col-sm-6 col-md-4 mb-3">
+              <button type="button" name="RenterTools" class="open-step-4">
+                <div class="card mb-3">
+                  <img class="card-img-top" src="../assets/img/tools.jpg" alt="Photo of tools by VisualHunt">
+                  <div class="card-body">
+                    <h5 class="card-title">Tools</h5>
+                  </div>
+                </div>
+              </button>
+            </div>
+            <div class="col-sm-6 col-md-4 mb-3">
+              <button type="button"  name="RenterFurniture" class="open-step-4">
+                <div class="card mb-3">
+                  <img class="card-img-top" src="../assets/img/furniture.jpg" alt="Photo of furniture by VisualHunt">
+                  <div class="card-body">
+                    <h5 class="card-title">Furniture</h5>
+                  </div>
+                </div>
+              </button>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+      <!--Neighborhood choice-->
+      <div id="step-4" class="frm">
+        <fieldset>
+          <legend class="text-center">
+            <h3>Which neighborhood are you in?</h3>
+            <p class="text-muted">Let's find something close by.</p>
+          </legend>
+          <div class="row card-deck">
+            <div class="col-md-6 col-lg-3 mb-3">
+              <button type="button" name="button" class="open-step-5">
+                <div class="card mb-3">
+                  <img class="card-img-top" src="../assets/img/atlanta.jpg" alt="Photo credit: Mike Boening Photography of Atlanta on Visualhunt.com">
+                  <div class="card-body">
+                    <h5 class="card-title">Atlanta, <br>Georgia</h5>
+                  </div>
+                </div>
+              </button>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-3">
+              <button type="button" name="button" class="open-step-5">
+                <div class="card mb-3">
+                  <img class="card-img-top" src="../assets/img/marietta.jpg" alt="Photo of Marietta">
+                  <div class="card-body">
+                    <h5 class="card-title">Marietta, Georgia</h5>
+                  </div>
+                </div>
+              </button>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-3">
+              <button type="button" name="button" class="open-step-5">
+                <div class="card mb-3">
+                  <img class="card-img-top" src="../assets/img/brookhaven.jpg" alt="Photo of Brookhaven" >
+                  <div class="card-body">
+                    <h5 class="card-title">Brookhaven, Georgia</h5>
+                  </div>
+                </div>
+              </button>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-3">
+              <button type="button" name="button" class="open-step-5">
+                <div class="card mb-3">
+                  <img class="card-img-top" src="../assets/img/savannah.jpg" alt="Photo of Savannah, GA Photo credit: Ken Lund on VisualHunt">
+                  <div class="card-body">
+                    <h5 class="card-title">Savannah, Georgia</h5>
+                  </div>
+                </div>
+              </button>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+      <div class="row mt-3">
+        <button class="btn btn-danger reset-steps" type="button">Reset </button>
+
+      </div>
+  </form>
+</div>

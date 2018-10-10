@@ -1,0 +1,533 @@
+<app-indexheader></app-indexheader>
+<div class="container section my-5">
+  <div class="card rounded">
+    <div class="card-header text-center">
+      <h3 class='mb-0'>Register at WeeClo</h3>
+    </div>
+    <form #registerForm='ngForm' (ngSubmit)='registerSubmit()' novalidate>
+      <div class="card-body">
+        <div id="step-1" class="frm"><!--step-1-->
+          <fieldset>
+              <legend class="text-center">
+                <h3>Welcome to WeeClo!</h3>
+                <p class="text-muted">What are you here as?</p>
+              </legend>
+              <div class="row justify-content-around">
+                <!-- <div class="col-sm-6 col-md-4 mb-3">
+                  <div class="form-check text-center card mb-3 p-2">
+                      <input class="form-check-input" type="radio" value="renter" id="renter" name="person" hidden>
+                      <label class="form-check-label" for="renter">
+                          <h4 class="card-title">I am a Rentee!</h4>
+                          <p class="card-text">I am ready to rent everything around me!</p>
+                      </label>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 mb-3">
+                  <div class="form-check text-center card mb-3 p-2">
+                      <input class="form-check-input" type="radio" value="rentee" id="rentee" name="person" hidden>
+                      <label class="form-check-label" for="rentee">
+                          <h4 class="card-title">I am a Renter!</h4>
+                          <p class="card-text">This is my chance to make some money with some of my stuff.</p>
+
+                      </label>
+                    </div>
+                </div>
+              -->  <div class="col-6">
+                  <button type="button" name="button" class="open-step-2">
+                    <div class="card mb-3">
+                      <div class="card-body">
+                        <h5 class="card-title">I am a Rentee!</h5>
+                        <p class="card-text">I am ready to rent everything around me!</p>
+                      </div>
+                    </div>
+                  </button>
+                </div>
+                <div class="col-6">
+                  <button type="button" name="button" class="open-step-3">
+                    <div class="card mb-3">
+                      <div class="card-body">
+                        <h5 class="card-title">I am a Renter!</h5>
+                        <p class="card-text">This is my chance to make some money with some of my stuff.</p>
+                      </div>
+                    </div>
+                  </button>
+                </div>
+              </div>
+          </fieldset>
+          <!-- <div class="row">
+              <div class="col">
+                <button class="btn btn-primary open-step-4" type="button">Next <span class="fa fa-arrow-right"></span></button>
+
+              </div>
+          </div> -->
+        </div>
+        <div id="step-2" class="frm"><!--Renting Stuff-->
+          <fieldset>
+            <legend class="text-center">
+              <h3>What do you need to rent?</h3>
+              <p class="text-muted">Choose one from the categories below.</p>
+            </legend>
+            <div class="row">
+                <div class="col-sm-6 col-md-4 mb-3">
+                  <div class="form-check text-center card mb-3">
+                      <input class="form-check-input" type="checkbox" value="" id="electronicCatR" name="renteeCat" hidden>
+                      <label class="form-check-label" for="electronicCatR">
+                        <img class="card-img-top" src="../assets/img/electronics.jpg"
+                          alt="Photo credit: Toolstotal Visualhunt.com">
+                          <h5 class="card-title">Electronics</h5>
+                      </label>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 mb-3">
+                  <div class="form-check text-center card mb-3">
+                      <input class="form-check-input" type="checkbox" value="" id="toysCatR" name="renteeCat" hidden>
+                      <label class="form-check-label" for="toysCatR">
+                        <img class="card-img-top" src="../assets/img/toys.jpg"
+                          alt="Photo of toys on VisualHunt">
+                          <h5 class="card-title">Toys</h5>
+                      </label>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 mb-3">
+                  <div class="form-check text-center card mb-3">
+                      <input class="form-check-input" type="checkbox" value="" id="guitarsCatR" name="renteeCat" hidden>
+                      <label class="form-check-label" for="guitarsCatR">
+                        <img class="card-img-top" src="../assets/img/guitars.jpg"
+                          alt="Photo credit: Gene Wilburn on Visual Huntt">
+                          <h5 class="card-title">Guitars</h5>
+                      </label>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 mb-3">
+                  <div class="form-check text-center card mb-3">
+                      <input class="form-check-input" type="checkbox" value="" id="gymCatR" name="renteeCat" hidden>
+                      <label class="form-check-label" for="gymCatR">
+                        <img class="card-img-top" src="../assets/img/gym.jpg"
+                          alt="Photo on Visualhunt">
+                          <h5 class="card-title">Gym Equipment</h5>
+                      </label>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 mb-3">
+                  <div class="form-check text-center card mb-3">
+                      <input class="form-check-input" type="checkbox" value="" id="toolsCatR" name="renteeCat" hidden>
+                      <label class="form-check-label" for="toolsCatR">
+                        <img class="card-img-top" src="../assets/img/tools.jpg"
+                          alt="Photo credit: Photo of tools by VisualHunt">
+                          <h5 class="card-title">Tools</h5>
+                      </label>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 mb-3">
+                  <div class="form-check text-center card mb-3">
+                      <input class="form-check-input" type="checkbox" value="" id="furnitureCatR" name="renteeCat" hidden>
+                      <label class="form-check-label" for="furnitureCatR">
+                        <img class="card-img-top" src="../assets/img/furniture.jpg"
+                          alt="Photo credit: Photo of furniture by VisualHunt">
+                          <h5 class="card-title">Furniture</h5>
+                      </label>
+                    </div>
+                </div>
+            </div>
+
+          </fieldset>
+          <div class="row justify-content-end">
+              <!-- <div class="col"> -->
+                <button class="btn btn-primary open-step-4" type="button">Next <span class="fa fa-arrow-right"></span></button>
+
+              <!-- </div> -->
+          </div>
+        </div>
+        <!--Have stuff to rent out to others-->
+        <div id="step-3" class="frm">
+          <fieldset>
+            <legend class="text-center">
+              <h3>What are you looking to rent out?</h3>
+              <p class="text-muted">Make some cash on a couple of items you rent out!</p>
+            </legend>
+            <div class="row">
+              <div class="col-sm-6 col-md-4 mb-3">
+                <div class="form-check text-center card mb-3">
+                    <input class="form-check-input" type="checkbox" value="" id="electronicCat" name="renterCat" hidden>
+                    <label class="form-check-label" for="electronicCat">
+                      <img class="card-img-top" src="../assets/img/electronics.jpg"
+                        alt="Photo credit: Toolstotal Visualhunt.com">
+                        <h5 class="card-title">Electronics</h5>
+                    </label>
+                  </div>
+              </div>
+              <div class="col-sm-6 col-md-4 mb-3">
+                <div class="form-check text-center card mb-3">
+                    <input class="form-check-input" type="checkbox" value="" id="toysCat" name="renterCat" hidden>
+                    <label class="form-check-label" for="toysCat">
+                      <img class="card-img-top" src="../assets/img/toys.jpg"
+                        alt="Photo of toys on VisualHunt">
+                        <h5 class="card-title">Toys</h5>
+                    </label>
+                  </div>
+              </div>
+              <div class="col-sm-6 col-md-4 mb-3">
+                <div class="form-check text-center card mb-3">
+                    <input class="form-check-input" type="checkbox" value="" id="guitarsCat" name="renterCat" hidden>
+                    <label class="form-check-label" for="guitarsCat">
+                      <img class="card-img-top" src="../assets/img/guitars.jpg"
+                        alt="Photo credit: Gene Wilburn on Visual Huntt">
+                        <h5 class="card-title">Guitars</h5>
+                    </label>
+                  </div>
+              </div>
+              <div class="col-sm-6 col-md-4 mb-3">
+                <div class="form-check text-center card mb-3">
+                    <input class="form-check-input" type="checkbox" value="" id="gymCat" name="renterCat" hidden>
+                    <label class="form-check-label" for="gymCat">
+                      <img class="card-img-top" src="../assets/img/gym.jpg"
+                        alt="Photo on Visualhunt">
+                        <h5 class="card-title">Gym Equipment</h5>
+                    </label>
+                  </div>
+              </div>
+              <div class="col-sm-6 col-md-4 mb-3">
+                <div class="form-check text-center card mb-3">
+                    <input class="form-check-input" type="checkbox" value="" id="toolsCat" name="renterCat" hidden>
+                    <label class="form-check-label" for="toolsCat">
+                      <img class="card-img-top" src="../assets/img/tools.jpg"
+                        alt="Photo credit: Photo of tools by VisualHunt">
+                        <h5 class="card-title">Tools</h5>
+                    </label>
+                  </div>
+              </div>
+              <div class="col-sm-6 col-md-4 mb-3">
+                <div class="form-check text-center card mb-3">
+                  <input class="form-check-input" type="checkbox" value="" id="furnitureCat" name="renterCat" hidden>
+                  <label class="form-check-label" for="furnitureCat">
+                    <img class="card-img-top" src="../assets/img/furniture.jpg"
+                        alt="Photo credit: Photo of furniture by VisualHunt">
+                    <h5 class="card-title">Furniture</h5>
+                  </label>
+                </div>
+
+              </div>
+            </div>
+          </fieldset>
+          <div class="row justify-content-end">
+              <!-- <div class="col"> -->
+                <button class="btn btn-primary open-step-4" type="button">Next <span class="fa fa-arrow-right"></span></button>
+              <!-- </div> -->
+          </div>
+        </div>
+        <!--Neighborhood choice-->
+        <div id="step-4" class="frm">
+          <fieldset>
+            <legend class="text-center">
+              <h3>Which neighborhood are you in?</h3>
+              <p class="text-muted">Let's find something close by.</p>
+            </legend>
+            <div class="row">
+              <div class="col-md-6 col-lg-3 mb-3">
+                <div class="form-check text-center card mb-3">
+                  <input class="form-check-input" type="radio" value="" id="atlantaCat" name="neighborhoodCat" hidden>
+                  <label class="form-check-label" for="atlantaCat">
+                    <img class="card-img-top" src="../assets/img/atlanta.jpg"
+                        alt="Photo credit: Mike Boening Photography of Atlanta on Visualhunt.com">
+                    <h5 class="card-title">Atlanta, Georgia</h5>
+                  </label>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-3 mb-3">
+                <div class="form-check text-center card mb-3">
+                  <input class="form-check-input" type="radio" value="" id="mariettaCat" name="neighborhoodCat" hidden>
+                  <label class="form-check-label" for="mariettaCat">
+                    <img class="card-img-top" src="../assets/img/marietta.jpg"
+                        alt="Photo of Marietta">
+                    <h5 class="card-title">Marietta, Georgia</h5>
+                  </label>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-3 mb-3">
+                <div class="form-check text-center card mb-3">
+                  <input class="form-check-input" type="radio" value="" id="brookCat" name="neighborhoodCat" hidden>
+                  <label class="form-check-label" for="brookCat">
+                    <img class="card-img-top" src="../assets/img/brookhaven.jpg"
+                        alt="Photo of Brookhaven">
+                    <h5 class="card-title">Brookhaven, Georgia</h5>
+                  </label>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-3 mb-3">
+                <div class="form-check text-center card mb-3">
+                  <input class="form-check-input" type="radio" value="" id="savannahCat" name="neighborhoodCat" hidden>
+                  <label class="form-check-label" for="savannahCat">
+                    <img class="card-img-top" src="../assets/img/savannah.jpg"
+                        alt="Photo of Savannah">
+                    <h5 class="card-title">Savannah, Georgia</h5>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="row justify-content-between">
+          <div class="col-xs-6 float-left bg-light">
+            <button class="btn btn-danger reset-steps" type="button" name="ResetRegister">Reset </button>
+          </div>
+          <div class="col--xs-6 float-right bg-dark">
+            <button id="submit-btn" class="btn btn-success" type="button" name="SubmitRegister">Submit </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+      <form name="basicform" id="basicform" method="post" action="yourpage.html" class="text-center">
+        <!--decide if if renter or celler-->
+        <!-- <div id="step-1" class="frm">
+          <fieldset>
+              <legend class="text-center">
+                <h3>Welcome to WeeClo!</h3>
+                <p class="text-muted">What are you here as?</p>
+              </legend>
+              <div class="row">
+                <div class="col-6">
+                  <button type="button" name="button" class="open-step-2">
+                    <div class="card mb-3">
+                      <div class="card-body">
+                        <h5 class="card-title">I am a Rentee!</h5>
+                        <p class="card-text">I am ready to rent everything around me!</p>
+                      </div>
+                    </div>
+                  </button>
+                </div>
+                <div class="col-6">
+                  <button type="button" name="button" class="open-step-3">
+                    <div class="card mb-3">
+                      <div class="card-body">
+                        <h5 class="card-title">I am a Renter!</h5>
+                        <p class="card-text">This is my chance to make some money with some of my stuff.</p>
+                      </div>
+                    </div>
+                  </button>
+                </div>
+              </div>
+          </fieldset>
+
+        </div> -->
+        <!--Renting Stuff-->
+        <!-- <div id="step-2" class="frm">
+          <fieldset>
+            <legend class="text-center">
+              <h3>What do you need to rent?</h3>
+              <p class="text-muted">Choose one from the categories below.</p>
+            </legend>
+            <div class="row">
+                <div class="col-sm-6 col-md-4 mb-3">
+                  <div class="form-check text-center card mb-3">
+                      <input class="form-check-input" type="checkbox" value="" id="electronicCatR" name="renteeCat" hidden>
+                      <label class="form-check-label" for="electronicCatR">
+                        <img class="card-img-top" src="../assets/img/electronics.jpg"
+                          alt="Photo credit: Toolstotal Visualhunt.com">
+                          <h5 class="card-title">Electronics</h5>
+                      </label>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 mb-3">
+                  <div class="form-check text-center card mb-3">
+                      <input class="form-check-input" type="checkbox" value="" id="toysCatR" name="renteeCat" hidden>
+                      <label class="form-check-label" for="toysCatR">
+                        <img class="card-img-top" src="../assets/img/toys.jpg"
+                          alt="Photo of toys on VisualHunt">
+                          <h5 class="card-title">Toys</h5>
+                      </label>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 mb-3">
+                  <div class="form-check text-center card mb-3">
+                      <input class="form-check-input" type="checkbox" value="" id="guitarsCatR" name="renteeCat" hidden>
+                      <label class="form-check-label" for="guitarsCatR">
+                        <img class="card-img-top" src="../assets/img/guitars.jpg"
+                          alt="Photo credit: Gene Wilburn on Visual Huntt">
+                          <h5 class="card-title">Guitars</h5>
+                      </label>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 mb-3">
+                  <div class="form-check text-center card mb-3">
+                      <input class="form-check-input" type="checkbox" value="" id="gymCatR" name="renteeCat" hidden>
+                      <label class="form-check-label" for="gymCatR">
+                        <img class="card-img-top" src="../assets/img/gym.jpg"
+                          alt="Photo on Visualhunt">
+                          <h5 class="card-title">Gym Equipment</h5>
+                      </label>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 mb-3">
+                  <div class="form-check text-center card mb-3">
+                      <input class="form-check-input" type="checkbox" value="" id="toolsCatR" name="renteeCat" hidden>
+                      <label class="form-check-label" for="toolsCatR">
+                        <img class="card-img-top" src="../assets/img/tools.jpg"
+                          alt="Photo credit: Photo of tools by VisualHunt">
+                          <h5 class="card-title">Tools</h5>
+                      </label>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 mb-3">
+                  <div class="form-check text-center card mb-3">
+                      <input class="form-check-input" type="checkbox" value="" id="furnitureCatR" name="renteeCat" hidden>
+                      <label class="form-check-label" for="furnitureCatR">
+                        <img class="card-img-top" src="../assets/img/furniture.jpg"
+                          alt="Photo credit: Photo of furniture by VisualHunt">
+                          <h5 class="card-title">Furniture</h5>
+                      </label>
+                    </div>
+                </div>
+            </div>
+          </fieldset>
+          <div class="row">
+              <div class="col">
+                <button class="btn btn-primary open-step-4" type="button">Next <span class="fa fa-arrow-right"></span></button>
+              </div>
+          </div>
+        </div> -->
+
+        <!--Have stuff to rent out to others-->
+        <!-- <div id="step-3" class="frm">
+          <fieldset>
+            <legend class="text-center">
+              <h3>What are you looking to rent out?</h3>
+              <p class="text-muted">Make some cash on a couple of items you rent out!</p>
+            </legend>
+            <div class="row">
+              <div class="col-sm-6 col-md-4 mb-3">
+                <div class="form-check text-center card mb-3">
+                    <input class="form-check-input" type="checkbox" value="" id="electronicCat" name="renterCat" hidden>
+                    <label class="form-check-label" for="electronicCat">
+                      <img class="card-img-top" src="../assets/img/electronics.jpg"
+                        alt="Photo credit: Toolstotal Visualhunt.com">
+                        <h5 class="card-title">Electronics</h5>
+                    </label>
+                  </div>
+              </div>
+              <div class="col-sm-6 col-md-4 mb-3">
+                <div class="form-check text-center card mb-3">
+                    <input class="form-check-input" type="checkbox" value="" id="toysCat" name="renterCat" hidden>
+                    <label class="form-check-label" for="toysCat">
+                      <img class="card-img-top" src="../assets/img/toys.jpg"
+                        alt="Photo of toys on VisualHunt">
+                        <h5 class="card-title">Toys</h5>
+                    </label>
+                  </div>
+              </div>
+              <div class="col-sm-6 col-md-4 mb-3">
+                <div class="form-check text-center card mb-3">
+                    <input class="form-check-input" type="checkbox" value="" id="guitarsCat" name="renterCat" hidden>
+                    <label class="form-check-label" for="guitarsCat">
+                      <img class="card-img-top" src="../assets/img/guitars.jpg"
+                        alt="Photo credit: Gene Wilburn on Visual Huntt">
+                        <h5 class="card-title">Guitars</h5>
+                    </label>
+                  </div>
+              </div>
+              <div class="col-sm-6 col-md-4 mb-3">
+                <div class="form-check text-center card mb-3">
+                    <input class="form-check-input" type="checkbox" value="" id="gymCat" name="renterCat" hidden>
+                    <label class="form-check-label" for="gymCat">
+                      <img class="card-img-top" src="../assets/img/gym.jpg"
+                        alt="Photo on Visualhunt">
+                        <h5 class="card-title">Gym Equipment</h5>
+                    </label>
+                  </div>
+              </div>
+              <div class="col-sm-6 col-md-4 mb-3">
+                <div class="form-check text-center card mb-3">
+                    <input class="form-check-input" type="checkbox" value="" id="toolsCat" name="renterCat" hidden>
+                    <label class="form-check-label" for="toolsCat">
+                      <img class="card-img-top" src="../assets/img/tools.jpg"
+                        alt="Photo credit: Photo of tools by VisualHunt">
+                        <h5 class="card-title">Tools</h5>
+                    </label>
+                  </div>
+              </div>
+              <div class="col-sm-6 col-md-4 mb-3">
+                <div class="form-check text-center card mb-3">
+                  <input class="form-check-input" type="checkbox" value="" id="furnitureCat" name="renterCat" hidden>
+                  <label class="form-check-label" for="furnitureCat">
+                    <img class="card-img-top" src="../assets/img/furniture.jpg"
+                        alt="Photo credit: Photo of furniture by VisualHunt">
+                    <h5 class="card-title">Furniture</h5>
+                  </label>
+                </div>
+
+              </div>
+            </div>
+          </fieldset>
+          <div class="row">
+              <div class="col">
+                <button class="btn btn-primary open-step-4" type="button">Next <span class="fa fa-arrow-right"></span></button>
+              </div>
+          </div>
+        </div> -->
+        <!--Neighborhood choice-->
+        <!-- <div id="step-4" class="frm">
+          <fieldset>
+            <legend class="text-center">
+              <h3>Which neighborhood are you in?</h3>
+              <p class="text-muted">Let's find something close by.</p>
+            </legend>
+            <div class="row">
+              <div class="col-md-6 col-lg-3 mb-3">
+                <div class="form-check text-center card mb-3">
+                  <input class="form-check-input" type="radio" value="" id="atlantaCat" name="neighborhoodCat" hidden>
+                  <label class="form-check-label" for="atlantaCat">
+                    <img class="card-img-top" src="../assets/img/atlanta.jpg"
+                        alt="Photo credit: Mike Boening Photography of Atlanta on Visualhunt.com">
+                    <h5 class="card-title">Atlanta, Georgia</h5>
+                  </label>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-3 mb-3">
+                <div class="form-check text-center card mb-3">
+                  <input class="form-check-input" type="radio" value="" id="mariettaCat" name="neighborhoodCat" hidden>
+                  <label class="form-check-label" for="mariettaCat">
+                    <img class="card-img-top" src="../assets/img/marietta.jpg"
+                        alt="Photo of Marietta">
+                    <h5 class="card-title">Marietta, Georgia</h5>
+                  </label>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-3 mb-3">
+                <div class="form-check text-center card mb-3">
+                  <input class="form-check-input" type="radio" value="" id="brookCat" name="neighborhoodCat" hidden>
+                  <label class="form-check-label" for="brookCat">
+                    <img class="card-img-top" src="../assets/img/brookhaven.jpg"
+                        alt="Photo of Brookhaven">
+                    <h5 class="card-title">Brookhaven, Georgia</h5>
+                  </label>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-3 mb-3">
+                <div class="form-check text-center card mb-3">
+                  <input class="form-check-input" type="radio" value="" id="savannahCat" name="neighborhoodCat" hidden>
+                  <label class="form-check-label" for="savannahCat">
+                    <img class="card-img-top" src="../assets/img/savannah.jpg"
+                        alt="Photo of Savannah">
+                    <h5 class="card-title">Savannah, Georgia</h5>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div> -->
+      </form>
+      <!-- <div class="modal-footer">
+        <div class="row">
+          <div class="col-xs-6 float-left bg-light">
+            <button class="btn btn-danger reset-steps" type="button" name="ResetRegister">Reset </button>
+          </div>
+          <div class="col--xs-6 float-right bg-dark">
+            <button id="submit-btn" class="btn btn-success" type="button" name="SubmitRegister">Submit </button>
+          </div>
+        </div>
+      </div> -->

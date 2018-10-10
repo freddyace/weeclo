@@ -1,0 +1,47 @@
+<nav class="navbar navbar-expand-lg navbar-light border-bottom bg-white">
+    <div class="container">
+      <a class="navbar-brand brand" href="index.html">
+          <img src="./assets/img/logo.png" alt="WeeClo Logo">
+      </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapsable" aria-controls="navbarCollapsable" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse align-items-center" id="navbarCollapsable">
+            <ul class="navbar-nav ml-auto " id="sections">
+              <li class="nav-item mx-2" title="Search Items">
+                <form #searchForm='ngForm' (ngSubmit)='searchSubmit()' class="form-inline">
+                  <div class="form-group">
+                    <input type="text" class="form-control mr-sm-2"
+                      placeholder="Whatcha looking for?" name="search">
+                  </div>
+                  <button type="submit" class="btn btn-outline-primary"
+                    name="button">Search</button>
+                </form>
+              </li>
+              <li class="nav-item mx-2" title="Favorite Items">
+                  <a routerLink='/' class="nav-link btn-lg" >
+                    <i class="fa fa-heart" ></i>
+                  </a>
+              </li>
+              <li class="nav-item mx-2" title="Shopping Cart">
+                <a routerLink='/' class="nav-link btn-lg">
+                  <i class="fa fa-shopping-cart"></i>
+                </a>
+              </li>
+              <li class="nav-item mx-2" title="Messages">
+                <a routerLink='/' class="nav-link btn-lg">
+                  <i class="fa fa-envelope"></i>
+                  <!-- <fa-icon [icon]="faCoffee"></fa-icon> -->
+
+                </a>
+              </li>
+              <li class="nav-item mx-2" title="Logout">
+                  <a routerLink='/index' class="nav-link btn-lg" >Logout</a>
+              </li>
+              <li class="nav-item mx-2">
+                <a class="nav-link btn-lg"></a>
+              </li>
+            </ul>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,22 @@
+<app-homeheader></app-homeheader>
+<h1>Dashboard</h1>
+<!-- <input type="checkbox" class="form-control" [(ngModel)]="showFav">Show Favorites</button> -->
+<button type="button" (click)='showFavorites()' name="button">Show Favorites</button>
+<div class="section">
+  <div class="row">
+    <div *ngIf='showFav' class="col-md-8 bg-dark text-white card p-3 my-4">
+      <app-dash-favorites ></app-dash-favorites>
+    </div>
+    <div class="col-md-4 bg-light card p-3 my-4">
+      <app-dash-inventory></app-dash-inventory>
+    </div>
+  <!-- </div>
+  <div class="row my-4 bg-light"> -->
+    <div class=" col-md-6 card p-3 my-4">
+      <app-dash-trending></app-dash-trending>
+    </div>
+    <div class="col-md-6 bg-light card p-3 my-4">
+      <app-dash-recommended></app-dash-recommended>
+    </div>
+  </div>
+</div>

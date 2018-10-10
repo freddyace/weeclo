@@ -1,0 +1,371 @@
+<app-indexheader></app-indexheader>
+<div class="container section my-5">
+    <div class="stepwizard">
+        <div class="stepwizard-row setup-panel">
+            <div class="stepwizard-step col-xs-3">
+                <a href="#step-1" type="button" class="btn btn-success btn-circle">1</a>
+            </div>
+            <div class="stepwizard-step col-xs-3">
+                <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
+            </div>
+            <div class="stepwizard-step col-xs-3">
+                <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
+            </div>
+            <div class="stepwizard-step col-xs-3">
+                <a href="#step-4" type="button" class="btn btn-default btn-circle" disabled="disabled">4</a>
+            </div>
+        </div>
+    </div>
+    <!-- <form [formGroup]='registerForm' (ngSubmit)='submitRegister(registerForm.value)'>
+      <fieldset>
+        <div class="form-group">
+          <label for="firstname">First Name</label>
+          <input class="form-control" formControlName='fname'
+            type="text" name="fname" value="" placeholder="(ex. John)">
+        </div>
+        <div class="form-group">
+          <label for="lastname">Last Name</label>
+          <input class="form-control" formControlName='lname'
+            type="text" name="lname" value="" placeholder="(ex. Doe)">
+        </div>
+        <button class="btn btn-success" type="submit" name="button">Register</button>
+      </fieldset>
+      </form> -->
+
+      <!--this is the main!!!!!!-->
+    <!-- <form role="form" [formGroup]='regForm' (ngSubmit)='submitReg(regForm.value)'>
+        <div class="setup-content" id="step-1">
+          <fieldset>
+              <legend class="text-center">
+                <h3>Welcome to WeeClo!</h3>
+                <p class="text-muted">What are you here as?</p>
+              </legend>
+              <div class="row">
+                <div class="col-6">
+                  <div class="form-check text-center">
+                      <input class="form-check-input card mb-3" type="checkbox" value="" id="renteeCheck" hidden>
+                      <label class="form-check-label" for="renteeCheck">
+                        <h5 class="card-title">I am a Rentee!</h5>
+                          <p class="card-text">This is my chance to make some money with some of my stuff.</p>
+                      </label>
+                    </div>
+                  </div>
+
+                    <div class="col-6">
+                      <div class="form-check text-center">
+                          <input class="form-check-input card mb-3" type="checkbox" value="" id="renterCheck" hidden>
+                          <label class="form-check-label" for="renterCheck">
+                            <h5 class="card-title">I am a Renter!</h5>
+                              <p class="card-text">This is my chance to make some money with some of my stuff.</p>
+                          </label>
+                        </div>
+                      </div> -->
+                <!-- <div class="col-6">
+                  <button type="button" name="renteeBtn" (click)='isRentee()' class="open-step-2 nextBtn">
+                  <button type="button" [(ngModel)]="renteeBtn" (click)='isRentee($event)' class="open-step-2">
+                    <div class="card mb-3">
+                      <div class="card-body">
+                        <h5 class="card-title">I am a Rentee!</h5>
+                        <p class="card-text">I am ready to rent everything around me!</p>
+                      </div>
+                    </div>
+                  </button>
+                </div> -->
+                <!-- <div class="col-6">
+                  <button type="button" name="renterBtn" (click)="isRenter()" class="open-step-3 nextBtn">
+                    <div class="card mb-3">
+                      <div class="card-body">
+                        <h5 class="card-title">I am a Renter!</h5>
+                        <p class="card-text">This is my chance to make some money with some of my stuff.</p>
+                      </div>
+                    </div>
+                  </button>
+                </div> -->
+
+
+                <!--use-->
+              <!-- </div>
+          </fieldset> -->
+
+
+
+
+          <!-- <div class="row">
+            <div class="col-6">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" >
+                <label class="form-check-label" for="defaultCheck1">
+                  <img src="brookhaven.jpg" alt=""></input>
+                </label>
+              </div>
+            </div>
+          </div> -->
+
+          <!--use-->
+            <!-- <button class="btn btn-primary nextBtn pull-right" type="button">Next</button>
+        </div> -->
+
+
+
+
+        <!-- <div class="form-check ">
+            <input class="form-check-input card mb-3" type="checkbox" value="" id="defaultCheck1" hidden>
+            <label class="form-check-label" for="defaultCheck1">
+              <img class="card-img-top" src="../assets/img/electronics.jpg"
+                alt="Photo credit: Toolstotal Visualhunt.com">Electronics
+            </label>
+          </div> -->
+
+          <!--use-->
+        <!-- <div class="setup-content" id="step-2">
+          <fieldset>
+            <legend class="text-center">
+              <h3>What do you need to rent?</h3>
+              <p class="text-muted">Choose one from the categories below.</p>
+            </legend>
+            <div class="row">
+              <div class="col-sm-6 col-md-4 mb-3">
+                <button type="button" name="RenteeElectronics" class="open-step-4">
+                  <div class="card mb-3">
+                    <img class="card-img-top" src="./assets/img/electronics.jpg" alt="Photo credit: Toolstotal Visualhunt.com">
+                    <div class="card-body">
+                      <h5 class="card-title">Electronics</h5>
+                    </div>
+                  </div>
+                </button>
+              </div>
+              <div class="col-sm-6 col-md-4 mb-3">
+                <button type="button" name="RenteeToys" class="open-step-4">
+                  <div class="card mb-3">
+                    <img class="card-img-top" src="./assets/img/toys.jpg" alt="Photo of toys on VisualHunt>">
+                    <div class="card-body">
+                      <h5 class="card-title">Toys</h5>
+                    </div>
+                  </div>
+                </button>
+              </div>
+              <div class="col-sm-6 col-md-4 mb-3">
+                <button type="button" name="RenteeGuitars" class="open-step-4">
+                  <div class="card mb-3">
+                    <img class="card-img-top" src="./assets/img/guitars.jpg" alt="Photo credit: Gene Wilburn on Visual Hunt">
+                    <div class="card-body">
+                      <h5 class="card-title">Guitars</h5>
+                    </div>
+                  </div>
+                </button>
+              </div>
+              <div class="col-sm-6 col-md-4 mb-3">
+                <button type="button" name="RenteeGym" class="open-step-4">
+                  <div class="card mb-3">
+                    <img class="card-img-top" src="./assets/img/gym.jpg" alt="Photo on Visualhunt" >
+                    <div class="card-body">
+                      <h5 class="card-title">Gym Equipment</h5>
+                    </div>
+                  </div>
+                </button>
+              </div>
+              <div class="col-sm-6 col-md-4 mb-3">
+                <button type="button" name="RenteeTools" class="open-step-4">
+                  <div class="card mb-3">
+                    <img class="card-img-top" src="./assets/img/tools.jpg" alt="Photo of tools by VisualHunt">
+                    <div class="card-body">
+                      <h5 class="card-title">Tools</h5>
+                    </div>
+                  </div>
+                </button>
+              </div>
+              <div class="col-sm-6 col-md-4 mb-3">
+                <button type="button" name="RenteeFurniture" class="open-step-4">
+                  <div class="card mb-3">
+                    <img class="card-img-top" src="./assets/img/furniture.jpg" alt="Photo of furniture by VisualHunt">
+                    <div class="card-body">
+                      <h5 class="card-title">Furniture</h5>
+                    </div>
+                  </div>
+                </button>
+              </div>
+            </div>
+          </fieldset>
+          <button class="btn btn-primary prevBtn" type="button">Back</button>
+          <button class="btn btn-primary nextBtn pull-right" type="button">Next</button>
+        </div> -->
+
+
+
+        <!-- <div class="setup-content" id="step-3">
+          <fieldset>
+            <legend class="text-center">
+              <h3>What are you looking to rent out?</h3>
+              <p class="text-muted">Make some cash on a couple of items you rent out!</p>
+            </legend>
+            <div class="row">
+              <div class="col-sm-6 col-md-4 mb-3">
+                <button type="button" name="RenterElectronics" class="open-step-4">
+                  <div class="card mb-3">
+                    <img class="card-img-top" src="./assets/img/electronics.jpg" alt="Photo credit: Toolstotal Visualhunt.com">
+                    <div class="card-body">
+                      <h5 class="card-title">Electronics</h5>
+                    </div>
+                  </div>
+                </button>
+              </div>
+              <div class="col-sm-6 col-md-4 mb-3">
+                <button type="button" name="RenterToys" class="open-step-4">
+                  <div class="card mb-3">
+                    <img class="card-img-top" src="./assets/img/toys.jpg" alt="Photo of toys on VisualHunt>">
+                    <div class="card-body">
+                      <h5 class="card-title">Toys</h5>
+                    </div>
+                  </div>
+                </button>
+              </div>
+              <div class="col-sm-6 col-md-4 mb-3">
+                <button type="button" name="RenterGuitars" class="open-step-4">
+                  <div class="card mb-3">
+                    <img class="card-img-top" src="./assets/img/guitars.jpg" alt="Photo credit: Gene Wilburn on Visual Hunt">
+                    <div class="card-body">
+                      <h5 class="card-title">Guitars</h5>
+                    </div>
+                  </div>
+                </button>
+              </div>
+              <div class="col-sm-6 col-md-4 mb-3">
+                <button type="button" name="RenterGym" class="open-step-4">
+                  <div class="card mb-3">
+                    <img class="card-img-top" src="./assets/img/gym.jpg" alt="Photo on Visualhunt" >
+                    <div class="card-body">
+                      <h5 class="card-title">Gym Equipment</h5>
+                    </div>
+                  </div>
+                </button>
+              </div>
+              <div class="col-sm-6 col-md-4 mb-3">
+                <button type="button" name="RenterTools" class="open-step-4">
+                  <div class="card mb-3">
+                    <img class="card-img-top" src="./assets/img/tools.jpg" alt="Photo of tools by VisualHunt">
+                    <div class="card-body">
+                      <h5 class="card-title">Tools</h5>
+                    </div>
+                  </div>
+                </button>
+              </div>
+              <div class="col-sm-6 col-md-4 mb-3">
+                <button type="button" name="RenterFurniture" class="open-step-4">
+                  <div class="card mb-3">
+                    <img class="card-img-top" src="./assets/img/furniture.jpg" alt="Photo of furniture by VisualHunt">
+                    <div class="card-body">
+                      <h5 class="card-title">Furniture</h5>
+                    </div>
+                  </div>
+                </button>
+              </div>
+            </div>
+          </fieldset>
+          <button class="btn btn-primary prevBtn " type="button">Back</button>
+            <button class="btn btn-primary nextBtn pull-right" type="button">Next</button>
+        </div> -->
+        <!-- <div class="panel panel-primary setup-content" id="step-4">
+          <fieldset>
+            <legend class="text-center">
+              <h3>Which neighborhood are you in?</h3>
+              <p class="text-muted">Let's find something close by.</p>
+            </legend>
+            <div class="row">
+              <div class="col-md-6 col-lg-3 mb-3">
+                <button type="button" name="AtlantaLoc" class="open-step-5">
+                  <div class="card mb-3">
+                    <img class="card-img-top" src="./assets/img/atlanta.jpg" alt="Photo credit: Mike Boening Photography of Atlanta on Visualhunt.com">
+                    <div class="card-body">
+                      <h5 class="card-title">Atlanta, Georgia</h5>
+                    </div>
+                  </div>
+                </button>
+              </div>
+              <div class="col-md-6 col-lg-3 mb-3">
+                <button type="button" name="MariettaLoc" class="open-step-5">
+                  <div class="card mb-3">
+                    <img class="card-img-top" src="./assets/img/marietta.jpg" alt="Photo of Marietta">
+                    <div class="card-body">
+                      <h5 class="card-title">Marietta, Georgia</h5>
+                    </div>
+                  </div>
+                </button>
+              </div>
+              <div class="col-md-6 col-lg-3 mb-3">
+                <button type="button" name="BrookhavenLoc" class="open-step-5">
+                  <div class="card mb-3">
+                    <img class="card-img-top" src="./assets/img/brookhaven.jpg" alt="Photo of Brookhaven" >
+                    <div class="card-body">
+                      <h5 class="card-title">Brookhaven, Georgia</h5>
+                    </div>
+                  </div>
+                </button>
+              </div>
+              <div class="col-md-6 col-lg-3 mb-3">
+                <button type="button" name="SavannahLoc" class="open-step-5">
+                  <div class="card mb-3">
+                    <img class="card-img-top" src="./assets/img/savannah.jpg" alt="Photo of Savannah, GA Photo credit: Ken Lund on VisualHunt">
+                    <div class="card-body">
+                      <h5 class="card-title">Savannah, Georgia</h5>
+                    </div>
+                  </div>
+                </button>
+              </div>
+            </div>
+          </fieldset>
+          <button class="btn btn-primary prevBtn " type="button">Back</button>
+        <button class="btn btn-success pull-right" type="submit">Finish!</button>
+      </div> -->
+
+      <!--use-->
+    <!-- </form>
+</div> -->
+
+
+
+
+
+<!-- <script>
+$(document).ready(function () {
+
+    var navListItems = $('div.setup-panel div a'),
+        allWells = $('.setup-content'),
+        allNextBtn = $('.nextBtn');
+
+    allWells.hide();
+
+    navListItems.click(function (e) {
+        e.preventDefault();
+        var $target = $($(this).attr('href')),
+            $item = $(this);
+
+        if (!$item.hasClass('disabled')) {
+            navListItems.removeClass('btn-success').addClass('btn-default');
+            $item.addClass('btn-success');
+            allWells.hide();
+            $target.show();
+            $target.find('input:eq(0)').focus();
+        }
+    });
+
+    allNextBtn.click(function () {
+        var curStep = $(this).closest(".setup-content"),
+            curStepBtn = curStep.attr("id"),
+            nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
+            curInputs = curStep.find("input[type='text'],input[type='url']"),
+            isValid = true;
+
+        $(".form-group").removeClass("has-error");
+        for (var i = 0; i < curInputs.length; i++) {
+            if (!curInputs[i].validity.valid) {
+                isValid = false;
+                $(curInputs[i]).closest(".form-group").addClass("has-error");
+            }
+        }
+
+        if (isValid) nextStepWizard.removeAttr('disabled').trigger('click');
+    });
+
+    $('div.setup-panel div a.btn-success').trigger('click');
+});
+</script>-->

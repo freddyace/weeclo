@@ -1,0 +1,11 @@
+-Fetching data through an Http request to an api or web service. using GET.
+The GET request will hit the api or web service and fetch from db. It will send
+back as a Http response. We get back an observable where the server has to convert
+it (cast it) into an array and then can be seen in the component.
+
+-Observables: sequence of items that arrive asynchronously over time
+must be converted to the right format to be able to use it in the components through
+mapping and subscribing. Those that are subscribed will only get it.
+-in an HTTP call, it is a single item and assign the array to a local variable
+
+-RXJS is an external library that allows us to work with observables 

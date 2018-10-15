@@ -4,6 +4,8 @@ package com.weeclo.demo;
 import com.weeclo.demo.entities.UserEntity;
 import com.weeclo.demo.session.Certificate;
 import com.weeclo.demo.session.WeeCloSession;
+import com.weeclo.demo.session.UserEntityRepository;
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +28,10 @@ import javax.transaction.Transactional;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 
@@ -34,10 +39,15 @@ import java.util.Properties;
  * Author: Freddy Acevedo @ WeeClo
  * last commit: 07/20/18
  */
+
 @RestController
 public class Controller {
-    private final Logger log = LoggerFactory.getLogger(this.getClass());
+    UserEntityRepository userEntityRepository;
+//    public Controller(UserEntityRepository userEntityRepository){
+//        this.userEntityRepository = userEntityRepository;
+//    }
 
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
         WeeCloSession weeCloSession;
         @Autowired
         private Encryptor encryptor;
@@ -45,6 +55,7 @@ public class Controller {
         private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         @PersistenceContext
         EntityManager em;
+
 
 
     /**
@@ -164,6 +175,78 @@ public class Controller {
         return new ResponseEntity<>("File is uploaded successfully", HttpStatus.OK);
 
     }
+
+//    @GetMapping("/add/{id}/{email}")
+//    public UserEntity add(@PathVariable("id") final String id,
+//                    @PathVariable("name") final String email) {
+//        UserEntity userEntity = new UserEntity();
+//        userEntity.setId(1234);
+//        userEntity.setSystemName("franksinatra");
+//        userEntity.setFirstName("Frank");
+//        userEntity.setLastName("Sinatra");
+//        userEntity.setPassword("asdf");
+//        userEntity.setPhone("2302565676");
+//        userEntity.setAddress1("1 Elm Street");
+//        userEntity.setAddress2("NULL");
+//        userEntity.setCity("Buckhead");
+//        userEntity.setStateId("GA");
+//        userEntity.setZip(30303);
+//        userEntity.setNeighborhood(1);
+//        userEntity.setDateJoined(new Timestamp(System.currentTimeMillis()));
+//        userEntity.setDateOfBirth(new Date(System.currentTimeMillis()));
+//        userEntity.setEmailAddress(email);
+//        userEntity.setStatus("Active");
+//        userEntity.setProfilePictureName("Bootyhole");
+//        userEntity.setProfilePicturePath("undefined");
+//        JSONObject jsonObject = new JSONObject(userEntity);
+//        System.out.println(jsonObject);
+//        userEntityRepository.save(new UserEntity());
+//        return userEntityRepository.findById(id);
+//    }
+//@GetMapping("/add/{id}")
+//public UserEntity add(@PathVariable("id") String id) {
+//    UserEntity userEntity = new UserEntity();
+//    userEntity.setId(456456);
+//    userEntity.setSystemName("franksinatra");
+//    userEntity.setFirstName("Frank");
+//    userEntity.setLastName("Sinatra");
+//    userEntity.setPassword("asdf");
+//    userEntity.setPhone("2302565676");
+//    userEntity.setAddress1("1 Elm Street");
+//    userEntity.setAddress2("NULL");
+//    userEntity.setCity("Buckhead");
+//    userEntity.setStateId("GA");
+//    userEntity.setZip(30303);
+//    userEntity.setNeighborhood(1);
+//    userEntity.setDateJoined(new Timestamp(System.currentTimeMillis()));
+//    userEntity.setDateOfBirth(new Date(System.currentTimeMillis()));
+//    userEntity.setEmailAddress("junker@gmail.com");
+//    userEntity.setStatus("Active");
+//    userEntity.setProfilePictureName("Bootyhole");
+//    userEntity.setProfilePicturePath("undefined");
+//    JSONObject jsonObject = new JSONObject(userEntity);
+//    System.out.println(jsonObject);
+//    userEntityRepository.save(userEntity);
+//    return userEntityRepository.findById(id);
+//}
+//
+//    @GetMapping("/update/{id}/{name}")
+//    public UserEntity update(@PathVariable("id") final String id,
+//                       @PathVariable("name") final String name) {
+//        userEntityRepository.update(new UserEntity());
+//        return userEntityRepository.findById(id);
+//    }
+//
+//    @GetMapping("/delete/{id}")
+//    public Map<String, UserEntity> delete(@PathVariable("id") final String id) {
+//        userEntityRepository.delete(id);
+//        return all();
+//    }
+//
+//    @GetMapping("/all")
+//    public Map<String, UserEntity> all() {
+//        return userEntityRepository.findAll();
+//    }
 
 
 

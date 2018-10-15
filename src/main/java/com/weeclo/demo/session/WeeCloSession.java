@@ -90,6 +90,7 @@ public class WeeCloSession implements HttpSession{
     @Override
     public void setAttribute(String name, Object value) {
 
+
     }
 
     @Override

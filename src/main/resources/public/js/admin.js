@@ -5,7 +5,8 @@
  * */
 
  //Global variable used to dodge CORS issue
- var serverAddress = "35.237.231.31";
+ // var serverAddress = "35.237.231.31";
+ var serverAddress = "localhost";
  //TODO: Fix this, figure out a smoother deployment mechanism/method
 
  var user= document.getElementById("usernameForAdmin");
@@ -247,3 +248,7 @@ function navigateToCreateUserPage(){
 function navigateToAdminDashboard() {
   insertHtml('adminDashboard.html', 'body');
 }
+
+ function navigateToUserSignInPage(){
+  insertHtml("userSignIn.html", 'body');
+ }

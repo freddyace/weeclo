@@ -1,13 +1,16 @@
 package com.weeclo.demo.entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
 @Table(name = "user", schema = "weeclodb", catalog = "")
-public class UserEntity {
+public class UserEntity implements Serializable {
     private int id;
     private String systemName;
     private String firstName;
@@ -27,6 +30,7 @@ public class UserEntity {
     private String profilePicturePath;
     private String profilePictureName;
 
+    @JsonProperty
     @Id
     @Column(name = "ID", nullable = false)
     public int getId() {
@@ -37,6 +41,7 @@ public class UserEntity {
         this.id = id;
     }
 
+    @JsonProperty
     @Basic
     @Column(name = "system_name", nullable = false, length = 20)
     public String getSystemName() {
@@ -47,6 +52,7 @@ public class UserEntity {
         this.systemName = systemName;
     }
 
+    @JsonProperty
     @Basic
     @Column(name = "first_name", nullable = false, length = 20)
     public String getFirstName() {
@@ -57,6 +63,7 @@ public class UserEntity {
         this.firstName = firstName;
     }
 
+    @JsonProperty
     @Basic
     @Column(name = "last_name", nullable = false, length = 25)
     public String getLastName() {
@@ -67,6 +74,7 @@ public class UserEntity {
         this.lastName = lastName;
     }
 
+    @JsonProperty
     @Basic
     @Column(name = "email_address", nullable = false, length = 45)
     public String getEmailAddress() {
@@ -77,6 +85,7 @@ public class UserEntity {
         this.emailAddress = emailAddress;
     }
 
+    @JsonProperty
     @Basic
     @Column(name = "password", nullable = false, length = 60)
     public String getPassword() {
@@ -87,6 +96,7 @@ public class UserEntity {
         this.password = password;
     }
 
+    @JsonProperty
     @Basic
     @Column(name = "phone", nullable = false, length = 15)
     public String getPhone() {
@@ -97,6 +107,7 @@ public class UserEntity {
         this.phone = phone;
     }
 
+    @JsonProperty
     @Basic
     @Column(name = "address1", nullable = false, length = 60)
     public String getAddress1() {
@@ -107,6 +118,7 @@ public class UserEntity {
         this.address1 = address1;
     }
 
+    @JsonProperty
     @Basic
     @Column(name = "address2", nullable = true, length = 60)
     public String getAddress2() {
@@ -117,6 +129,7 @@ public class UserEntity {
         this.address2 = address2;
     }
 
+    @JsonProperty
     @Basic
     @Column(name = "city", nullable = false, length = 30)
     public String getCity() {
@@ -127,6 +140,7 @@ public class UserEntity {
         this.city = city;
     }
 
+    @JsonProperty
     @Basic
     @Column(name = "state_ID", nullable = false, length = 2)
     public String getStateId() {
@@ -137,6 +151,7 @@ public class UserEntity {
         this.stateId = stateId;
     }
 
+    @JsonProperty
     @Basic
     @Column(name = "zip", nullable = false)
     public int getZip() {
@@ -147,6 +162,7 @@ public class UserEntity {
         this.zip = zip;
     }
 
+    @JsonProperty
     @Basic
     @Column(name = "neighborhood", nullable = false)
     public int getNeighborhood() {
@@ -157,6 +173,7 @@ public class UserEntity {
         this.neighborhood = neighborhood;
     }
 
+    @JsonProperty
     @Basic
     @Column(name = "date_joined", nullable = false)
     public Timestamp getDateJoined() {
@@ -167,6 +184,7 @@ public class UserEntity {
         this.dateJoined = dateJoined;
     }
 
+    @JsonProperty
     @Basic
     @Column(name = "date_of_birth", nullable = true)
     public Date getDateOfBirth() {
@@ -177,6 +195,7 @@ public class UserEntity {
         this.dateOfBirth = dateOfBirth;
     }
 
+    @JsonProperty
     @Basic
     @Column(name = "status", nullable = false, length = 10)
     public String getStatus() {
@@ -187,6 +206,7 @@ public class UserEntity {
         this.status = status;
     }
 
+    @JsonProperty
     @Basic
     @Column(name = "profile_picture_path", nullable = true, length = 100)
     public String getProfilePicturePath() {
@@ -197,6 +217,7 @@ public class UserEntity {
         this.profilePicturePath = profilePicturePath;
     }
 
+    @JsonProperty
     @Basic
     @Column(name = "profile_picture_name", nullable = true, length = 45)
     public String getProfilePictureName() {

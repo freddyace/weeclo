@@ -2,9 +2,12 @@ package com.weeclo.demo;
 
 
 import com.weeclo.demo.entities.UserEntity;
-import com.weeclo.demo.session.Certificate;
+import com.weeclo.demo.session.SessionManager;
+import com.weeclo.demo.session.certificate.Certificate;
 import com.weeclo.demo.session.WeeCloSession;
-import com.weeclo.demo.session.UserEntityRepository;
+import com.weeclo.demo.session.repository.UserEntityRepository;
+import com.weeclo.demo.session.repository.WeeCloSessionRepository;
+import com.weeclo.demo.session.token.Token;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,10 +45,16 @@ import java.util.Properties;
 
 @RestController
 public class Controller {
+    @Autowired
+    SessionManager sessionManager;
     UserEntityRepository userEntityRepository;
-//    public Controller(UserEntityRepository userEntityRepository){
-//        this.userEntityRepository = userEntityRepository;
-//    }
+    WeeCloSessionRepository weeCloSessionRepository;
+    public Controller(UserEntityRepository userEntityRepository,
+                      WeeCloSessionRepository weeCloSessionRepository){
+        this.userEntityRepository = userEntityRepository;
+        this.weeCloSessionRepository = weeCloSessionRepository;
+    }
+
 
     private final Logger log = LoggerFactory.getLogger(this.getClass());
         WeeCloSession weeCloSession;
@@ -127,19 +136,36 @@ public class Controller {
             List<?> list = em.createQuery("select u from UserEntity u where u.emailAddress=?1")
                     .setParameter(1,email )
                     .getResultList();
+            //No Records exist
             if(list.size()!=1){
                 return new ResponseEntity<>("Incorrect credentials",headers,HttpStatus.FORBIDDEN);
             }
+            //1 record found. *Ideal Situation*
             if(list.size()==1){
-                weeCloSession = new WeeCloSession(new Certificate());
-                UserEntity userEntity = (UserEntity) list.get(0);
-                if(passwordEncoder.matches(password, userEntity.getPassword())) {
-                    return new ResponseEntity<>("Successfully validated user! Assigned session token ID: "+weeCloSession.getToken().getID()
-                            +"with headers: "+headers, headers, HttpStatus.OK);
+                Object object = list.get(0);
+                UserEntity userEntity = (UserEntity) object;
+                if(sessionManager.sessionExists(userEntity)){
+
+                }else if(passwordEncoder.matches(password, userEntity.getPassword())) {
+                    Certificate certificate = new Certificate();
+                    certificate.setToken(new Token());
+                    certificate.setOwnerID((Integer.toString(userEntity.getId())));
+                    certificate.setOwnerFirstName(userEntity.getFirstName());
+                    certificate.setOwnerLastName(userEntity.getLastName());
+                    certificate.setOwnerID(userEntity.getSystemName());
+                    weeCloSession = new WeeCloSession(certificate);
+                    weeCloSession.setLoggedIn(userEntity);
+                    sessionManager.save(weeCloSession);
+//                    weeCloSessionRepository.save(weeCloSession);
+                        return new ResponseEntity<>("Successfully validated user! Assigned session token ID: " + weeCloSession.getCertificate().getToken().getID()
+                                + "with headers: " + headers, headers, HttpStatus.OK);
+
 
                 }
+                ///*******************************//
+                /*error/issue occured*/
                 else
-                    return new ResponseEntity<>("We've ran into a problem! Try again later.", headers,HttpStatus.OK);
+                    return new ResponseEntity<>("Incorrect credentials", headers,HttpStatus.FORBIDDEN);
 
             }
         }catch (PersistenceException p ){
@@ -203,50 +229,64 @@ public class Controller {
 //        userEntityRepository.save(new UserEntity());
 //        return userEntityRepository.findById(id);
 //    }
-//@GetMapping("/add/{id}")
-//public UserEntity add(@PathVariable("id") String id) {
-//    UserEntity userEntity = new UserEntity();
-//    userEntity.setId(456456);
-//    userEntity.setSystemName("franksinatra");
-//    userEntity.setFirstName("Frank");
-//    userEntity.setLastName("Sinatra");
-//    userEntity.setPassword("asdf");
-//    userEntity.setPhone("2302565676");
-//    userEntity.setAddress1("1 Elm Street");
-//    userEntity.setAddress2("NULL");
-//    userEntity.setCity("Buckhead");
-//    userEntity.setStateId("GA");
-//    userEntity.setZip(30303);
-//    userEntity.setNeighborhood(1);
-//    userEntity.setDateJoined(new Timestamp(System.currentTimeMillis()));
-//    userEntity.setDateOfBirth(new Date(System.currentTimeMillis()));
-//    userEntity.setEmailAddress("junker@gmail.com");
-//    userEntity.setStatus("Active");
-//    userEntity.setProfilePictureName("Bootyhole");
-//    userEntity.setProfilePicturePath("undefined");
-//    JSONObject jsonObject = new JSONObject(userEntity);
-//    System.out.println(jsonObject);
-//    userEntityRepository.save(userEntity);
-//    return userEntityRepository.findById(id);
-//}
+@GetMapping("/add/{id}")
+public UserEntity add(@PathVariable("id") String id) {
+    UserEntity userEntity = new UserEntity();
+    userEntity.setId(Integer.parseInt(id));
+    userEntity.setSystemName("franksinatra");
+    userEntity.setFirstName("Frank");
+    userEntity.setLastName("Sinatra");
+    userEntity.setPassword("asdf");
+    userEntity.setPhone("2302565676");
+    userEntity.setAddress1("1 Elm Street");
+    userEntity.setAddress2("NULL");
+    userEntity.setCity("Buckhead");
+    userEntity.setStateId("GA");
+    userEntity.setZip(30303);
+    userEntity.setNeighborhood(1);
+    userEntity.setDateJoined(new Timestamp(System.currentTimeMillis()));
+    userEntity.setDateOfBirth(new Date(System.currentTimeMillis()));
+    userEntity.setEmailAddress("junker@gmail.com");
+    userEntity.setStatus("Active");
+    userEntity.setProfilePictureName("Bootyhole");
+    userEntity.setProfilePicturePath("undefined");
+    JSONObject jsonObject = new JSONObject(userEntity);
+    System.out.println(jsonObject);
+    userEntityRepository.save(userEntity);
+    return userEntityRepository.findById(id);
+    }
+
+    @GetMapping("/update/{id}/{name}")
+    public UserEntity update(@PathVariable("id") final String id,
+                       @PathVariable("name") final String name) {
+        userEntityRepository.update(new UserEntity());
+        return userEntityRepository.findById(id);
+    }
+
+    @GetMapping("/delete/{id}")
+    public Map<Integer, UserEntity> delete(@PathVariable("id") final String id) {
+        userEntityRepository.delete(id);
+        return all();
+    }
+
+    @GetMapping("/all")
+    public Map<Integer, UserEntity> all() {
+        return userEntityRepository.findAll();
+    }
+
+    @GetMapping("/session/add/")
+    public Map<String, WeeCloSession> add(){
+//        Certificate certificate = new Certificate();
+//        certificate.setOwnerFirstName("Freddy");
+//        certificate.setOwnerLastName("Acevedo");
+//        certificate.setOwnerID("freddyace");
+//        WeeCloSession weeCloSession = new WeeCloSession(certificate);
 //
-//    @GetMapping("/update/{id}/{name}")
-//    public UserEntity update(@PathVariable("id") final String id,
-//                       @PathVariable("name") final String name) {
-//        userEntityRepository.update(new UserEntity());
-//        return userEntityRepository.findById(id);
-//    }
-//
-//    @GetMapping("/delete/{id}")
-//    public Map<String, UserEntity> delete(@PathVariable("id") final String id) {
-//        userEntityRepository.delete(id);
-//        return all();
-//    }
-//
-//    @GetMapping("/all")
-//    public Map<String, UserEntity> all() {
-//        return userEntityRepository.findAll();
-//    }
+//        weeCloSessionRepository.save(weeCloSession);
+//        JSONObject jsonObject = new JSONObject(weeCloSession);
+//        System.out.println(jsonObject);
+        return weeCloSessionRepository.findAll();
+    }
 
 
 

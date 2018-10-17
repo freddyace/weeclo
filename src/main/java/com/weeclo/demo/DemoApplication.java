@@ -1,6 +1,7 @@
 package com.weeclo.demo;
 
 import com.weeclo.demo.entities.UserEntity;
+import com.weeclo.demo.session.WeeCloSession;
 import org.json.JSONObject;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,17 +17,23 @@ import java.sql.Timestamp;
 @SpringBootApplication
 public class DemoApplication {
 
-//	@Bean
-//	JedisConnectionFactory jedisConnectionFactory() {
-//		return new JedisConnectionFactory();
-//	}
-//
-//	@Bean
-//	RedisTemplate<String, UserEntity> redisTemplate() {
-//		RedisTemplate<String, UserEntity> redisTemplate = new RedisTemplate<>();
-//		redisTemplate.setConnectionFactory(jedisConnectionFactory());
-//		return redisTemplate;
-//	}
+	@Bean
+	JedisConnectionFactory jedisConnectionFactory() {
+		return new JedisConnectionFactory();
+	}
+
+	@Bean
+	RedisTemplate<String, UserEntity> redisTemplate() {
+		RedisTemplate<String, UserEntity> redisTemplate = new RedisTemplate<>();
+		redisTemplate.setConnectionFactory(jedisConnectionFactory());
+		return redisTemplate;
+	}
+	@Bean
+	RedisTemplate<String, WeeCloSession> redisSessionTemplate() {
+		RedisTemplate<String, WeeCloSession> redisSessionTemplate = new RedisTemplate<>();
+		redisSessionTemplate.setConnectionFactory(jedisConnectionFactory());
+		return redisSessionTemplate;
+	}
 	public static void main(String[] args) throws IOException{
 		SpringApplication.run(DemoApplication.class, args);
 		UserEntity userEntity = new UserEntity();

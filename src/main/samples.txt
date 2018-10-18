@@ -43,3 +43,8 @@ Sample user (Json) (OLD DO NOT USE)
    "status":"Active",
    "profilePicturePath":"undefined"
 }
+
+================================================
+10/18/18
+
+{"zip":30303,"lastName":"user","profilePictureName":"Bootyhole","address2":"NULL","city":"Buckhead","address1":"1 Elm Street","stateId":"GA","dateJoined":"2018-08-23","dateOfBirth":"2018-08-23","firstName":"super","password":"wc","emailAddress":"su","systemName":"superuser","phone":"2302565676","id":1235,"neighborhood":1,"status":"Active","profilePicturePath":"undefined"}

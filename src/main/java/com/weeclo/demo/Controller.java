@@ -44,7 +44,7 @@ import java.util.Properties;
  */
 
 @RestController
-public class Controller {
+public class Controller implements Promisable{
     @Autowired
     SessionManager sessionManager;
     UserEntityRepository userEntityRepository;
@@ -79,6 +79,7 @@ public class Controller {
      * a generic exception is thrown.
      */
     //TODO:Handle other duplicate entry scenarios, ex: Different email, same username
+    @Override
     @Transactional
     @RequestMapping(value = "/createWeeCloUser", method = RequestMethod.POST)
     public ResponseEntity createWeeCloUser(@RequestBody UserEntity weeCloUser){
@@ -145,7 +146,10 @@ public class Controller {
                 Object object = list.get(0);
                 UserEntity userEntity = (UserEntity) object;
                 if(sessionManager.sessionExists(userEntity)){
+                    WeeCloSession weeCloSession = weeCloSessionRepository.findById(Integer.toString(userEntity.getId()));
+                    if(weeCloSession.getLoggedIn().isActive()){
 
+                    }
                 }else if(passwordEncoder.matches(password, userEntity.getPassword())) {
                     Certificate certificate = new Certificate();
                     certificate.setToken(new Token());

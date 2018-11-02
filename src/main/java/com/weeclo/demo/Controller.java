@@ -58,7 +58,7 @@ public class Controller implements Promisable{
 
 
     private final Logger log = LoggerFactory.getLogger(this.getClass());
-        WeeCloSession weeCloSession;
+//        WeeCloSession weeCloSession;
         @Autowired
         private Encryptor encryptor;
 
@@ -153,18 +153,18 @@ public class Controller implements Promisable{
                     //At this point...user is authenticated.
                     //-------------------------------------------
                     //If session exists, set the local weeCloSession in request thread to the correct session in Redis.
-                    if(sessionManager.sessionExists(userEntity)){
-                        weeCloSession = weeCloSessionRepository.findById(Integer.toString(userEntity.getId()));
-                        //If user is NOT loggedIn or session expires, or whatever, delete the session.
-                        weeCloSession.setLoggedIn(userEntity);
-                        if(!weeCloSession.getLoggedIn().isActive()){
-                            weeCloSessionRepository.delete(Integer.toString(userEntity.getId()));
-                        }
-                    }else if(!sessionManager.sessionExists(userEntity)){
-                        weeCloSession = new WeeCloSession();
-                        weeCloSession.setLoggedIn(userEntity);
-
-                    }
+//                    if(sessionManager.sessionExists(userEntity)){
+//                        weeCloSession = weeCloSessionRepository.findById(Integer.toString(userEntity.getId()));
+//                        //If user is NOT loggedIn or session expires, or whatever, delete the session.
+//                        weeCloSession.setLoggedIn(userEntity);
+//                        if(!weeCloSession.getLoggedIn().isActive()){
+//                            weeCloSessionRepository.delete(Integer.toString(userEntity.getId()));
+//                        }
+//                    }else if(!sessionManager.sessionExists(userEntity)){
+//                        weeCloSession = new WeeCloSession();
+//                        weeCloSession.setLoggedIn(userEntity);
+//
+//                    }
                 }
                 else if(passwordEncoder.matches(password, userEntity.getPassword())) {
                     Certificate certificate = new Certificate();
@@ -173,12 +173,13 @@ public class Controller implements Promisable{
                     certificate.setOwnerFirstName(userEntity.getFirstName());
                     certificate.setOwnerLastName(userEntity.getLastName());
                     certificate.setOwnerID(userEntity.getSystemName());
-                    weeCloSession = new WeeCloSession(certificate);
-                    weeCloSession.setLoggedIn(userEntity);
-                    sessionManager.save(weeCloSession);
+//                    weeCloSession = new WeeCloSession(certificate);
+//                    weeCloSession.setLoggedIn(userEntity);
+//                    sessionManager.save(weeCloSession);
 //                    weeCloSessionRepository.save(weeCloSession);
                         return new ResponseEntity<>("Successfully validated user! Assigned session token ID: " + weeCloSession.getCertificate().getToken().getID()
-                                + "with headers: " + headers, headers, HttpStatus.OK);
+                                + "with headers: " + headers, headers, HttpStatus.OK
+                        );
 
 
                 }

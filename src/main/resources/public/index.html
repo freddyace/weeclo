@@ -11,9 +11,11 @@ on social media and link to different pages
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <link rel="stylesheet" href="css/new-style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 
   </head>
-  <body id='index-page'>
+  <body id='body'>
     <!--Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light border-bottom fixed-top bg-white" id='index-navbar'>
       <div class="container">
@@ -28,49 +30,34 @@ on social media and link to different pages
           <div class="collapse navbar-collapse align-items-center" id="navbarCollapsable">
               <ul class="navbar-nav ml-auto " id="sections">
                   <li class="nav-item mx-2 order-last order-lg-first" title="Search Items">
-                    <form name='indexSearchForm' class="form-inline indexSearchForm"
-                      id='indexSearchForm' action="search.html" method="post">
+                    <form name='indexSearchForm' class="form-inline searchForm"
+                      id='indexSearchForm' method="post">
                       <div class="form-group">
-                        <input type="text" class="form-control mr-sm-2"
-                          placeholder="Whatcha looking for?" name="indexInputSearch">
+                        <input type="text" class="form-control mr-sm-2 searchFormInput" id="indexSearchInput"
+                          placeholder="Whatcha looking for?" name="indexsearchInput">
                       </div>
-                      <button id='indexSearchButton' type="submit" class="btn btn-danger"
-                        form='indexSearchForm' name="indexSearchButton">Search</button>
+                      <button id='indexSearchButton' type="button" class="btn btn-danger searchFormButton"
+                        form='indexSearchForm' name="indexSearchButton" onclick="searchForm()">Search</button>
                     </form>
-                    <!-- onclick='searchSubmit()'-->
+                    <script>
+                      function searchForm() {
+                        var searchInput = $(".searchFormInput").val();
+                        if (searchInput == '') {
+                          alert("Please type something to search");
+                        } else {
+                          console.log(searchInput);
+                          insertHTMLFile('search.html' , 'body');
+                        }
+
+                      }
+                    </script>
                   </li>
-<script type="text/javascript">
-  var searchForm = document.getElementById('indexSearchForm');
-  searchForm.addEventListener('submit', function(e) {
-    alert("searching");
-    document.location = './search.html';
-    e.preventDefault();
-
-    //allow the people to search but if they want to click on an item, then they are forced to sign up
-    // var loginEmail = $('#loginEmail').val();
-    // var loginPass = $('#loginPass').val();
-    // if(loginEmail == '' || loginPass == '') {
-    //   alert("Missing information");
-    //   e.preventDefault();
-    // } else {
-    //     var correctInfo = validateLogin(loginEmail, loginPass);
-    //     if(!correctInfo){
-    //       alert('incorrect information');
-    //       e.preventDefault();
-    //     }else {
-    //       alert("correct information");
-    //       document.location = './search.html';
-    //     }
-    // }
-  }, false);
-</script>
-
-                  <li class="nav-item mx-2" id='nav-i'>
+                  <li class="nav-item mx-2" class='nav-i'>
                       <a class="nav-link btn-lg" data-toggle="modal"
                         data-target="#login-modal" data-dismiss="modal"
                         alt='Login at WeeClo'>Login</a>
                   </li>
-                  <li class='nav-item mx-2' id='nav-i'>
+                  <li class='nav-item mx-2' class='nav-i'>
                     <a class='nav-link btn-lg' data-toggle="modal"
                       data-target="#register-modal" data-dismiss="modal"
                       alt='Register at WeeClo'>Register</a>
@@ -93,20 +80,16 @@ on social media and link to different pages
             </button>
           </div>
           <div class="modal-body card-body">
-            <form name='loginForm' id='loginForm' action='search.html'
-              method="post">
+            <form name='loginForm' id='loginForm' method="post">
               <div class="form-group">
                 <label for="loginEmail">Email</label>
-                <input type="text" class="form-control" name='loginEmail'
-                  id='loginEmail' placeholder='johndoe@example.com'>
+                <input type="text" class="form-control" name='loginEmail' id='loginEmail' placeholder='johndoe@example.com'>
               </div>
               <div class="form-group">
                 <label for="loginPass">Password</label>
-                <input type="password" class='form-control' name="loginPass"
-                  placeholder="***********" id='loginPass' >
+                <input type="password" class='form-control' name="loginPass" placeholder="***********" id='loginPass' >
               </div>
-              <button id='loginButton' type="submit" name="loginButton"
-                class='btn btn-success'>Login</button>
+              <button id='loginButton' onclick='userLogin()' type="button" name="loginButton" class='btn btn-success'>Login</button>
             </form>
           </div>
           <div class="card-footer">
@@ -128,240 +111,121 @@ on social media and link to different pages
     </div>
     <!--REGISTER-MODAL-->
     <div class="modal fade" id='register-modal' tabindex="-1" role='dialog'
-      aria-labelledby='register-modal-label' aria-hidden='true'>
+         aria-labelledby='register-modal-label' aria-hidden='true'>
       <div class="modal-dialog modal-lg" role='document'>
         <div class="modal-content card rounded">
           <div class="modal-header card-header text-center">
             <h3 class='mb-3'>Register</h3>
             <button type="button" class="close" data-dismiss="modal"
-              aria-label="Close"><span aria-hidden="true">&times;</span>
+                    aria-label="Close"><span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body card-body">
-            <form name='registerForm' id='registerForm' action="search.html" method="post">
-              <div class='form' id="step-1">
+            <form name='registerForm' id='registerForm' method="post">
+              <div class='form step-1'>
                 <fieldset>
                   <legend class='text-center'>
                     <h4 class='mb-3 h-text-size'>Welcome to WeeClo!</h4>
-                    <p class='text-muted'>What are you here as?</p>
+                    <p class='text-muted'>Fill out some information please.</p>
                   </legend>
-                  <div class="row text-center">
-                    <div class="col-sm-6">
-                      <div class=" card mb-3">
-                        <input class="form-check-input" type="radio" value="renter"
-                          id="renteeRadio" name="ownerType" hidden>
-                        <label class="form-check-label" for="renteeRadio">
-                          <img class="card-img-top" src="./images/img/electronics.jpg"
-                              alt="Photo credit: Toolstotal Visualhunt.com">
-                          <h5 class="card-title">I am a rentee</h5>
-                        </label>
-                      </div>
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label for="regFirst">First Name</label>
+                      <input type="text" class="form-control" id="regFirst" onblur="checkRegFirst()" placeholder="ex. John">
                     </div>
-                    <div class="col-sm-6 ">
-                      <div class="card mb-3">
-                        <input class="form-check-input oT" type="radio" value="owner"
-                          id="ownerRadio" name="ownerType" hidden>
-                        <label class="form-check-label oT" for="ownerRadio">
-                          <img class="card-img-top" src="./images/img/electronics.jpg"
-                            alt="Photo credit: Toolstotal Visualhunt.com">
-                          <h5 class="card-title">I am a owner</h5>
-                        </label>
-                      </div>
+                    <div class="form-group col-md-6">
+                      <label for="regLast">Last Name</label>
+                      <input type="text" class="form-control" id="regLast" onblur="checkRegFirst()" placeholder="ex. Doe" >
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label for="regPhone">Phone</label>
+                      <input type="text" class="form-control" id="regPhone" onblur="checkRegFirst()" placeholder="ex. 123-456-7890" >
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="regBirthday">Date of Birth</label>
+                      <input type="text" class="form-control" id="regBirthday" onblur="checkRegFirst()" placeholder="ex. 12/12/1234" >
                     </div>
                   </div>
                   <div class="row float-right">
-                      <div class="col-12">
-                        <button id='step1Next' class="btn btn-primary open-step-2"
-                          type="button">Next
-                          <span class="fa fa-arrow-right"></span></button>
-                      </div>
+                    <div class="col-12">
+                      <button id='step1Next' class="btn btn-primary open-step-2"
+                              type="button" >Next<span class="fa fa-arrow-right"></span></button>
+                    </div>
                   </div>
                 </fieldset>
               </div>
-              <div class='form' id="step-2">
+              <div class='form step-2'>
                 <fieldset>
                   <legend class='text-center'>
-                    <h4 class='mb-3 h-text-size'>Which Category is the item?</h4>
-                    <p class='text-muted'>Choose one of the following.</p>
+                    <h4 class='mb-3 h-text-size'>Where you at?</h4>
+                    <p class='text-muted'>Give Us Your Location</p>
                   </legend>
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <div class=" card mb-3">
-                        <input class="form-check-input" type="radio" value="electronics"
-                          id="electronics" name="itemCategory" hidden>
-                        <label class="form-check-label" for="electronics">
-                          <img class="card-img-top" src="./images/img/electronics.jpg"
-                              alt="Photo credit: Toolstotal Visualhunt.com">
-                          <h5 class="card-title">Electronics</h5>
-                        </label>
-                      </div>
+                  <div class="form-row">
+                    <div class="form-group col-12">
+                      <label for="regAddress">Address</label>
+                      <input type="text" class="form-control" id="regAddress"
+                             placeholder="123 Main Street NW" onblur='checkRegSecond()'>
                     </div>
-                    <div class="col-sm-6">
-                      <div class=" card mb-3">
-                        <input class="form-check-input" type="radio" value="toys"
-                          id="toys" name="itemCategory" hidden>
-                        <label class="form-check-label" for="toys">
-                          <img class="card-img-top" src="./images/img/toys.jpg"
-                              alt="Photo credit: Toys Visualhunt.com">
-                          <h5 class="card-title">Toys</h5>
-                        </label>
-                      </div>
+                  </div>
+                  <div class='form-row'>
+                    <div class="form-group col-md-6">
+                      <label for="regNeighborhood">City/ Neighborhood</label>
+                      <input type="text" class="form-control"
+                             id="regNeighborhood" placeholder="Atlanta" onblur='checkRegSecond()'>
                     </div>
-                    <div class="col-sm-6">
-                      <div class=" card mb-3">
-                        <input class="form-check-input" type="radio" value="guitars"
-                          id="guitars" name="itemCategory" hidden>
-                        <label class="form-check-label" for="guitars">
-                          <img class="card-img-top" src="./images/img/electronics.jpg"
-                              alt="Photo credit: Toolstotal Visualhunt.com">
-                          <h5 class="card-title">Guitars</h5>
-                        </label>
-                      </div>
+                    <div class="form-group col-md-6">
+                      <label for="regZip">Zip</label>
+                      <input type="text" class="form-control" id="regZip" placeholder="30303" onblur='checkRegSecond()'>
                     </div>
-                    <div class="col-sm-6">
-                      <div class=" card mb-3">
-                        <input class="form-check-input" type="radio" value="gym"
-                          id="gym" name="itemCategory" hidden>
-                        <label class="form-check-label" for="gym">
-                          <img class="card-img-top" src="./images/img/electronics.jpg"
-                              alt="Photo credit: Toolstotal Visualhunt.com">
-                          <h5 class="card-title">Gym</h5>
-                        </label>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class=" card mb-3">
-                        <input class="form-check-input" type="radio" value="tools"
-                          id="tools" name="itemCategory" hidden>
-                        <label class="form-check-label" for="tools">
-                          <img class="card-img-top" src="./images/img/electronics.jpg"
-                              alt="Photo credit: Toolstotal Visualhunt.com">
-                          <h5 class="card-title">Tools</h5>
-                        </label>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class=" card mb-3">
-                        <input class="form-check-input" type="radio" value="furniture"
-                          id="furniture" name="itemCategory" hidden>
-                        <label class="form-check-label" for="furniture">
-                          <img class="card-img-top" src="./images/img/electronics.jpg"
-                              alt="Photo credit: Toolstotal Visualhunt.com">
-                          <h5 class="card-title">Furniture</h5>
-                        </label>
-                      </div>
+                    <div class="form-group col-md-6">
+                      <label for="regState">State</label>
+                      <input type="text" value='Georgia' class="form-control"
+                             id="regState" placeholder='Georgia' disabled>
                     </div>
                   </div>
                   <div class="row justify-content-around">
                     <div class="col-sm-6">
                       <button id='step2Back' class="btn btn-primary open-step-1" type="button"><span class="fa fa-arrow-left"></span>Back</button>
                     </div>
-                      <div class="col-sm-6">
-                        <button id='step2Next' class="btn btn-primary open-step-3 justify-content-end float-right" type="button">Next <span class="fa fa-arrow-right"></span></button>
-                      </div>
+                    <div class="col-sm-6">
+                      <button id='step2Next' class="btn btn-primary open-step-3 justify-content-end float-right" type="button">Next <span class="fa fa-arrow-right"></span></button>
+                    </div>
                   </div>
                 </fieldset>
               </div>
-              <div class='form' id="step-3">
+              <div class='form step-3'>
                 <fieldset>
                   <legend class='text-center'>
-                    <h4 class='mb-3 h-text-size'>Where you at?</h4>
-                    <p class='text-muted'>Give Us Your Location</p>
+                    <h4 class='mb-3 h-text-size'>Final step. Yay!</h4>
+                    <p class='text-muted'>Choose something unique.</p>
                   </legend>
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <div class=" card mb-3">
-                        <input class="form-check-input" type="radio" value="atlanta"
-                          id="atlanta" name="regLocation" hidden>
-                        <label class="form-check-label" for="atlanta">
-                          <img class="card-img-top" src="./images/img/electronics.jpg"
-                              alt="Photo credit: Toolstotal Visualhunt.com">
-                          <h5 class="card-title">Atlanta</h5>
-                        </label>
-                      </div>
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label for="regEmail">Email</label>
+                      <input type="email" class="form-control" id="regEmail"
+                             placeholder="ex. john.doe@example.com" onblur='checkRegFinal()'>
                     </div>
-                    <div class="col-sm-6">
-                      <div class=" card mb-3">
-                        <input class="form-check-input" type="radio" value="brookhaven"
-                          id="brookhaven" name="regLocation" hidden>
-                        <label class="form-check-label" for="brookhaven">
-                          <img class="card-img-top" src="./images/img/electronics.jpg"
-                              alt="Photo credit: Toolstotal Visualhunt.com">
-                          <h5 class="card-title">Brookhaven</h5>
-                        </label>
-                      </div>
+                    <div class="form-group col-md-6">
+                      <label for="regUsername">Desired Username</label>
+                      <input type="text" class="form-control"
+                             id="regUsername" placeholder="johndoe123" onblur='checkRegFinal()'>
                     </div>
-                    <div class="col-sm-6">
-                      <div class=" card mb-3">
-                        <input class="form-check-input" type="radio" value="savannah"
-                          id="savannah" name="regLocation" hidden>
-                        <label class="form-check-label" for="savannah">
-                          <img class="card-img-top" src="./images/img/electronics.jpg"
-                              alt="Photo credit: Toolstotal Visualhunt.com">
-                          <h5 class="card-title">Savannah</h5>
-                        </label>
-                      </div>
+                    <div class="form-group col-md-6">
+                      <label for="regPassword">Password</label>
+                      <input type="password" class="form-control"
+                             id="regPassword" placeholder="***********" onblur='checkRegFinal()'>
                     </div>
-                    <div class="col-sm-6">
-                      <div class=" card mb-3">
-                        <input class="form-check-input" type="radio" value="marietta"
-                          id="marietta" name="regLocation" hidden>
-                        <label class="form-check-label" for="marietta">
-                          <img class="card-img-top" src="./images/img/electronics.jpg"
-                              alt="Photo credit: Toolstotal Visualhunt.com">
-                          <h5 class="card-title">Marietta</h5>
-                        </label>
-                      </div>
+                    <div class="form-group col-md-6">
+                      <label for="regPassword2">Confirm Password</label>
+                      <input type="password" class="form-control"
+                             id="regPassword2" placeholder="***********" onblur='checkRegFinal()'>
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-sm-6">
                       <button id='step3Back' class="btn btn-primary open-step-2" type="button"><span class="fa fa-arrow-left"></span>Back</button>
-                    </div>
-                      <div class="col-sm-6 float-right">
-                        <button id='step3Next' class="btn btn-primary open-step-4 justify-content-end float-right" type="button">Next <span class="fa fa-arrow-right"></span></button>
-                      </div>
-                  </div>
-                </fieldset>
-              </div>f
-              <div  class='form' id="step-4">
-                <fieldset>
-                  <legend class='text-center'>
-                    <h4 class='mb-3 h-text-size'>Couple more things ...</h4>
-                    <p>Fill out the rest.</p>
-                  </legend>
-                  <div class="form-row">
-                    <div class="form-group col-md-6">
-                      <label for="regFirst">First Name</label>
-                      <input type="text" class="form-control" id="regFirst" placeholder="ex. John">
-                    </div>
-                    <div class="form-group col-md-6">
-                      <label for="regLast">Last Name</label>
-                      <input type="text" class="form-control" id="regLast"
-                        placeholder="ex. Doe">
-                    </div>
-                  </div>
-                  <div class="form-row">
-                    <div class="form-group col-md-6">
-                      <label for="regEmail">Email</label>
-                      <input type="email" class="form-control" id="regEmail"
-                        placeholder="ex. john.doe@example.com">
-                    </div>
-                    <div class="form-group col-md-6">
-                      <label for="regPassword">Password</label>
-                      <input type="password" class="form-control"
-                        id="regPassword" placeholder="***********">
-                    </div>
-                    <div class="form-group col-md-6">
-                      <label for="regPassword2">Confirm Password</label>
-                      <input type="password" class="form-control"
-                        id="regPassword2" placeholder="***********">
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <button id='step4Back' class="btn btn-primary open-step-3"
-                      type="button"><span class="fa fa-arrow-left"></span>Back</button>
                     </div>
                   </div>
                 </fieldset>
@@ -374,8 +238,8 @@ on social media and link to different pages
                 <button id='resetButton' class="btn btn-danger" type="button">Reset</button>
               </div>
               <div class="col-sm-6 text-md-right">
-                <button id='registerButton' type="submit" name="registerButton"
-                  class='btn btn-info' form='registerForm' disabled>Register</button>
+                <button id='registerButton' type="button" onclick="userRegister()" name="registerButton"
+                        class='btn btn-info' form='registerForm' disabled>Register</button>
               </div>
             </div>
           </div>
@@ -383,6 +247,174 @@ on social media and link to different pages
       </div>
     </div>
 
+    <script>//REGISTER USER INFORMATION
+    $(".step-1").show();$(".step-2, .step-3, .step-4").hide();
+    var step1NextBtn = $("#step1Next").prop('disabled', true);
+    var step2NextBtn = $("#step2Next").prop('disabled', true);
+    var registerButton = $("#registerButton").prop('disabled', true);
+    var regFirst = '',regLast = '', regPhone = '',regBirthday = '';
+    var regAddress = '', regNeighborhood = '', regZip = '';
+    var regEmail = '',regUsername = '',regPassword = '', regPassword2 = '';
+
+    //checks register first section validity
+    function checkRegFirst(){
+      regFirst = $('#regFirst').val();
+      regLast = $('#regLast').val();
+      regPhone = $('#regPhone').val();
+      regBirthday = $('#regBirthday').val();
+      if(regFirst == '' || regLast == '' || regPhone == '' || regBirthday == '') {
+        console.log("Something is missing");
+        $(step1NextBtn).prop('disabled', true);
+      } else {
+        var firstIsValid = validateRegFirst(regFirst, regLast, regPhone, regBirthday);
+        if(!firstIsValid) {
+          $(step1NextBtn).prop('disabled', true);
+
+          console.log('incorrect information');
+
+        } else {
+          console.log('correct information. Going to step 2');
+          $(step1NextBtn).prop('disabled', false);
+        }
+      }
+    }
+    function validateRegFirst(fname, lname, phone, birthday) {
+      //here is where the validation of the form happens
+      // var lettersOnly = /^[a-zA-Z]+$/;
+      // // var numbersOnly = /[0-9+]+$/;
+      // // var firstCheck = false;
+      // if(!fname.match(lettersOnly)) {
+      //   console.log("Incorrect First Name");
+      //   return false;
+      // }
+      // if(!lname.match(lettersOnly)) {
+      //   console.log("Incorrect Last Name");
+      //   return false;
+      // }
+      // if(phone.match(numbersOnly)) {
+      //   console.log("Incorrect Phone Number");
+      //   return false;
+      // }
+      // return true;
+
+
+      if(fname != '' && lname != '' && phone != '' && birthday != '') {
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+    function checkRegSecond(){
+      regAddress = $('#regAddress').val();
+      regNeighborhood = $('#regNeighborhood').val();
+      regZip = $('#regZip').val();
+      if(regAddress == '' || regNeighborhood == '' || regZip == '') {
+        $(step2NextBtn).prop('disabled', true);
+      } else {
+        var secondIsValid = validateRegSecond(regAddress, regNeighborhood, regZip);
+        if(!secondIsValid) {
+          console.log('incorrect info');
+        } else {
+          console.log('correct information. Going to step 3');
+          $(step2NextBtn).prop('disabled', false);
+        }
+      }
+    }
+    function validateRegSecond(address, neighborhood, zip) {
+      if(address != '' && neighborhood != '' && zip != '') {
+        return true;
+      } else {
+        return false;
+      }
+    }
+    function checkRegFinal(){
+      regEmail = $('#regEmail').val();
+      regUsername = $("#regUsername").val();
+      regPassword = $('#regPassword').val();
+      regPassword2 = $('#regPassword2').val();
+      if(regEmail == '' || regUsername == '' || regPassword == '' || regPassword2 == '') {
+        $(registerButton).prop('disabled', true);
+      } else {
+        var finalIsValid = validateRegFinal(regEmail, regUsername, regPassword, regPassword2);
+        if(!finalIsValid) {
+          console.log('incorrect information');
+        } else {
+          console.log('correct info. Completed form!');
+          $(registerButton).prop('disabled', false);
+        }
+      }
+    }
+    function validateRegFinal(email, username, password, password2) {
+      if(email != '' && username != '' && password != '' && password2 != '') {
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+    function userRegister() {
+      console.log("user is registered");
+      console.log("First: " + regFirst + '\nLast: '+ regLast + '\nPhone: ' + regPhone +
+        'Birthday: ' + regBirthday + "\nAddress: " + regAddress + '\nNeighborhood: ' +
+        regNeighborhood + '\nZip: ' + regZip + '\nEmail: ' + regEmail + '\nUsername: ' +
+        regUsername + '\nPassword: ' + regPassword + '\nPassword Confirm: ' + regPassword2);
+      alert("REGISTRATION SUCCESSFUL!");
+      insertHTMLFile("dashboard.html", 'body');
+    }
+
+    $(function(){
+      $(".open-step-1").click(function() {
+        $(".form").hide("fast");
+        $(".step-1").show("slow");
+      });
+    });
+    //Open Step 2 Page
+    $(function() {
+      $(".open-step-2").click(function() {
+        $(".form").hide("fast");
+        $(".step-2").show("slow");
+      });
+    });
+    //Open Step 3 Page
+    $(function(){
+      $(".open-step-3").click(function() {
+        $(".form").hide("fast");
+        $(".step-3").show("slow");
+      });
+    });
+    //open step 4
+    $(function(){
+      $(".open-step-4").click(function() {
+        $(".form").hide("fast");
+        $(".step-4").show("slow");
+      });
+    });
+
+    $(function(){
+      $('#register-modal').on('hidden.bs.modal', function(){
+        $(step1NextBtn, step2NextBtn).prop('disabled', true);
+        $("#registerButton").prop('disabled', true);
+        $("#registerForm")[0].reset();
+        $(".form").hide('fast');
+        $(".step-1").show('slow');
+      });
+    });
+
+
+    //reset Register Form
+    $(function(){
+      $("#resetButton, .close").on('click', function(){
+        $("#registerForm")[0].reset();
+        $(step1NextBtn).prop('disabled', true);
+        $(step2NextBtn).prop('disabled', true);
+        $("#registerButton").prop('disabled', true);
+        alert("form cleared");
+        $(".form").hide('fast');
+        $(".step-1").show('slow');
+      });
+    });
+    </script>
     <!--FORGET PASSWORD MODAL - COMPLETE-->
     <div class="modal fade" id="forgot-password-modal" tabindex="-1"
       role="dialog" aria-labelledby="forgot-password-modal-label"
@@ -399,8 +431,7 @@ on social media and link to different pages
           <div class="modal-body card-body">
             <div class="row justify-content-center bg-white">
               <div class="col-12">
-                <form name="forgotPassForm" id="forgotPassForm" method="post"
-                  action="index.html" class="text-center">
+                <form name="forgotPassForm" id="forgotPassForm" method="post" class="text-center">
                   <fieldset>
                     <legend class="text-center">
                       <h3>Forgot Your Password?</h3>
@@ -420,10 +451,21 @@ on social media and link to different pages
           </div>
           <div class="card-footer">
             <div class="row justify-content-end text-center">
-              <button class="btn btn-info" id="forgotPassButton" type='submit'
-                name="forgotPassButton" form='forgotPassForm'>Send It!</button>
-                <!-- <button id='loginButton' type="submit" name="loginButton"
-                  class='btn btn-success'>Login</button> -->
+              <button class="btn btn-info" id="forgotPassButton" type='button'
+                name="forgotPassButton" form='forgotPassForm' onclick="forgotPasswordForm()">Send It!</button>
+              <script>
+                function forgotPasswordForm() {
+                  var forgotPassEmail = $("#forgotPassEmail").val();
+                  if(forgotPassEmail == '') {
+                    alert('Please Enter Email to Resend Password');
+                  } else {
+                    //validate that the email exists
+                    //....
+                    console.log("Validating email for new password...");
+                    insertHTMLFile('index.html', 'body');
+                  }
+                }
+              </script>
             </div>
           </div>
         </div>
@@ -507,8 +549,6 @@ on social media and link to different pages
       </div>
     </div>
 
-<!--END OF MODALS-->
-
 
   <!-- INDEX PAGE -->
     <main class='container-fluid'>
@@ -523,12 +563,11 @@ on social media and link to different pages
       </section>
 
       <!--quote section-->
-      <section class='section bg-color2'  id="home-quote">
+      <section class='section bg-color2' id="home-quote">
         <div class="container animation-element bounce-up cf ">
             <div class="row subject">
                 <blockquote class="blockquote text-center col ">
                     <p class="m-0 lead display-5 p-text-size">
-                      <!--this needs to be updated to flow with the steps below-->
                       WeeClo is an spot where renters can check out one-time used items without having
                       to purchase them brand new while owners have to chance to make money on stuff they don't use anymore.
                     </p>
@@ -664,7 +703,6 @@ on social media and link to different pages
             </div>
           </div>
       </section>
-
       <section class="py-5 bg-color2" id="home-information">
         <div class="container">
           <div class="row my-2 my-md-4 justify-content-center" >
@@ -744,8 +782,8 @@ on social media and link to different pages
         </div>
       </div>
     </footer>
-    <!-- <script src="js/script.js"></script> -->
-    <script src='js/new-script.js'></script>
+     <script src="js/weeclo.js"></script>
+    <!--<script src='js/new-script.js'></script>-->
     <script defer src="https://use.fontawesome.com/releases/v5.2.0/js/all.js" integrity="sha384-4oV5EgaV02iISL2ban6c/RmotsABqE4yZxZLcYMAdG7FAPsyHYAPpywE9PJo+Khy" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

@@ -1,4 +1,5 @@
-/*-----------------------------------------------------------
+
+ /*-----------------------------------------------------------
                             INDEX
 -------------------------------------------------------------*/
 
@@ -57,11 +58,20 @@
     }
   }, false);
   //reset login form when click out of modals
-    $(function(){
-      $("#login-modal").on('hidden.bs.modal', function(){
-          $("#loginForm")[0].reset();
-      });
-    });
+  //   $(function(){
+  //     $("#login-modal").on('hidden.bs.modal', function(){
+  //         $("#loginForm")[0].reset();
+  //     });
+  //   });
+
+
+
+
+
+
+
+
+
 /*Triggered when User logs out*/
 function logoutSubmit() {
   alert("Logout Successful");
@@ -69,112 +79,112 @@ function logoutSubmit() {
 }
 //Register Information
 
-$("#step-1").show();$("#step-2, #step-3, #step-4").hide();
-var step1NextBtn = $("#step1Next").prop('disabled', true);
-var step2NextBtn = $("#step2Next").prop('disabled', true);
-var step3NextBtn = $("#step3Next").prop('disabled', true);
-var registerButton = $("#registerButton").prop('disabled', true);
-var registerForm = document.getElementById('registerForm');
-
-//This is where the validation for login can go
-registerForm.addEventListener('submit', function(event) {
-  var ownerType = $('input[name=ownerType]:checked').val();
-  var itemCategory = $('input[name=itemCategory]:checked').val();
-  var regLocation = $('input[name=regLocation]:checked').val();
-  var regFirst = $('#regFirst').val();
-  var regLast = $('#regLast').val();
-  var regEmail = $('#regEmail').val();
-  var regPassword = $('#regPassword').val();
-  var regPassword2 = $('#regPassword2').val();
-  alert(ownerType + ' ' + itemCategory + ' ' + regLocation + ' ' + regFirst +
-    ' ' + regLast + ' ' + regEmail + ' ' + regPassword + ' ' + regPassword2);
-  // alert("form submitted");
-  if(regFirst == '' || regLast == '' || regEmail == '' ||
-    regPassword == '' || regPassword2 == '') {
-    alert("Missing information");
-    event.preventDefault();
-  } else {
-    alert("filled in information");
-      document.location = './search.html';
-  }
-}, false);
-
-$(function(){
-  $('#register-modal').on('hidden.bs.modal', function(){
-    $(step1NextBtn, step2NextBtn, step3NextBtn).prop('disabled', true);
-    $("#registerButton").prop('disabled', true);
-    $("#registerForm")[0].reset();
-    $(".form").hide('fast');
-    $("#step-1").show('slow');
-    });
-});
-//enable Button for next step
-$(function(){
-  $("input[name=ownerType]").on('click', function(){
-    $(step1NextBtn).prop('disabled', false);
-
-  });
-});
-//enable step2 button
-$(function(){
-  $("input[name=itemCategory]").on('click', function(){
-    $(step2NextBtn).prop('disabled', false);
-  });
-});
-//enable step3 button
-$(function(){
-  $("input[name=regLocation]").on('click', function(){
-    $(step3NextBtn).prop('disabled', false);
-
-  });
-});
-//Open Step 1 Page
-$(function(){
-    $(".open-step-1").click(function() {
-      if($('input[name=ownerType]:checked').val() == '') {
-        $(step1NextBtn).prop('disabled',true);
-      } else {
-        $(step1NextBtn).prop('disabled', false);
-          $(".form").hide("fast");
-          $("#step-1").show("slow");
-      }
-    });
-});
-//Open Step 2 Page
-$(function() {
-    $(".open-step-2").click(function() {
-        $(".form").hide("fast");
-        $("#step-2").show("slow");
-   });
-});
-//Open Step 3 Page
-$(function(){
-    $(".open-step-3").click(function() {
-        $(".form").hide("fast");
-        $("#step-3").show("slow");
-    });
-});
-//open step 4
-$(function(){
-    $(".open-step-4").click(function() {
-      $("#registerButton").prop('disabled', false);
-        $(".form").hide("fast");
-        $("#step-4").show("slow");
-    });
-});
-//reset Register Form
-$(function(){
-  $("#resetButton, .close").on('click', function(){
-      $("#registerForm")[0].reset();
-      $(step1NextBtn).prop('disabled', true);
-      $(step2NextBtn).prop('disabled', true);
-      $(step3NextBtn).prop('disabled', true);
-      $("#registerButton").prop('disabled', true);
-      alert("form cleared");
-      $(".form").hide('fast');
-      $("#step-1").show('slow');
-  });
-});
+// $("#step-1").show();$("#step-2, #step-3, #step-4").hide();
+// var step1NextBtn = $("#step1Next").prop('disabled', true);
+// var step2NextBtn = $("#step2Next").prop('disabled', true);
+// var step3NextBtn = $("#step3Next").prop('disabled', true);
+// var registerButton = $("#registerButton").prop('disabled', true);
+// var registerForm = document.getElementById('registerForm');
+//
+// //This is where the validation for login can go
+// registerForm.addEventListener('submit', function(event) {
+//   var ownerType = $('input[name=ownerType]:checked').val();
+//   var itemCategory = $('input[name=itemCategory]:checked').val();
+//   var regLocation = $('input[name=regLocation]:checked').val();
+//   var regFirst = $('#regFirst').val();
+//   var regLast = $('#regLast').val();
+//   var regEmail = $('#regEmail').val();
+//   var regPassword = $('#regPassword').val();
+//   var regPassword2 = $('#regPassword2').val();
+//   alert(ownerType + ' ' + itemCategory + ' ' + regLocation + ' ' + regFirst +
+//     ' ' + regLast + ' ' + regEmail + ' ' + regPassword + ' ' + regPassword2);
+//   // alert("form submitted");
+//   if(regFirst == '' || regLast == '' || regEmail == '' ||
+//     regPassword == '' || regPassword2 == '') {
+//     alert("Missing information");
+//     event.preventDefault();
+//   } else {
+//     alert("filled in information");
+//       document.location = './search.html';
+//   }
+// }, false);
+//
+// $(function(){
+//   $('#register-modal').on('hidden.bs.modal', function(){
+//     $(step1NextBtn, step2NextBtn, step3NextBtn).prop('disabled', true);
+//     $("#registerButton").prop('disabled', true);
+//     $("#registerForm")[0].reset();
+//     $(".form").hide('fast');
+//     $("#step-1").show('slow');
+//     });
+// });
+// //enable Button for next step
+// $(function(){
+//   $("input[name=ownerType]").on('click', function(){
+//     $(step1NextBtn).prop('disabled', false);
+//
+//   });
+// });
+// //enable step2 button
+// $(function(){
+//   $("input[name=itemCategory]").on('click', function(){
+//     $(step2NextBtn).prop('disabled', false);
+//   });
+// });
+// //enable step3 button
+// $(function(){
+//   $("input[name=regLocation]").on('click', function(){
+//     $(step3NextBtn).prop('disabled', false);
+//
+//   });
+// });
+// //Open Step 1 Page
+// $(function(){
+//     $(".open-step-1").click(function() {
+//       if($('input[name=ownerType]:checked').val() == '') {
+//         $(step1NextBtn).prop('disabled',true);
+//       } else {
+//         $(step1NextBtn).prop('disabled', false);
+//           $(".form").hide("fast");
+//           $("#step-1").show("slow");
+//       }
+//     });
+// });
+// //Open Step 2 Page
+// $(function() {
+//     $(".open-step-2").click(function() {
+//         $(".form").hide("fast");
+//         $("#step-2").show("slow");
+//    });
+// });
+// //Open Step 3 Page
+// $(function(){
+//     $(".open-step-3").click(function() {
+//         $(".form").hide("fast");
+//         $("#step-3").show("slow");
+//     });
+// });
+// //open step 4
+// $(function(){
+//     $(".open-step-4").click(function() {
+//       $("#registerButton").prop('disabled', false);
+//         $(".form").hide("fast");
+//         $("#step-4").show("slow");
+//     });
+// });
+// //reset Register Form
+// $(function(){
+//   $("#resetButton, .close").on('click', function(){
+//       $("#registerForm")[0].reset();
+//       $(step1NextBtn).prop('disabled', true);
+//       $(step2NextBtn).prop('disabled', true);
+//       $(step3NextBtn).prop('disabled', true);
+//       $("#registerButton").prop('disabled', true);
+//       alert("form cleared");
+//       $(".form").hide('fast');
+//       $("#step-1").show('slow');
+//   });
+// });
 
 
 //FORGOT PASSWORD
@@ -333,6 +343,29 @@ $(function(){
    });
 });
 
+ // var searchForm = document.getElementById('indexSearchForm');
+ // searchForm.addEventListener('submit', function(e) {
+ //   alert("searching");
+ //   document.location = './search.html';
+ //   e.preventDefault();
+
+   //allow the people to search but if they want to click on an item, then they are forced to sign up
+   // var loginEmail = $('#loginEmail').val();
+   // var loginPass = $('#loginPass').val();
+   // if(loginEmail == '' || loginPass == '') {
+   //   alert("Missing information");
+   //   e.preventDefault();
+   // } else {
+   //     var correctInfo = validateLogin(loginEmail, loginPass);
+   //     if(!correctInfo){
+   //       alert('incorrect information');
+   //       e.preventDefault();
+   //     }else {
+   //       alert("correct information");
+   //       document.location = './search.html';
+   //     }
+   // }
+ }, false);
   /*----------------------------RESULTS-----------------------------*/
 
 

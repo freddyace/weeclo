@@ -9,208 +9,94 @@
     <link rel="stylesheet" href="css/new-style.css">
   </head>
   <body>
-    <script type="text/javascript">
-    $(function(){
-      $('#sidebarCollapse').on('click', function () {
-          $('#sidebar').toggleClass('active');
-          $("#sidebar-header").toggle();
-      });
-    });
-    </script>
-
-
-    <main class='container-fluid wrapper d-flex align-items-stretch'>
-      <nav id='sidebar' class='bg-color'>
-        <div class="sidebar-header p-3 bg-color">
-          <h3>WeeClo</h3>
-          <strong>WC</strong>
-        </div>
-        <ul class='list-unstyled components'>
-          <li ><!--class="active"-->
-              <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                  <i class="fas fa-home"></i>
-                  Dashboard
-              </a>
-              <ul class="collapse list-unstyled" id="homeSubmenu">
-                  <li>
-                      <a href="./dashboard.html">Overview</a>
-                  </li>
-                  <li>
-                      <a href="#">Dash3</a>
-                  </li>
-                  <li>
-                      <a href="#">Dassh3</a>
-                  </li>
-              </ul>
-          </li>
-          <!-- <li>
-              <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                  <i class="fas fa-copy"></i>
-                  Pages
-              </a>
-              <ul class="collapse list-unstyled" id="pageSubmenu">
-                  <li>
-                      <a href="#">Page 1</a>
-                  </li>
-                  <li>
-                      <a href="#">Page 2</a>
-                  </li>
-                  <li>
-                      <a href="#">Page 3</a>
-                  </li>
-              </ul>
-          </li> -->
-          <li>
-            <a href="./account.html">
-              <i class='fas fa-user'></i>
-              Account
-            </a>
-          </li>
-          <li>
-              <a href="./notifications.html">
-                  <i class="fas fa-bell"></i>
-                  Notifications
-              </a>
-          </li>
-          <li>
-              <a href="./messages.html">
-                  <i class="fas fa-comments"></i>
-                  Messages
-                  <span class="badge badge-info badge-pill"
-                    id='inboxBadge'>14</span>
-              </a>
-          </li>
-          <li>
-            <a href="./index.html">
-              <i class='fas fa-user'></i>
-              Logout
-            </a>
-          </li>
-        </ul>
-      </nav>
-      <div class='container-fluid'>
-          <nav class="navbar navbar-expand-lg navbar-light bg-color">
-              <div class="container-fluid">
-                  <button type="button" id="sidebarCollapse" class="btn btn-info">
-                      <i class="fas fa-align-left"></i>
-                      <span class='d-none d-md-inline-block'>Menu</span>
-                  </button>
-                  <form class="form-inline d-none d-md-block my-2"
-                    id='searchFormSection' action='./search.html' method="POST">
-                    <div class="row justify-content-center">
-                      <div class="form-group  mb-2">
-                        <input type="password" class="form-control "
-                        name='searchFormSectionInput' placeholder="I am looking for ...">
-                      </div>
-                      <button type="submit" name="button" class='btn btn-danger mx-2'>
-                        <i class='fas fa-search mx-2'></i>
-                        <span class='d-none d-lg-inline-block'>Search</span>
-                      </button>
-                    </div>
-                  </form>
-                  <div class="d-block d-md-none">
-                    <a href="./search.html" class='btn btn-danger'>
-                        <i class='fas fa-search'></i></a>
-                  </div>
-              </div>
-          </nav>
-          <div id='dashboardSection'>
-            <div class="row my-2 small">
-              <a href='./search.html'><i class="fas fa-chevron-left mx-2"></i>
-                  Back to Search</a>
-            </div>
-            <hr>
-            <div class="" id='messagesSection'>
-              <!--this is the section that should change based on the ajax call-->
-              <h2 id='headingContent'>Messages</h2>
-              <div class="row">
-                <div class="col-12 text-center my-3">
-                  <h4>You have no messages.</h4>
-                  <a href="./search.html" class='btn btn-danger'>Browse Items</a>
-                </div>
-                <div class="col-12 my-3">
-                  <nav class=' '>
-                    <div class="nav nav-tabs justify-content-center" id="nav-tab"
-                      role="tablist">
-                      <a class="nav-item nav-link active" id="nav-inbox-tab"
-                        data-toggle="tab" href="#nav-inbox" role="tab"
-                        aria-controls="nav-inbox" aria-selected="true">Inbox
-                        <span class="badge badge-info badge-pill"
-                          id='inboxBadge'>14</span>
-                      </a>
-                      <a class="nav-item nav-link" id="nav-outbox-tab"
-                        data-toggle="tab" href="#nav-outbox" role="tab"
-                        aria-controls="nav-outbox" aria-selected="false">Outbox
-                        <span class="badge badge-info badge-pill"
-                          id='outboxBadge'>0</span>
-                      </a>
-                      <a class="nav-item nav-link" id="nav-history-tab"
-                        data-toggle="tab" href="#nav-history" role="tab"
-                        aria-controls="nav-history" aria-selected="false">History
-                        <span class="badge badge-info badge-pill"
-                          id='historyBadge'>0</span>
-                      </a>
-                    </div>
-                  </nav>
-                  <div class="tab-content" id="nav-tabContent">
-                    <div class="tab-pane fade show active" id="nav-inbox"
-                      role="tabpanel" aria-labelledby="nav-inbox-tab">
-                      <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Cras justo odio</li>
-                        <li class="list-group-item">Dapibus ac facilisis in</li>
-                        <li class="list-group-item">Morbi leo risus</li>
-                        <li class="list-group-item">Porta ac consectetur ac</li>
-                        <li class="list-group-item">Vestibulum at eros</li>
-                      </ul>
-                    </div>
-                    <div class="tab-pane fade" id="nav-outbox" role="tabpanel"
-                      aria-labelledby="nav-outbox-tab">
-                      <p>You have no outbox messages.</p>
-                    </div>
-                    <div class="tab-pane fade" id="nav-history" role="tabpanel"
-                      aria-labelledby="nav-history-tab">
-                        <p>You have no history.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+  <div class="" id='messagesSection'>
+    <!--this is the section that should change based on the ajax call-->
+    <h2 id='headingContent'>Messages</h2>
+    <div class="row">
+      <div class="col-12 text-center my-3">
+        <h4>You have no messages.</h4>
+        <a href="./search.html" class='btn btn-danger'>Browse Items</a>
       </div>
-    </main>
-    <footer class="footer bg-color text-white p-3">
-      <div class="container-fluid">
-        <div class="row text-center">
-          <div class="col-lg-4 order-last order-lg-first text-lg-left" >
-            <p>Copyrighted &copy; - 2018 | <a href="#">WeeClo.com</a></p>
+      <div class="col-12 my-3">
+        <nav class=' '>
+          <div class="nav nav-tabs justify-content-center" id="nav-tab"
+               role="tablist">
+            <a class="nav-item nav-link active" id="nav-inbox-tab"
+               data-toggle="tab" href="#nav-inbox" role="tab"
+               aria-controls="nav-inbox" aria-selected="true">Inbox
+              <span class="badge badge-info badge-pill"
+                    id='inboxBadge'>14</span>
+            </a>
+            <a class="nav-item nav-link" id="nav-outbox-tab"
+               data-toggle="tab" href="#nav-outbox" role="tab"
+               aria-controls="nav-outbox" aria-selected="false">Outbox
+              <span class="badge badge-info badge-pill"
+                    id='outboxBadge'>0</span>
+            </a>
+            <a class="nav-item nav-link" id="nav-history-tab"
+               data-toggle="tab" href="#nav-history" role="tab"
+               aria-controls="nav-history" aria-selected="false">History
+              <span class="badge badge-info badge-pill"
+                    id='historyBadge'>0</span>
+            </a>
           </div>
-          <div class="col-lg-8 text-center text-lg-right">
-            <ul class="list-unstyled list-inline">
-              <li class="list-inline-item">
-                <a href="./errorPage.html">Contact Us</a>
-              </li>
-              <li class="list-inline-item">
-                <a href="./errorPage.html">Feedback</a>
-              </li>
-              <li class="list-inline-item">
-                <a href="./errorPage.html">About Us</a>
-              </li>
-              <li class="list-inline-item">
-                <a href="./errorPage.html">Investor Relations</a>
-              </li>
-              <li class="list-inline-item">
-                <a href="./errorPage.html">Terms of Services</a>
-              </li>
-              <li class="list-inline-item">
-                <a href="./errorPage.html">Privacy Policy</a>
-              </li>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+          <div class="tab-pane fade show active" id="nav-inbox"
+               role="tabpanel" aria-labelledby="nav-inbox-tab">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Cras justo odio</li>
+              <li class="list-group-item">Dapibus ac facilisis in</li>
+              <li class="list-group-item">Morbi leo risus</li>
+              <li class="list-group-item">Porta ac consectetur ac</li>
+              <li class="list-group-item">Vestibulum at eros</li>
             </ul>
           </div>
+          <div class="tab-pane fade" id="nav-outbox" role="tabpanel"
+               aria-labelledby="nav-outbox-tab">
+            <p>You have no outbox messages.</p>
+          </div>
+          <div class="tab-pane fade" id="nav-history" role="tabpanel"
+               aria-labelledby="nav-history-tab">
+            <p>You have no history.</p>
+          </div>
         </div>
       </div>
-    </footer>
-    <script src="js/script.js"></script>
-    <script src='js/new-script.js'></script>
+    </div>
+  </div>
+    <!--<footer class="footer bg-color text-white p-3">-->
+      <!--<div class="container-fluid">-->
+        <!--<div class="row text-center">-->
+          <!--<div class="col-lg-4 order-last order-lg-first text-lg-left" >-->
+            <!--<p>Copyrighted &copy; - 2018 | <a href="#">WeeClo.com</a></p>-->
+          <!--</div>-->
+          <!--<div class="col-lg-8 text-center text-lg-right">-->
+            <!--<ul class="list-unstyled list-inline">-->
+              <!--<li class="list-inline-item">-->
+                <!--<a href="./errorPage.html">Contact Us</a>-->
+              <!--</li>-->
+              <!--<li class="list-inline-item">-->
+                <!--<a href="./errorPage.html">Feedback</a>-->
+              <!--</li>-->
+              <!--<li class="list-inline-item">-->
+                <!--<a href="./errorPage.html">About Us</a>-->
+              <!--</li>-->
+              <!--<li class="list-inline-item">-->
+                <!--<a href="./errorPage.html">Investor Relations</a>-->
+              <!--</li>-->
+              <!--<li class="list-inline-item">-->
+                <!--<a href="./errorPage.html">Terms of Services</a>-->
+              <!--</li>-->
+              <!--<li class="list-inline-item">-->
+                <!--<a href="./errorPage.html">Privacy Policy</a>-->
+              <!--</li>-->
+            <!--</ul>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</footer>-->
+    <!--<script src="js/script.js"></script>-->
+    <!--<script src='js/new-script.js'></script>-->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

@@ -1,307 +1,195 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Dashboard - WeeClo</title>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <link rel="stylesheet" href="css/new-style.css">
-  </head>
-  <body>
-    <script type="text/javascript">
-    $(function(){
-      $('#sidebarCollapse').on('click', function () {
-          $('#sidebar').toggleClass('active');
-          $("#sidebar-header").toggle();
-      });
-    });
-    </script>
-
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
     <main class='container-fluid wrapper d-flex align-items-stretch'>
       <nav id='sidebar' class='bg-color'>
         <div class="sidebar-header p-3 bg-color">
-          <h3>WeeClo</h3>
+          <a class="navbar-brand brand" href="index.html">
+            <img src="./images/img/Logo_White.png" alt="WeeClo Logo">
+          </a>
           <strong>WC</strong>
         </div>
         <ul class='list-unstyled components'>
-          <li>
-              <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                  <i class="fas fa-home"></i>
-                  Dashboard
-              </a>
-              <ul class="collapse list-unstyled" id="homeSubmenu">
-                  <li>
-                      <a href="./dashboard.html">Overview</a>
-                  </li>
-                  <li>
-                      <a href="#">Dash3</a>
-                  </li>
-                  <li>
-                      <a href="#">Dassh3</a>
-                  </li>
-              </ul>
+          <li id='overviewBtn'>
+            <a href="#">
+              <i class="fas fa-home"></i>
+              Overview
+            </a>
           </li>
-          <li>
-            <a href="./account.html">
+          <li  id='accountBtn'>
+            <a href="#">
               <i class='fas fa-user'></i>
               Account
             </a>
           </li>
-          <li>
-              <a href="./notifications.html">
-                  <i class="fas fa-bell"></i>
-                  Notifications
-              </a>
+          <li id='notificationsBtn'>
+            <a href="#">
+              <i class="fas fa-bell"></i>
+              Notifications
+            </a>
+          </li>
+          <li id='messagesBtn'>
+            <a href="#">
+              <i class="fas fa-comments"></i>
+              Messages <span class="badge badge-info badge-pill" id='inboxBadge'>14</span>
+            </a>
           </li>
           <li>
-              <a href="./messages.html">
-                  <i class="fas fa-comments"></i>
-                  Messages <span class="badge badge-info badge-pill"
-                    id='inboxBadge'>14</span>
-              </a>
-          </li>
-          <li>
-            <a href="./index.html">
+            <!--<button onclick="userLogout()" id="logoutButton" type="button">-->
+              <!--<i class='fas fa-user'></i> Logout-->
+            <!--</button>-->
+            <a onclick="userLogout()" id='logoutButton'>
               <i class='fas fa-user'></i>
               Logout
             </a>
+
           </li>
         </ul>
       </nav>
       <div class='container-fluid'>
-          <nav class="navbar navbar-expand-lg navbar-light bg-color">
-              <div class="container-fluid">
-                  <button type="button" id="sidebarCollapse" class="btn btn-info">
-                      <i class="fas fa-align-left"></i>
-                      <span class='d-none d-md-inline-block'>Menu</span>
-                  </button>
-                  <form name='searchForm' class="form-inline searchForm d-none d-md-block row justify-content-center"
-                    id='searchForm' action="search.html" method="post">
-                        <div class="row justify-content-center">
-                          <div class="form-group">
-                            <input type="password" class="form-control "
-                            name='searchFormSectionInput'
-                            placeholder="I am looking for ...">
-                          </div>
-                          <button type="submit" name="button" class='btn btn-danger mx-2'>
-                            <i class='fas fa-search mx-2'></i>
-                            <span class='d-none d-lg-inline-block'>Search</span>
-                          </button>
-                        </div>
-                  </form>
-                  <div class="d-block d-md-none">
-                    <a href="./search.html" class='btn btn-danger'><i class='fas fa-search'></i></a>
-                  </div>
-              </div>
-          </nav>
-          <div id='dashboardSection'>
-            <div class="row my-2 small">
-              <a href='./search.html'><i class="fas fa-chevron-left mx-2"></i>Back to Search</a>
-            </div>
-            <hr>
-            <div class="" id='changingSection'>
-              <!--this is the section that should change based on the ajax call-->
-              <h2 id='headingContent'>Overview</h2>
-              <div class="row">
-                <div class="col-12">
-                  <div class="row card mb-3" id='recommendedSection'>
-                    <div class="row">
-                      <div class="col-sm-6">
-                        <h4>Recommended Items</h4>
-                        <!-- <p class='text-lead'>Based on Recent Activity</p> -->
-                      </div>
-                      <div class="col-sm-6 text-right">
-                        <a href="#">View More<i class='fas fa-chevron-right'></i></a>
-                      </div>
-                    </div>
-                    <hr>
-                    <div class="col-12">
-                      <div class="list-group list-group-flush">
-                        <a href="#" class="list-group-item list-group-item-action">
-                          <div class="row ">
-                            <div class='col-12 col-sm-6 col-md-5 col-lg-4'>
-                              <img src="./images/img/tools.jpg" alt="Image"
-                              class="w-100 img-fluid">
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-7 col-lg-8 mt-2">
-                              <div class="d-flex flex-column">
-                                  <h5 id='recommendItemName'>Item Name</h5>
-                                <div class="row">
-                                  <p id='recommendItemPrice' class='mr-auto'>Price</p>
-                                  <p id='recommendItemLocation'>Location</p>
-                                </div>
-                                <p id='recommendItemDesc'>Description</p>
-                              </div>
-                            </div>
-                          </div>
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action">
-                          <div class="row ">
-                            <div class='col-12 col-sm-6 col-md-5 col-lg-4'>
-                              <img src="./images/img/tools.jpg" alt="Image"
-                              class="w-100 img-fluid">
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-7 col-lg-8 mt-2">
-                              <div class="d-flex flex-column">
-                                  <h5 id='recommendItemName'>Item Name</h5>
-                                <div class="row">
-                                  <p id='recommendItemPrice' class='mr-auto'>Price</p>
-                                  <p id='recommendItemLocation'>Location</p>
-                                </div>
-                                <p id='recommendItemDesc'>Description</p>
-                              </div>
-                            </div>
-                          </div>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row card mb-3" id='trendingSection'>
-                    <div class="row">
-                      <div class="col-sm-6">
-                        <h4>Trending Items</h4>
-                      </div>
-                      <div class="col-sm-6 text-right">
-                        <a href="#">View More<i class='fas fa-chevron-right'></i></a>
-                      </div>
-                    </div>
-                    <hr>
-                    <div class="col-12">
-                      <div class="list-group list-group-flush">
-                        <a href="#" class="list-group-item list-group-item-action">
-                          <div class="row ">
-                            <div class='col-12 col-sm-6 col-md-5 col-lg-4'>
-                              <img src="./images/img/tools.jpg" alt="Image"
-                              class="w-100 img-fluid">
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-7 col-lg-8 mt-2">
-                              <div class="d-flex flex-column">
-                                  <h5 id='trendingItemName'>Item Name</h5>
-                                <div class="row">
-                                  <p id='trendingItemPrice' class='mr-auto'>Price</p>
-                                  <p id='trendingItemLocation'>Location</p>
-                                </div>
-                                <p id='trendingItemDesc'>Description</p>
-                              </div>
-                            </div>
-                          </div>
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action">
-                          <div class="row ">
-                            <div class='col-12 col-sm-6 col-md-5 col-lg-4'>
-                              <img src="./images/img/tools.jpg" alt="Image"
-                              class="w-100 img-fluid">
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-7 col-lg-8 mt-2">
-                              <div class="d-flex flex-column">
-                                  <h5 id='trendingItemName'>Item Name</h5>
-                                <div class="row">
-                                  <p id='trendingItemPrice' class='mr-auto'>Price</p>
-                                  <p id='trendingItemLocation'>Location</p>
-                                </div>
-                                <p id='trendingItemDesc'>Description</p>
-                              </div>
-                            </div>
-                          </div>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row card mb-3" id='favoritesSection'>
-                    <div class="row">
-                      <div class="col-sm-6">
-                        <h4>Favorite Items</h4>
-                      </div>
-                      <div class="col-sm-6 text-right">
-                        <a href="#">View More<i class='fas fa-chevron-right'></i></a>
-                      </div>
-                    </div>
-                    <hr>
-                    <div class="col-12">
-                      <div class="list-group list-group-flush">
-                        <a href="#" class="list-group-item list-group-item-action">
-                          <div class="row ">
-                            <div class='col-12 col-sm-6 col-md-5 col-lg-4'>
-                              <img src="./images/img/tools.jpg" alt="Image"
-                              class="w-100 img-fluid">
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-7 col-lg-8 mt-2">
-                              <div class="d-flex flex-column">
-                                  <h5 id='favoriteItemName'>Item Name</h5>
-                                <div class="row">
-                                  <p id='favoriteItemPrice' class='mr-auto'>Price</p>
-                                  <p id='favoriteItemLocation'>Location</p>
-                                </div>
-                                <p id='favoriteItemDesc'>Description</p>
-                              </div>
-                            </div>
-                          </div>
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action">
-                          <div class="row ">
-                            <div class='col-12 col-sm-6 col-md-5 col-lg-4'>
-                              <img src="./images/img/tools.jpg" alt="Image"
-                              class="w-100 img-fluid">
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-7 col-lg-8 mt-2">
-                              <div class="d-flex flex-column">
-                                  <h5 id='favoriteItemName'>Item Name</h5>
-                                <div class="row">
-                                  <p id='favoriteItemPrice' class='mr-auto'>Price</p>
-                                  <p id='favoriteItemLocation'>Location</p>
-                                </div>
-                                <p id='favoriteItemDesc'>Description</p>
-                              </div>
-                            </div>
-                          </div>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-color">
+          <div class="container-fluid">
+            <button type="button" id="sidebarCollapse" class="btn btn-info">
+              <i class="fas fa-align-left"></i>
+              <span class='d-none d-md-inline-block'>Menu</span>
+            </button>
+            <form class="form-inline d-none d-md-block my-2 searchForm" name="dashboardSearchForm"
+                  id='dashboardSearchForm' method="POST">
+              <div class="row justify-content-center">
+                <div class="form-group  mb-2">
+                  <input type="text" class="form-control searchFormInput" name='dashboardSearchInput'
+                         id='dashboardSearchInput' placeholder="I am looking for ...">
                 </div>
+                <button type="button" name="dashboardSearchButton" class='btn btn-danger mx-2 searchFormButton'
+                        id="dashboardSearchButton" onclick="searchForm()">
+                  <i class='fas fa-search mx-2'></i><span class='d-none d-lg-inline-block'>
+                  Search</span></button>
               </div>
-
+            </form>
+            <div class="d-block d-md-none">
+              <button type='button' class='btn btn-danger'>
+                <i class='fas fa-search'></i></button>
             </div>
           </div>
+        </nav>
+        <div id='dashboardSection'>
+          <div class="row my-2 small">
+            <a id='searchLink' class='mr-auto align-self-center'>
+              <i class="fas fa-chevron-left mx-2"></i>Back to Search</a>
+            <a href="#" class='btn btn-info'><span class='d-none d-sm-inline-block'>
+                      New Item</span><i class="fas fa-plus mx-2"></i>
+            </a>
+          </div>
+          <script type="text/javascript">
+            // $("#searchLink").on('click', function() {
+            //   alert('searhing');
+            //   var xhr = new XMLHttpRequest();
+            //   xhr.open('GET', 'weeclo/search.html', true);
+            //   xhr.onreadystatechange = function () {
+            //     if (this.readyState !== 4) return;
+            //     if (this.status !== 200) return; // or whatever error handling you want
+            //     document.getElementById('index').innerHTML = this.responseText;
+            //   };
+            // });
+          </script>
+          <hr>
+          <div id='changingSection'></div>
+        </div>
+        <script type="text/javascript">
+          console.log('dashboard is loaded');
+
+          function userLogout() {
+            alert("logging out of dashboard");
+            //will have some logging out information here
+            // insertHTMLFile("index.html", 'body');
+          }
+
+          var xhr = new XMLHttpRequest();
+          xhr.open('GET', 'overview.html', true);
+          xhr.onreadystatechange = function () {
+            if (this.readyState !== 4) return;
+            if (this.status !== 200) return; // or whatever error handling you want
+            document.getElementById('changingSection').innerHTML = this.responseText;
+          };
+          xhr.send();
+          $("#overviewBtn").on('click', function() {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'overview.html', true);
+            xhr.onreadystatechange = function () {
+              if (this.readyState !== 4) return;
+              if (this.status !== 200) return; // or whatever error handling you want
+              document.getElementById('changingSection').innerHTML = this.responseText;
+            };
+            xhr.send();
+          });
+          $("#accountBtn").on('click', function(){
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'account.html', true);
+            xhr.onreadystatechange = function () {
+              if (this.readyState !== 4) return;
+              if (this.status !== 200) return; // or whatever error handling you want
+              document.getElementById('changingSection').innerHTML = this.responseText;
+            };
+            xhr.send();
+          });
+          $("#messagesBtn").on('click', function() {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'messages.html', true);
+            xhr.onreadystatechange = function () {
+              if (this.readyState !== 4) return;
+              if (this.status !== 200) return; // or whatever error handling you want
+              document.getElementById('changingSection').innerHTML = this.responseText;
+            };
+            xhr.send();
+          });
+          $("#notificationsBtn").on('click', function() {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'notifications.html', true);
+            xhr.onreadystatechange = function () {
+              if (this.readyState !== 4) return;
+              if (this.status !== 200) return; // or whatever error handling you want
+              document.getElementById('changingSection').innerHTML = this.responseText;
+            };
+            xhr.send();
+          });
+          $("#favoritesBtn").on('click', function() {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'favoriteItemsSection.html', true);
+            xhr.onreadystatechange = function () {
+              if (this.readyState !== 4) return;
+              if (this.status !== 200) return; // or whatever error handling you want
+              document.getElementById('changingSection').innerHTML = this.responseText;
+            };
+            xhr.send();
+          });
+          $("#trendingBtn").on('click', function() {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'trendingItemsSection.html', true);
+            xhr.onreadystatechange = function () {
+              if (this.readyState !== 4) return;
+              if (this.status !== 200) return; // or whatever error handling you want
+              document.getElementById('changingSection').innerHTML = this.responseText;
+            };
+            xhr.send();
+          });
+
+
+        </script>
       </div>
     </main>
-    <footer class="footer bg-color text-white p-3">
-      <div class="container-fluid">
-        <div class="row text-center">
-          <div class="col-lg-4 order-last order-lg-first text-lg-left" >
-            <p>Copyrighted &copy; - 2018 | <a href="#">WeeClo.com</a></p>
-          </div>
-          <div class="col-lg-8 text-center text-lg-right">
-            <ul class="list-unstyled list-inline">
-              <li class="list-inline-item">
-                <a href="./errorPage.html">Contact Us</a>
-              </li>
-              <li class="list-inline-item">
-                <a href="./errorPage.html">Feedback</a>
-              </li>
-              <li class="list-inline-item">
-                <a href="./errorPage.html">About Us</a>
-              </li>
-              <li class="list-inline-item">
-                <a href="./errorPage.html">Investor Relations</a>
-              </li>
-              <li class="list-inline-item">
-                <a href="./errorPage.html">Terms of Services</a>
-              </li>
-              <li class="list-inline-item">
-                <a href="./errorPage.html">Privacy Policy</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </footer>
-    <script src="js/script.js"></script>
-    <script src='js/new-script.js'></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  </body>
+  <script src="weeclo.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.2.0/js/all.js" integrity="sha384-4oV5EgaV02iISL2ban6c/RmotsABqE4yZxZLcYMAdG7FAPsyHYAPpywE9PJo+Khy" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
 </html>

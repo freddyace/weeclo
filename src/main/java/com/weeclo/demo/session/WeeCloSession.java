@@ -39,7 +39,6 @@ public class WeeCloSession implements HttpSession,Serializable{
     }
     public void setLoggedIn(UserEntity userEntity){
         this.loggedIn = new LoggedIn();
-        loggedIn.setActive(true);
         loggedIn.setUser(userEntity);
         loggedIn.setLastAccessedTime(System.currentTimeMillis());
 

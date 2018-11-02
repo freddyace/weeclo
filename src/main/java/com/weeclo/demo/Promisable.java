@@ -5,5 +5,6 @@ import org.springframework.http.ResponseEntity;
 
 public interface Promisable {
 
-    ResponseEntity<?> createWeeCloUser(UserEntity userEntity);
+    ResponseEntity createWeeCloUser(UserEntity userEntity);
+    ResponseEntity login(String email, String password);
 }

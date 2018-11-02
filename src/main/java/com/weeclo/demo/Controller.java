@@ -49,6 +49,7 @@ public class Controller implements Promisable{
     SessionManager sessionManager;
     UserEntityRepository userEntityRepository;
     WeeCloSessionRepository weeCloSessionRepository;
+    WeeCloSession weeCloSession;
     public Controller(UserEntityRepository userEntityRepository,
                       WeeCloSessionRepository weeCloSessionRepository){
         this.userEntityRepository = userEntityRepository;
@@ -131,8 +132,10 @@ public class Controller implements Promisable{
     @Transactional
     @RequestMapping(value="/login/credentials/", method = RequestMethod.GET)
     public ResponseEntity<String> login(@RequestParam(value = "email") String email, @RequestParam(value="password") String password){
+        //Putting headers simply for reference purposes. If more are needed, place them here.
         HttpHeaders headers = new HttpHeaders();
         headers.set("Access-Control-Allow-Origin", "*");
+        //SQL section below queries the database using the credentials to authenticate.
         try{
             List<?> list = em.createQuery("select u from UserEntity u where u.emailAddress=?1")
                     .setParameter(1,email )
@@ -141,16 +144,29 @@ public class Controller implements Promisable{
             if(list.size()!=1){
                 return new ResponseEntity<>("Incorrect credentials",headers,HttpStatus.FORBIDDEN);
             }
-            //1 record found. *Ideal Situation*
+            //1 record found. *Ideal Situation* -> Converting it to an object.
             if(list.size()==1){
                 Object object = list.get(0);
                 UserEntity userEntity = (UserEntity) object;
-                if(sessionManager.sessionExists(userEntity)){
-                    WeeCloSession weeCloSession = weeCloSessionRepository.findById(Integer.toString(userEntity.getId()));
-                    if(weeCloSession.getLoggedIn().isActive()){
+                //authenticating
+                if(passwordEncoder.matches(password, userEntity.getPassword())){
+                    //At this point...user is authenticated.
+                    //-------------------------------------------
+                    //If session exists, set the local weeCloSession in request thread to the correct session in Redis.
+                    if(sessionManager.sessionExists(userEntity)){
+                        weeCloSession = weeCloSessionRepository.findById(Integer.toString(userEntity.getId()));
+                        //If user is NOT loggedIn or session expires, or whatever, delete the session.
+                        weeCloSession.setLoggedIn(userEntity);
+                        if(!weeCloSession.getLoggedIn().isActive()){
+                            weeCloSessionRepository.delete(Integer.toString(userEntity.getId()));
+                        }
+                    }else if(!sessionManager.sessionExists(userEntity)){
+                        weeCloSession = new WeeCloSession();
+                        weeCloSession.setLoggedIn(userEntity);
 
                     }
-                }else if(passwordEncoder.matches(password, userEntity.getPassword())) {
+                }
+                else if(passwordEncoder.matches(password, userEntity.getPassword())) {
                     Certificate certificate = new Certificate();
                     certificate.setToken(new Token());
                     certificate.setOwnerID((Integer.toString(userEntity.getId())));

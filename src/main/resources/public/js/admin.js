@@ -132,25 +132,19 @@
    console.log("Unique ID value entered: "+ uniqueIDValue);
 
 
-   User.firstname=firstnameValue;
-    stubUser.firstName=firstnameValue;
-   User.lastname=lastnameValue;
-    stubUser.lastName = lastnameValue;
+   User.firstname=firstnameValue;stubUser.firstName=firstnameValue;
+   User.lastname=lastnameValue;stubUser.lastName = lastnameValue;
    User.email=emailValue; stubUser.emailAddress = emailValue;
-   User.address1=addressLine1Value;
-    stubUser.address1 = addressLine1Value;
-   User.address2=addressLine2Value;
-    stubUser.address1 = addressLine2Value;
+   User.address1=addressLine1Value;stubUser.address1 = addressLine1Value;
+   User.address2=addressLine2Value;stubUser.address1 = addressLine2Value;
    User.zip=zipcodeValue; stubUser.zip = zipcodeValue;
-   User.systemName=desiredUsernameValue;
-    stubUser.systemName = desiredUsernameValue;
-   User.password=intendedPasswordValue;
-    stubUser.password = intendedPasswordValue;
+   User.systemName=desiredUsernameValue;stubUser.systemName = desiredUsernameValue;
+   User.password=intendedPasswordValue;stubUser.password = intendedPasswordValue;
    User.city="Atlanta"; stubUser.city = "Atlanta";
    User.dateJoined = Date.now();User.dateOfBirth=Date.now();
-   User.status = "Active";User.neighborhood=4
-   stubUser.id = uniqueIDValue;
-   validateModalForm(firstnameValue,lastnameValue,emailValue,addressLine1Value,zipcodeValue,desiredUsernameValue, intendedPasswordValue,intendedPasswordConfirmationValue, uniqueIDValue);
+   User.status = "Active";User.neighborhood=4;stubUser.id = uniqueIDValue;
+   validateModalForm(firstnameValue,lastnameValue,emailValue,addressLine1Value,zipcodeValue,
+     desiredUsernameValue, intendedPasswordValue,intendedPasswordConfirmationValue, uniqueIDValue);
 
  }
 /* Validates the data from the modal */
@@ -184,7 +178,7 @@
  }
 //replicate this garbage
  function persist(toBecomeUser){
-   console.log("Attempting to persits user with info as:"+toBecomeUser);
+   console.log("Attempting to persist user with info as:"+toBecomeUser);
    var newUser = JSON.stringify(toBecomeUser)
    var httpRequest = new XMLHttpRequest();
    httpRequest.open('POST', "http://"+serverAddress+":5000/createWeeCloUser",true);

@@ -258,10 +258,8 @@ on social media and link to different pages
 
     //checks register first section validity
     function checkRegFirst(){
-      regFirst = $('#regFirst').val();
-      regLast = $('#regLast').val();
-      regPhone = $('#regPhone').val();
-      regBirthday = $('#regBirthday').val();
+      regFirst = $('#regFirst').val();regLast = $('#regLast').val();
+      regPhone = $('#regPhone').val(); regBirthday = $('#regBirthday').val();
       if(regFirst == '' || regLast == '' || regPhone == '' || regBirthday == '') {
         console.log("Something is missing");
         $(step1NextBtn).prop('disabled', true);
@@ -269,9 +267,7 @@ on social media and link to different pages
         var firstIsValid = validateRegFirst(regFirst, regLast, regPhone, regBirthday);
         if(!firstIsValid) {
           $(step1NextBtn).prop('disabled', true);
-
           console.log('incorrect information');
-
         } else {
           console.log('correct information. Going to step 2');
           $(step1NextBtn).prop('disabled', false);
@@ -306,9 +302,7 @@ on social media and link to different pages
     }
 
     function checkRegSecond(){
-      regAddress = $('#regAddress').val();
-      regNeighborhood = $('#regNeighborhood').val();
-      regZip = $('#regZip').val();
+      regAddress = $('#regAddress').val();regNeighborhood = $('#regNeighborhood').val();regZip = $('#regZip').val();
       if(regAddress == '' || regNeighborhood == '' || regZip == '') {
         $(step2NextBtn).prop('disabled', true);
       } else {
@@ -329,10 +323,8 @@ on social media and link to different pages
       }
     }
     function checkRegFinal(){
-      regEmail = $('#regEmail').val();
-      regUsername = $("#regUsername").val();
-      regPassword = $('#regPassword').val();
-      regPassword2 = $('#regPassword2').val();
+      regEmail = $('#regEmail').val();regUsername = $("#regUsername").val();
+      regPassword = $('#regPassword').val();regPassword2 = $('#regPassword2').val();
       if(regEmail == '' || regUsername == '' || regPassword == '' || regPassword2 == '') {
         $(registerButton).prop('disabled', true);
       } else {
@@ -353,8 +345,9 @@ on social media and link to different pages
       }
     }
 
+    //Gathers all the information from the form and submit the the DB as new user
     function userRegister() {
-      console.log("user is registered");
+      console.log("user is registering");
       console.log("First: " + regFirst + '\nLast: '+ regLast + '\nPhone: ' + regPhone +
         'Birthday: ' + regBirthday + "\nAddress: " + regAddress + '\nNeighborhood: ' +
         regNeighborhood + '\nZip: ' + regZip + '\nEmail: ' + regEmail + '\nUsername: ' +

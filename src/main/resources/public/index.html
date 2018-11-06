@@ -248,165 +248,165 @@ on social media and link to different pages
     </div>
 
     <script>//REGISTER USER INFORMATION
-    $(".step-1").show();$(".step-2, .step-3, .step-4").hide();
-    var step1NextBtn = $("#step1Next").prop('disabled', true);
-    var step2NextBtn = $("#step2Next").prop('disabled', true);
-    var registerButton = $("#registerButton").prop('disabled', true);
-    var regFirst = '',regLast = '', regPhone = '',regBirthday = '';
-    var regAddress = '', regNeighborhood = '', regZip = '';
-    var regEmail = '',regUsername = '',regPassword = '', regPassword2 = '';
+    // $(".step-1").show();$(".step-2, .step-3, .step-4").hide();
+    // var step1NextBtn = $("#step1Next").prop('disabled', true);
+    // var step2NextBtn = $("#step2Next").prop('disabled', true);
+    // var registerButton = $("#registerButton").prop('disabled', true);
+    // var regFirst = '',regLast = '', regPhone = '',regBirthday = '';
+    // var regAddress = '', regNeighborhood = '', regZip = '';
+    // var regEmail = '',regUsername = '',regPassword = '', regPassword2 = '';
 
-    //checks register first section validity
-    function checkRegFirst(){
-      regFirst = $('#regFirst').val();regLast = $('#regLast').val();
-      regPhone = $('#regPhone').val(); regBirthday = $('#regBirthday').val();
-      if(regFirst == '' || regLast == '' || regPhone == '' || regBirthday == '') {
-        console.log("Something is missing");
-        $(step1NextBtn).prop('disabled', true);
-      } else {
-        var firstIsValid = validateRegFirst(regFirst, regLast, regPhone, regBirthday);
-        if(!firstIsValid) {
-          $(step1NextBtn).prop('disabled', true);
-          console.log('incorrect information');
-        } else {
-          console.log('correct information. Going to step 2');
-          $(step1NextBtn).prop('disabled', false);
-        }
-      }
-    }
-    function validateRegFirst(fname, lname, phone, birthday) {
-      //here is where the validation of the form happens
-      // var lettersOnly = /^[a-zA-Z]+$/;
-      // // var numbersOnly = /[0-9+]+$/;
-      // // var firstCheck = false;
-      // if(!fname.match(lettersOnly)) {
-      //   console.log("Incorrect First Name");
-      //   return false;
-      // }
-      // if(!lname.match(lettersOnly)) {
-      //   console.log("Incorrect Last Name");
-      //   return false;
-      // }
-      // if(phone.match(numbersOnly)) {
-      //   console.log("Incorrect Phone Number");
-      //   return false;
-      // }
-      // return true;
-
-
-      if(fname != '' && lname != '' && phone != '' && birthday != '') {
-        return true;
-      } else {
-        return false;
-      }
-    }
-
-    function checkRegSecond(){
-      regAddress = $('#regAddress').val();regNeighborhood = $('#regNeighborhood').val();regZip = $('#regZip').val();
-      if(regAddress == '' || regNeighborhood == '' || regZip == '') {
-        $(step2NextBtn).prop('disabled', true);
-      } else {
-        var secondIsValid = validateRegSecond(regAddress, regNeighborhood, regZip);
-        if(!secondIsValid) {
-          console.log('incorrect info');
-        } else {
-          console.log('correct information. Going to step 3');
-          $(step2NextBtn).prop('disabled', false);
-        }
-      }
-    }
-    function validateRegSecond(address, neighborhood, zip) {
-      if(address != '' && neighborhood != '' && zip != '') {
-        return true;
-      } else {
-        return false;
-      }
-    }
-    function checkRegFinal(){
-      regEmail = $('#regEmail').val();regUsername = $("#regUsername").val();
-      regPassword = $('#regPassword').val();regPassword2 = $('#regPassword2').val();
-      if(regEmail == '' || regUsername == '' || regPassword == '' || regPassword2 == '') {
-        $(registerButton).prop('disabled', true);
-      } else {
-        var finalIsValid = validateRegFinal(regEmail, regUsername, regPassword, regPassword2);
-        if(!finalIsValid) {
-          console.log('incorrect information');
-        } else {
-          console.log('correct info. Completed form!');
-          $(registerButton).prop('disabled', false);
-        }
-      }
-    }
-    function validateRegFinal(email, username, password, password2) {
-      if(email != '' && username != '' && password != '' && password2 != '') {
-        return true;
-      } else {
-        return false;
-      }
-    }
-
-    //Gathers all the information from the form and submit the the DB as new user
-    function userRegister() {
-      console.log("user is registering");
-      console.log("First: " + regFirst + '\nLast: '+ regLast + '\nPhone: ' + regPhone +
-        'Birthday: ' + regBirthday + "\nAddress: " + regAddress + '\nNeighborhood: ' +
-        regNeighborhood + '\nZip: ' + regZip + '\nEmail: ' + regEmail + '\nUsername: ' +
-        regUsername + '\nPassword: ' + regPassword + '\nPassword Confirm: ' + regPassword2);
-      alert("REGISTRATION SUCCESSFUL!");
-      insertHTMLFile("dashboard.html", 'body');
-    }
-
-    $(function(){
-      $(".open-step-1").click(function() {
-        $(".form").hide("fast");
-        $(".step-1").show("slow");
-      });
-    });
-    //Open Step 2 Page
-    $(function() {
-      $(".open-step-2").click(function() {
-        $(".form").hide("fast");
-        $(".step-2").show("slow");
-      });
-    });
-    //Open Step 3 Page
-    $(function(){
-      $(".open-step-3").click(function() {
-        $(".form").hide("fast");
-        $(".step-3").show("slow");
-      });
-    });
-    //open step 4
-    $(function(){
-      $(".open-step-4").click(function() {
-        $(".form").hide("fast");
-        $(".step-4").show("slow");
-      });
-    });
-
-    $(function(){
-      $('#register-modal').on('hidden.bs.modal', function(){
-        $(step1NextBtn, step2NextBtn).prop('disabled', true);
-        $("#registerButton").prop('disabled', true);
-        $("#registerForm")[0].reset();
-        $(".form").hide('fast');
-        $(".step-1").show('slow');
-      });
-    });
-
-
-    //reset Register Form
-    $(function(){
-      $("#resetButton, .close").on('click', function(){
-        $("#registerForm")[0].reset();
-        $(step1NextBtn).prop('disabled', true);
-        $(step2NextBtn).prop('disabled', true);
-        $("#registerButton").prop('disabled', true);
-        alert("form cleared");
-        $(".form").hide('fast');
-        $(".step-1").show('slow');
-      });
-    });
+    // //checks register first section validity
+    // function checkRegFirst(){
+    //   regFirst = $('#regFirst').val();regLast = $('#regLast').val();
+    //   regPhone = $('#regPhone').val(); regBirthday = $('#regBirthday').val();
+    //   if(regFirst == '' || regLast == '' || regPhone == '' || regBirthday == '') {
+    //     console.log("Something is missing");
+    //     $(step1NextBtn).prop('disabled', true);
+    //   } else {
+    //     var firstIsValid = validateRegFirst(regFirst, regLast, regPhone, regBirthday);
+    //     if(!firstIsValid) {
+    //       $(step1NextBtn).prop('disabled', true);
+    //       console.log('incorrect information');
+    //     } else {
+    //       console.log('correct information. Going to step 2');
+    //       $(step1NextBtn).prop('disabled', false);
+    //     }
+    //   }
+    // }
+    // function validateRegFirst(fname, lname, phone, birthday) {
+    //   //here is where the validation of the form happens
+    //   // var lettersOnly = /^[a-zA-Z]+$/;
+    //   // // var numbersOnly = /[0-9+]+$/;
+    //   // // var firstCheck = false;
+    //   // if(!fname.match(lettersOnly)) {
+    //   //   console.log("Incorrect First Name");
+    //   //   return false;
+    //   // }
+    //   // if(!lname.match(lettersOnly)) {
+    //   //   console.log("Incorrect Last Name");
+    //   //   return false;
+    //   // }
+    //   // if(phone.match(numbersOnly)) {
+    //   //   console.log("Incorrect Phone Number");
+    //   //   return false;
+    //   // }
+    //   // return true;
+    //
+    //   if(fname != '' && lname != '' && phone != '' && birthday != '') {
+    //     return true;
+    //   } else {
+    //     return false;
+    //   }
+    // }
+    //
+    // function checkRegSecond(){
+    //   regAddress = $('#regAddress').val();regNeighborhood = $('#regNeighborhood').val();regZip = $('#regZip').val();
+    //   if(regAddress == '' || regNeighborhood == '' || regZip == '') {
+    //     $(step2NextBtn).prop('disabled', true);
+    //   } else {
+    //     var secondIsValid = validateRegSecond(regAddress, regNeighborhood, regZip);
+    //     if(!secondIsValid) {
+    //       console.log('incorrect info');
+    //     } else {
+    //       console.log('correct information. Going to step 3');
+    //       $(step2NextBtn).prop('disabled', false);
+    //     }
+    //   }
+    // }
+    // function validateRegSecond(address, neighborhood, zip) {
+    //   if(address != '' && neighborhood != '' && zip != '') {
+    //     return true;
+    //   } else {
+    //     return false;
+    //   }
+    // }
+    // function checkRegFinal(){
+    //   regEmail = $('#regEmail').val();regUsername = $("#regUsername").val();
+    //   regPassword = $('#regPassword').val();regPassword2 = $('#regPassword2').val();
+    //   if(regEmail == '' || regUsername == '' || regPassword == '' || regPassword2 == '') {
+    //     $(registerButton).prop('disabled', true);
+    //   } else {
+    //     var finalIsValid = validateRegFinal(regEmail, regUsername, regPassword, regPassword2);
+    //     if(!finalIsValid) {
+    //       console.log('incorrect information');
+    //     } else {
+    //       console.log('correct info. Completed form!');
+    //       $(registerButton).prop('disabled', false);
+    //     }
+    //   }
+    // }
+    // function validateRegFinal(email, username, password, password2) {
+    //   if(email != '' && username != '' && password != '' && password2 != '') {
+    //     return true;
+    //   } else {
+    //     return false;
+    //   }
+    // }
+    //
+    // //Gathers all the information from the form and submit the the DB as new user
+    // function userRegister() {
+    //   console.log("user is registering");
+    //   console.log("First: " + regFirst + '\nLast: '+ regLast + '\nPhone: ' + regPhone +
+    //     'Birthday: ' + regBirthday + "\nAddress: " + regAddress + '\nNeighborhood: ' +
+    //     regNeighborhood + '\nZip: ' + regZip + '\nEmail: ' + regEmail + '\nUsername: ' +
+    //     regUsername + '\nPassword: ' + regPassword + '\nPassword Confirm: ' + regPassword2);
+    //   alert("REGISTRATION SUCCESSFUL!");
+    //   insertHTMLFile("dashboard.html", 'body');
+    // }
+    //
+    // $(function(){
+    //   $(".open-step-1").click(function() {
+    //     $(".form").hide("fast");
+    //     $(".step-1").show("slow");
+    //   });
+    // });
+    // //Open Step 2 Page
+    // $(function() {
+    //   $(".open-step-2").click(function() {
+    //     $(".form").hide("fast");
+    //     $(".step-2").show("slow");
+    //   });
+    // });
+    // //Open Step 3 Page
+    // $(function(){
+    //   $(".open-step-3").click(function() {
+    //     $(".form").hide("fast");
+    //     $(".step-3").show("slow");
+    //   });
+    // });
+    // //open step 4
+    // $(function(){
+    //   $(".open-step-4").click(function() {
+    //     $(".form").hide("fast");
+    //     $(".step-4").show("slow");
+    //   });
+    // });
+    //
+    // $(function(){
+    //   $('#register-modal').on('hidden.bs.modal', function(){
+    //     $(step1NextBtn, step2NextBtn).prop('disabled', true);
+    //     $("#registerButton").prop('disabled', true);
+    //     $("#registerForm")[0].reset();
+    //     $(".form").hide('fast');
+    //     $(".step-1").show('slow');
+    //   });
+    // });
+    //
+    //
+    // //reset Register Form
+    // $(function(){
+    //   $("#resetButton, .close").on('click', function(){
+    //     $("#registerForm")[0].reset();
+    //     $(step1NextBtn).prop('disabled', true);
+    //     $(step2NextBtn).prop('disabled', true);
+    //     $("#registerButton").prop('disabled', true);
+    //     alert("form cleared");
+    //     $(".form").hide('fast');
+    //     $(".step-1").show('slow');
+    //   });
+    // });
+    //
     </script>
     <!--FORGET PASSWORD MODAL - COMPLETE-->
     <div class="modal fade" id="forgot-password-modal" tabindex="-1"

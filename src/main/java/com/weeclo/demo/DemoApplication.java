@@ -2,12 +2,17 @@ package com.weeclo.demo;
 
 import com.weeclo.demo.entities.UserEntity;
 import com.weeclo.demo.session.WeeCloSession;
+import com.weeclo.demo.session.sessionPojos.WeeCloSessionCreationSuccessResponse;
 import org.json.JSONObject;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
+import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
 import java.sql.Date;
@@ -18,7 +23,30 @@ import java.sql.Timestamp;
 public class DemoApplication {
 
 	@Bean
+	public RestTemplate restTemplate(RestTemplateBuilder builder) {
+		return builder.build();
+	}
+
+	@Bean
+	public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
+		return args -> {
+			WeeCloSessionCreationSuccessResponse quote = restTemplate.getForObject(
+					"http://gturnquist-quoters.cfapps.io/api/random", WeeCloSessionCreationSuccessResponse.class);
+//			log.info(quote.toString());
+		};
+	}
+
+
+
+	@Bean
 	JedisConnectionFactory jedisConnectionFactory() {
+		JedisConnectionFactory jedisConnectionFactory
+				= new JedisConnectionFactory();
+		jedisConnectionFactory.setHostName("104.196.5.32");
+		jedisConnectionFactory.setPort(6379);
+		System.out.println("*************************");
+		System.out.println(jedisConnectionFactory.getHostName().toString());
+		System.out.println("*************************");
 		return new JedisConnectionFactory();
 	}
 
@@ -26,14 +54,18 @@ public class DemoApplication {
 	RedisTemplate<String, UserEntity> redisTemplate() {
 		RedisTemplate<String, UserEntity> redisTemplate = new RedisTemplate<>();
 		redisTemplate.setConnectionFactory(jedisConnectionFactory());
+		redisTemplate.setEnableTransactionSupport(true);
 		return redisTemplate;
 	}
 	@Bean
 	RedisTemplate<String, WeeCloSession> redisSessionTemplate() {
 		RedisTemplate<String, WeeCloSession> redisSessionTemplate = new RedisTemplate<>();
 		redisSessionTemplate.setConnectionFactory(jedisConnectionFactory());
+		redisSessionTemplate.setEnableTransactionSupport(true);
 		return redisSessionTemplate;
 	}
+
+
 	public static void main(String[] args) throws IOException{
 		SpringApplication.run(DemoApplication.class, args);
 		UserEntity userEntity = new UserEntity();
@@ -41,7 +73,7 @@ public class DemoApplication {
 		userEntity.setSystemName("franksinatra");
 		userEntity.setFirstName("Frank");
 		userEntity.setLastName("Sinatra");
-		userEntity.setPassword("asdf");
+		userEntity.setPassword("password");
 		userEntity.setPhone("2302565676");
 		userEntity.setAddress1("1 Elm Street");
 		userEntity.setAddress2("NULL");
@@ -53,10 +85,11 @@ public class DemoApplication {
 		userEntity.setDateOfBirth(new Date(System.currentTimeMillis()));
 		userEntity.setEmailAddress("franksinatra@gmail.com");
 		userEntity.setStatus("Active");
-		userEntity.setProfilePictureName("Bootyhole");
+		userEntity.setProfilePictureName("Main picture");
 		userEntity.setProfilePicturePath("undefined");
 		JSONObject jsonObject = new JSONObject(userEntity);
 		System.out.println(jsonObject);
+
 //
 //		Email from = new Email("TeamWeeClo@weeclo.com");
 //		String subject = "Welcome to WeeClo!";

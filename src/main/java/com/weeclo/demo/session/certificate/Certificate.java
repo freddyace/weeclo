@@ -21,8 +21,9 @@ public class Certificate implements Serializable{
     private Map<String, String> trustedIPaddresses;
     Token token;
 
-    public Certificate(){
-        this.uniqueIdentificationNumber = UUID.randomUUID().toString();
+    public Certificate(Token token){
+        this.token = token;
+        this.uniqueIdentificationNumber = this.token.getID();
     }
 
     public void setUniqueIdentificationNumber(String uniqueIdentificationNumber) {

@@ -22,12 +22,18 @@ public class Token implements Serializable{
     Date issuedDateTime;
     Date expirationDateTime;
 
-    public Token(){
-        this.ID = UUID.randomUUID().toString();
-        this.issuedDateTime = new Date();
-        Calendar calendar = Calendar.getInstance();
-        calendar.add(Calendar.MINUTE, 30);
-        this.expirationDateTime = calendar.getTime();
+    public Token(Boolean autoGenDates){
+        if(autoGenDates) {
+            this.ID = UUID.randomUUID().toString();
+            this.issuedDateTime = new Date();
+            Calendar calendar = Calendar.getInstance();
+            calendar.add(Calendar.MINUTE, 30);
+            this.expirationDateTime = calendar.getTime();
+        }else{
+            this.ID = null;
+            this.issuedDateTime = null;
+            this.expirationDateTime = null;
+        }
 
     }
 

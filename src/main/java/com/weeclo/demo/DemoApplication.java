@@ -27,14 +27,14 @@ public class DemoApplication {
 		return builder.build();
 	}
 
-	@Bean
-	public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
-		return args -> {
-			WeeCloSessionCreationSuccessResponse quote = restTemplate.getForObject(
-					"http://gturnquist-quoters.cfapps.io/api/random", WeeCloSessionCreationSuccessResponse.class);
-//			log.info(quote.toString());
-		};
-	}
+//	@Bean
+//	public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
+//		return args -> {
+//			WeeCloSessionCreationSuccessResponse quote = restTemplate.getForObject(
+//					"http://gturnquist-quoters.cfapps.io/api/random", WeeCloSessionCreationSuccessResponse.class);
+////			log.info(quote.toString());
+//		};
+//	}
 
 
 

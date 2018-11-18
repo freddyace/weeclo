@@ -47,6 +47,7 @@ function userLogin() {
         } else {
           insertHTMLFile('dashboard.html', 'body');
           console.log('validation successful');
+          console.log(this.responseText);
           return;
         }
       };

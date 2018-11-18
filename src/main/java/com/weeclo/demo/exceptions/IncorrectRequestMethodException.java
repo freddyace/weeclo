@@ -8,6 +8,6 @@ public class IncorrectRequestMethodException extends Exception {
 
     @Override
     public String getMessage(){
-        return "Incorrect request method found!!!";
+        return "Incorrect request method found or the URI endpoint is incorrect....";
     }
 }

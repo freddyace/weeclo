@@ -1,5 +1,6 @@
 package com.weeclo.demo.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
@@ -24,6 +25,7 @@ public class UserEntity implements Serializable {
     private String stateId;
     private int zip;
     private int neighborhood;
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss.SSS")
     private Timestamp dateJoined;
     private Date dateOfBirth;
     private String status;

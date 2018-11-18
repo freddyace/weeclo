@@ -21,6 +21,9 @@ public class WeeCloSessionRepositoryImpl implements WeeCloSessionRepository {
     }
     @Override
     public void save(WeeCloSession weeCloSession) {
+        //Looking for the session by the ownerID
+//        hashOperations.put("SESSION", weeCloSession.getCertificate().getOwnerID(), weeCloSession);
+        //Can probably use this if you want to use the token instead..since the token # is saved as the weeCloSessionID
         hashOperations.put("SESSION", weeCloSession.getId(), weeCloSession);
     }
 

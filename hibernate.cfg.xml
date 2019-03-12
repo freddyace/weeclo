@@ -4,7 +4,7 @@
     "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
   <session-factory>
-    <property name="connection.url">jdbc:mysql://35.231.171.155:3306/weeclodb</property>
+    <property name="connection.url">jdbc:mysql://35.231.121.9/weeclodb</property>
     <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
      <property name="freddy"/>
      <property name="password"/>
@@ -30,6 +30,7 @@
    <mapping class="com.weeclo.demo.entities.UserRatingEntity"/>
    <mapping class="com.weeclo.demo.entities.UserRatingTotalEntity"/>
    <mapping class="com.weeclo.demo.entities.WcAdminEntity"/>
+   <mapping class="com.weeclo.demo.entities.TokensEntity"/>
 
 
    <!-- DB schema will be updated if needed -->

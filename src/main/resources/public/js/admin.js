@@ -14,6 +14,10 @@
  var requestBodyJson = JSON.stringify(requestBodyObject)
  // httpRequest(requestBodyJson, "", "POST")
 
+ var userName;
+
+ var indexOfFirstCharOfResponse = 0;
+ var indexOfLastCharOfResponse = 541;
 
  //User form information:
 
@@ -39,26 +43,23 @@
    dateJoined:"2018-08-23",dateOfBirth:"2018-08-23",firstName:"super",
    password:"wc",emailAddress:"su",systemName:"superuser",phone:"2302565676",
    id:1235,neighborhood:1,status:"Active",profilePicturePath:"undefined"};
+ function trimSessionResponse(responseText, firstColonPosition) {
+   var backwardsText = "";
+   var resultText = "";
+   for (var i = responseText.length - 2; i > firstColonPosition; i--) {
+     backwardsText +=responseText.charAt(i);
+   }
+   for(var j = 0; j<=backwardsText.length;j++){
+     resultText +=backwardsText.charAt(j);
+   }
+   return resultText;
+ }
 
  function adminLogin() {
    userExists(user, pass)
 
  }
- // function httpRequest(requestBody, endpoint, requestMethod) {
- //   var httpRequest = new XMLHttpRequest();
- //   httpRequest.open(requestMethod, endpoint, true);
- //   httpRequest.setRequestHeader('Content-Type', 'application/json');
- //   httpRequest.onreadystatechange = function () {
- //     if(this.readyState!=4)return;
- //     if(this.status!=200){
- //       //error logging
- //       return "Exception occured"
- //     }
- //     else{
- //       httpRequest.send(requestBody)
- //     }
- //   }
- // }
+
 
 
  function userExists(userEmail, password){
@@ -68,10 +69,17 @@
    // httpRequest.open('GET', "http://localhost:5000/login/credentials/?email="+userEmail.value+"&password="+password.value, true);
    httpRequest.onreadystatechange = function () {
      if(this.readyState==4 && this.status==200) {
-       insertHtml('adminDashboard.html', 'body');
-       console.log("Entering callback")
-       console.log(httpRequest.responseText)
-       console.log("Validation Successful")
+       // insertHtml('adminDashboard.html', 'body');
+       // console.log("Entering callback");
+       // console.log("******************************************");
+       // console.log("-----Untrimmed Response-----");
+       // console.log(httpRequest.responseText);
+       // var obj = JSON.parse(this.responseText);
+       // console.log("******************************************");
+       // console.log("Validation Successful");
+       // console.log(obj.certificate.ownerFirstName);
+       // userName = obj.certificate.ownerFirstName;
+       $document.ready
      }
    };
    httpRequest.open('GET', "http://"+
@@ -83,6 +91,7 @@
      serverAddress+":5000/login/credentials/?email="+
      userEmail.value+"&password="+password.value)
  }
+
 
 //Using GET to insert HTML into a page
  var body = document.getElementById("body")
@@ -232,4 +241,8 @@ function navigateToAdminDashboard() {
 
  function navigateToUserSignInPage(){
   insertHtml("userSignIn.html", 'body');
+ }
+
+ function populatePageWithSessionData(){
+  document.getElementById("greeting").innerHTML="<p>userName</p>"
  }

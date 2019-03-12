@@ -1,6 +1,8 @@
 package com.weeclo.demo;
 
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.weeclo.demo.entities.UserEntity;
 import com.weeclo.demo.response.WeeCloSessionNotFoundResponse;
 import com.weeclo.demo.session.sessionPojos.WeeCloSessionCreationSuccessResponse;
@@ -88,6 +90,7 @@ public class Controller implements Promisable{
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.set("Access-Control-Allow-Origin", "*");
         try{
+
             List<?> results = em.createQuery("select id from UserEntity where emailAddress = ?")
                     .setParameter(1, weeCloUser.getEmailAddress())
                     .getResultList();
@@ -164,10 +167,16 @@ public class Controller implements Promisable{
                             return new ResponseEntity<>(sessionManager.retrieveSessionAsString(userEntity), HttpStatus.OK);
                         } else {
                             //Session does not exist, so save it.
-                            sessionManager.save(userEntity);
-                            WeeCloSessionCreationSuccessResponse weeCloSessionCreationSuccessResponse
-                                    = new WeeCloSessionCreationSuccessResponse();
+                            com.weeclo.demo.response.WeeCloSessionCreationSuccessResponse weeCloSessionCreationSuccessResponse
+                                    =  sessionManager.save(userEntity);
                             JSONObject jsonObject = new JSONObject(weeCloSessionCreationSuccessResponse);
+                            ObjectMapper mapper = new ObjectMapper();
+
+                            try {
+                                Map<String, Object> map = mapper.readValue(jsonObject.toString(), Map.class);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
                             return new ResponseEntity<>(jsonObject.toString(), HttpStatus.OK);
                         }
 

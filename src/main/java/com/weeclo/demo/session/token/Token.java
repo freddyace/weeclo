@@ -1,5 +1,8 @@
 package com.weeclo.demo.session.token;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.JsonNode;
+
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
@@ -18,8 +21,11 @@ import java.util.UUID;
  * retrieving the pojos necessary for session info retrieval.
  */
 public class Token implements Serializable{
+    @JsonProperty("ID")
     String ID;
+    @JsonProperty("issuedDateTime")
     Date issuedDateTime;
+    @JsonProperty("expirationDateTime")
     Date expirationDateTime;
 
     public Token(Boolean autoGenDates){
@@ -35,6 +41,9 @@ public class Token implements Serializable{
             this.expirationDateTime = null;
         }
 
+    }
+    public Token(){
+        //default
     }
 
 

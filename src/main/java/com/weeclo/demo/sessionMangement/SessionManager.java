@@ -1,20 +1,19 @@
 package com.weeclo.demo.sessionMangement;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.weeclo.demo.RestCalls.WeeCloRestCall;
 import com.weeclo.demo.entities.UserEntity;
 import com.weeclo.demo.exceptions.IncorrectRequestMethodException;
 import com.weeclo.demo.exceptions.NullObjectReceivedException;
+import com.weeclo.demo.response.WeeCloSessionCreationSuccessResponse;
 import com.weeclo.demo.session.repository.WeeCloSessionRepositoryImpl;
 import com.weeclo.demo.standardization.NullChecker;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Component
@@ -91,19 +90,23 @@ public class SessionManager {
     }
 
 
-    public void save(UserEntity userEntity) {
+    public WeeCloSessionCreationSuccessResponse save(UserEntity userEntity) {
         //Rest call
         WeeCloRestCall weeCloRestCall = new WeeCloRestCall("http://localhost:8080/v1/post/session", RequestMethod.POST);
         JSONObject jsonObject = new JSONObject(userEntity);
         try {
             weeCloRestCall.withJsonBody(jsonObject).executePost();
+            ObjectMapper mapper = new ObjectMapper();
+            WeeCloSessionCreationSuccessResponse response = mapper.readValue(weeCloRestCall.getResponse(), WeeCloSessionCreationSuccessResponse.class);
             System.out.println(weeCloRestCall.getResponse());
+            return response;
         }catch (IncorrectRequestMethodException i){
             System.out.println(i.getMessage());
         }catch (Exception e){
             System.out.println("Exception thrown of type: "+e.getClass());
             System.out.println(e.getMessage());
         }
+        return null;
     }
 
     public String retrieveSessionAsString(UserEntity userEntity){
